@@ -1,0 +1,233 @@
+/* ============================================
+   HOME CONTAINER
+   ============================================ */
+.home-container {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+    position: relative;
+    overflow: hidden;
+    background-color: #1a1a1a;
+}
+
+/* Hide cursor only on desktop */
+@media (min-width: 1025px) {
+    .home-container {
+        cursor: none;
+    }
+}
+
+/* ============================================
+   BACKGROUND IMAGES (elem equivalents)
+   ============================================ */
+.photographer-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.photographer-bg.active {
+    opacity: 1;
+}
+
+/* Default/placeholder image before animation starts */
+.photographer-bg.default-bg {
+    background-color: #2a2a2a;
+    /* Or set a default background-image here:
+       background-image: url('/default-hero.jpg'); */
+}
+
+/* ============================================
+   PHOTOGRAPHER NAMES — SHARED BASE STYLES
+   ============================================ */
+.photographer-name {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.photographer-line {
+    text-decoration: none;
+    display: block;
+}
+
+.photographer-name h1 {
+    text-align: end;
+    font-weight: 900;
+    font-family: RemixaTest, sans-serif;
+    mix-blend-mode: exclusion;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    /* Inactive state (default) */
+    color: #afafaf;
+    opacity: 0.5;
+    transform: scale(1);
+    transform-origin: right center;
+    transition: transform 0.4s ease, opacity 0.4s ease, color 0.4s ease;
+}
+
+/* Active state */
+.photographer-name h1.line-active {
+    opacity: 1;
+    transform: scale(1.4);
+    color: #fff;
+}
+
+/* ============================================
+   DESKTOP LAYOUT (> 1024px)
+   ============================================ */
+@media (min-width: 1025px) {
+    .photographer-name {
+        width: 40vmax;
+        height: 30vmax;
+        padding: 1vmax 4vmax;
+    }
+
+    .photographer-name h1 {
+        font-size: 3vmax;
+        height: 4.5vmax;
+        cursor: default;
+    }
+}
+
+/* ============================================
+   MOBILE LAYOUT (≤ 1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+    .home-container{
+        height: 90dvh;
+    }
+    .photographer-name {
+        width: 100%;
+        height: auto;
+        padding: 4vw 5vw;
+        padding-bottom: calc(4vw + env(safe-area-inset-bottom, 0px));
+    }
+
+    .photographer-name h1 {
+        font-size: 7vw;
+        height: auto;
+        padding: 1.8vw 0;
+    }
+
+    /* Mobile: same animation, just slightly smaller scale */
+    .photographer-name h1.line-active {
+        transform: scale(1.25);
+        /* Slightly less scale on mobile to prevent overflow */
+    }
+}
+
+/* ============================================
+   SMALL MOBILE (≤ 480px)
+   ============================================ */
+@media (max-width: 480px) {
+    .photographer-name {
+        padding: 3vw 4vw;
+        padding-bottom: calc(3vw + env(safe-area-inset-bottom, 0px));
+    }
+
+    .photographer-name h1 {
+        font-size: 7vw;
+        padding: 1.5vw 0;
+    }
+
+    .photographer-name h1.line-active {
+        transform: scale(1.2);
+    }
+}
+
+/* ============================================
+   LEGACY GRID/CARD STYLES (unchanged)
+   ============================================ */
+.home-container img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-title {
+    font-family: RemixaTest;
+    font-size: 4vw;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 5vw;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3vw;
+}
+
+.home-card {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.home-card:hover {
+    opacity: 0.8;
+}
+
+.home-card-img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    margin-bottom: 1.5vw;
+}
+
+.home-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-card h2 {
+    font-family: RemixaTest;
+    font-size: 1.8vw;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 0.3vw;
+}
+
+.home-card p {
+    font-family: mo4;
+    font-size: 1vw;
+    color: #a8a8a8;
+}
+
+@media screen and (max-width: 740px) {
+    .home-title {
+        font-size: 7vw;
+    }
+
+    .home-grid {
+        grid-template-columns: 1fr;
+        gap: 8vw;
+    }
+
+    .home-card h2 {
+        font-size: 5vw;
+    }
+
+    .home-card p {
+        font-size: 3.5vw;
+    }
+}

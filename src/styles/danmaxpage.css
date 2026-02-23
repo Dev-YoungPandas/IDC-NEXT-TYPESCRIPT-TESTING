@@ -1,0 +1,128 @@
+.danmax-section {
+    width: 100%;
+}
+
+.danmax-section2 {
+    width: 100%;
+    background-color: white;
+    padding-bottom: 10vmax;
+}
+
+.Quote-Section {
+    margin-top: 10vw;
+    width: 100%;
+    padding-left: 8vmax;
+    padding-bottom: 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.danmax-textreveal {
+    width: 25vmax;
+}
+
+.danmax-textreveal h3 {
+    font-size: 1.8vw;
+    margin-bottom: 0.5vmax;
+    font-family: RemixaTest;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1em;
+    color: black;
+}
+
+.Quote-Section-para {
+    display: flex;
+    justify-content: end;
+    width: 23vw;
+
+}
+
+.Quote-Section-para p {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.4vw;
+    color: #a8a8a8;
+    font-family: RemixaTest;
+}
+
+.danmax-btn-section {
+    width: 100%;
+    height: 10vmax;
+    display: flex;
+    justify-content: end;
+    padding-inline: 2vw;
+    margin-top: 5vw;
+   
+}
+
+.danmax-btn {
+    width: 15vmax;
+    border: 1px solid black;
+    height: 4vmax;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.danmax-btn p {
+    font-size: 1.1vw;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: FormaDJRBanner;
+}
+
+.danmax-btn:hover {
+    color: white;
+    background-color: black;
+}
+
+
+
+@media screen and (max-width:740px) {
+    .danmax-textreveal h3 {
+        font-size: 4.4vw;
+        margin-bottom: 0.5vmax;
+        font-family: RemixaTest;
+        font-weight: 900;
+        text-align: end;
+        text-transform: uppercase;
+        line-height: 1em;
+        color: black;
+    }
+
+    .Quote-Section-para {
+        display: flex;
+        justify-content: end;
+        width: 100%;
+
+    }
+
+    .Quote-Section-para p {
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 3vw;
+        color: #221818;
+        font-family: RemixaTest;
+    }
+
+    .danmax-btn p {
+        font-size: 1.3vmax;
+    }
+
+    .danmax-btn-section {
+        padding-inline:15vw;
+       
+    }
+    .danmax-btn {
+        width:16vmax;
+    }
+
+    
+
+}

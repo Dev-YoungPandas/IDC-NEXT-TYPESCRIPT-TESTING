@@ -1,0 +1,102 @@
+// ============================================
+// FILE: components/dan-max/PortfolioGrid.tsx
+// ============================================
+// KEY CHANGES:
+// 1. Single IntersectionObserver for the entire grid instead of 4 separate ones
+//    (4 observers = 4x JS execution during initial load)
+// 2. Inline SVG arrow instead of importing react-icons/fi
+//    react-icons can pull in ~20-50KB depending on tree-shaking
+// 3. Images always in DOM with native lazy loading
+
+'use client';
+
+import LazyImage from '../ui/LazyImage';
+import { useLazyLoad } from '../../hooks/useLazyLoad';
+
+import "../../styles/portfoliogrid.css"
+
+// ✅ Inline arrow icon — avoids importing the entire react-icons/fi bundle
+function ArrowIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      width="1em"
+      height="1em"
+    >
+      <line x1="7" y1="17" x2="17" y2="7" />
+      <polyline points="7 7 17 7 17 17" />
+    </svg>
+  );
+}
+
+function PortfolioCard({
+  image,
+  heading,
+  count,
+  isVisible,
+}: {
+  image: any;
+  heading: string;
+  count: number;
+  isVisible: boolean;
+}) {
+  return (
+    <div className="portfolio-main-section ">
+      {/* ✅ LazyImage always rendered — native loading="lazy" handles visibility
+          This lets the browser preparser discover image URLs early */}
+      <LazyImage
+        src={image?.sourceUrl}
+        alt={heading}
+        className="portfolio-main-img"
+      />
+      <div className="portfolio-main-dets ">
+        <div className="portfolio-main-cen">
+          <h2 className="color-transition-text">
+            {heading}
+          </h2>
+          <p className="color-transition-text">
+            ({count})
+          </p>
+        </div>
+        <ArrowIcon className="color-transition-text portfolio-arrow" />
+      </div>
+    </div>
+  );
+}
+
+export default function PortfolioGrid({ data }: { data: any }) {
+  // ✅ Single observer for the entire grid
+  const { ref, isVisible } = useLazyLoad({ threshold: 0.1 });
+
+  if (!data) return null;
+
+  const portfolioItems = [
+    { image: data.section2Images, heading: data.section2Heading1 },
+    { image: data.section2Image2, heading: data.section2Heading2 },
+    { image: data.section2Image3, heading: data.section2Heading3 },
+    { image: data.section2Image4, heading: data.section2Heading4 },
+  ];
+
+  return (
+    <div
+      ref={ref}
+      className="portfolio-card"
+    >
+      {portfolioItems.map((item, index) => (
+        <PortfolioCard
+          key={index}
+          image={item.image}
+          heading={item.heading}
+          count={34}
+          isVisible={isVisible}
+        />
+      ))}
+    </div>
+  );
+}

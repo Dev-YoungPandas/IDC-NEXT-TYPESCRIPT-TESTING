@@ -1,0 +1,99 @@
+.portfolio-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 2vw;
+    padding-inline: 2vw;
+    padding-top: 2vw;
+    width: 100%;
+
+}
+
+.portfolio-main-section {
+    height: 40vmax;
+    width: 23vmax;
+}
+
+.portfolio-main-img {
+    height: 30vmax;
+}
+
+.portfolio-main-dets {
+    display: flex;
+    align-items: center;
+    padding-top: 4vmax;
+    justify-content: space-between;
+}
+
+.portfolio-main-cen {
+    display: flex;
+    gap: 1vmax;
+
+}
+
+
+.portfolio-main-cen h2 {
+    font-family: mo4;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 2.1vw;
+
+}
+
+.portfolio-main-cen p {
+    font-family: mo4;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.3vw;
+
+}
+
+.portfolio-arrow {
+    font-size: 2.5vmax;
+}
+
+
+@media screen and (max-width: 740px) {
+    .portfolio-card {
+        display: flex;
+        flex-direction: column;
+        gap: 6vw;
+        padding-inline: 4vw;
+        padding-top: 4vw;
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .portfolio-main-section {
+        width: 65vw;
+        height: auto;
+    }
+
+    .portfolio-main-img {
+        height: 50vw;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    /* Alternate: odd cards left, even cards right */
+    .portfolio-main-section:nth-child(even) {
+
+        align-self: flex-start;
+    }
+
+    .portfolio-main-section:nth-child(odd) {
+        align-self: flex-end;
+    }
+
+    .portfolio-main-cen h2 {
+        font-size: 4.5vw;
+    }
+
+    .portfolio-main-cen p {
+        font-size: 3vw;
+    }
+
+    .portfolio-main-dets {
+        padding-top: 2vw;
+    }
+}
