@@ -2,12 +2,6 @@
 
 import ReactLenis from 'lenis/react';
 import DanMaxPage from '@/components/dan-max/DanMaxPage';
-import Yukisatopage from '@/components/yuki-sato/Yukisatopage';
-
-const PHOTOGRAPHER_COMPONENTS: Record<string, React.ComponentType<{ serverData: any }>> = {
-  'dan-max': DanMaxPage,
-  'yuki-sato': Yukisatopage,
-};
 
 export default function ClientPage({
   data,
@@ -16,9 +10,7 @@ export default function ClientPage({
   data: any;
   photographer: string;
 }) {
-  const PageComponent = PHOTOGRAPHER_COMPONENTS[photographer];
-
-  if (!PageComponent) return null;
+  if (!data) return null;
 
   return (
     <ReactLenis
@@ -33,7 +25,7 @@ export default function ClientPage({
         touchMultiplier: 2,
       }}
     >
-      <PageComponent serverData={data} />
+      <DanMaxPage data={data} />
     </ReactLenis>
   );
 }

@@ -15,6 +15,7 @@ export default function TestimonialSection({ data }: { data: any }) {
   const { ref, isVisible } = useLazyLoad({ threshold: 0.2 });
 
   if (!data) return null;
+  console.log(data.section5Paragraph4, "section5Paragraph4")
 
   return (
     <div ref={ref} className="testimonial-section">
@@ -98,6 +99,8 @@ export default function TestimonialSection({ data }: { data: any }) {
                   </div>
                 </div>
               </div>
+
+
 
             </div>
           </div>

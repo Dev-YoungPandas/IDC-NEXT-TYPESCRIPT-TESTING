@@ -1,5 +1,6 @@
 .danmax-section {
     width: 100%;
+    overflow: hidden;
 }
 
 .danmax-section2 {
@@ -17,7 +18,6 @@
     align-items: center;
     justify-content: center;
 }
-
 
 
 .danmax-textreveal {
@@ -86,14 +86,14 @@
 
 @media screen and (max-width:740px) {
     .danmax-textreveal h3 {
-        font-size: 4.4vw;
+        font-size:16px;
         margin-bottom: 0.5vmax;
         font-family: RemixaTest;
         font-weight: 900;
         text-align: end;
+        padding: 0vw 2vw 0vw 5vw;
         text-transform: uppercase;
         line-height: 1em;
-        color: black;
     }
 
     .Quote-Section-para {
@@ -107,6 +107,8 @@
         font-weight: 900;
         text-transform: uppercase;
         font-size: 3vw;
+                padding: 0vw 2vw 0vw 5vw;
+
         color: #221818;
         font-family: RemixaTest;
     }

@@ -2,12 +2,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    column-gap: 2vw;
+    column-gap: 3vw;
     padding-inline: 2vw;
     padding-top: 2vw;
     width: 100%;
 
 }
+
+
 
 .portfolio-main-section {
     height: 40vmax;
@@ -28,6 +30,7 @@
 .portfolio-main-cen {
     display: flex;
     gap: 1vmax;
+    /* background-color: lightcyan; */
 
 }
 
@@ -37,6 +40,9 @@
     font-weight: 900;
     text-transform: uppercase;
     font-size: 2.1vw;
+    width: 10vmax;
+    color: black;
+    line-height: 1.2em;
 
 }
 
@@ -58,7 +64,7 @@
         display: flex;
         flex-direction: column;
         gap: 6vw;
-        padding-inline: 4vw;
+        padding-inline: 6vw;
         padding-top: 4vw;
         width: 100%;
         align-items: flex-start;
@@ -75,6 +81,7 @@
         object-fit: cover;
     }
 
+
     /* Alternate: odd cards left, even cards right */
     .portfolio-main-section:nth-child(even) {
 
@@ -85,8 +92,14 @@
         align-self: flex-end;
     }
 
+    .portfolio-main-dets {
+        /* background-color: lightcoral; */
+        margin-top: 10px;
+    }
+
     .portfolio-main-cen h2 {
-        font-size: 4.5vw;
+        font-size: 18px;
+        line-height: 1.2em;
     }
 
     .portfolio-main-cen p {

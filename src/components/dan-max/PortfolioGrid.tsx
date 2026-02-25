@@ -39,22 +39,43 @@ function PortfolioCard({
   image,
   heading,
   count,
-  isVisible,
+  video,
+
 }: {
   image: any;
   heading: string;
   count: number;
-  isVisible: boolean;
+  video?: string
 }) {
+
+  const isVideo = !!video;
+
+
   return (
     <div className="portfolio-main-section ">
       {/* ✅ LazyImage always rendered — native loading="lazy" handles visibility
           This lets the browser preparser discover image URLs early */}
-      <LazyImage
-        src={image?.sourceUrl}
-        alt={heading}
-        className="portfolio-main-img"
-      />
+
+      {
+        isVideo ? (
+          <video
+            src={video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload='metadata'
+            className='portfolio-main-img'
+          />
+        ) : (
+          <LazyImage
+            src={image?.sourceUrl}
+            alt={heading}
+            className="portfolio-main-img"
+          />
+        )
+      }
+
       <div className="portfolio-main-dets ">
         <div className="portfolio-main-cen">
           <h2 className="color-transition-text">
@@ -72,15 +93,17 @@ function PortfolioCard({
 
 export default function PortfolioGrid({ data }: { data: any }) {
   // ✅ Single observer for the entire grid
-  const { ref, isVisible } = useLazyLoad({ threshold: 0.1 });
+  const { ref , isVisible} = useLazyLoad({ threshold: 0.1 });
 
   if (!data) return null;
 
+  console.log(data.section2Video4.mediaItemUrl, "ggg")
+
   const portfolioItems = [
-    { image: data.section2Images, heading: data.section2Heading1 },
-    { image: data.section2Image2, heading: data.section2Heading2 },
-    { image: data.section2Image3, heading: data.section2Heading3 },
-    { image: data.section2Image4, heading: data.section2Heading4 },
+    { image: data.section2Images, video:data.section2Video1?.mediaItemUrl, heading: data.section2Heading1 },
+    { image: data.section2Image2, video:data.section2Video2?.mediaItemUrl, heading: data.section2Heading2 },
+    { image: data.section2Image3, video:data.section2Video3?.mediaItemUrl, heading: data.section2Heading3 },
+    { image: data.section2Image4, video:data.section2Video4?.mediaItemUrl, heading: data.section2Heading4 },
   ];
 
   return (
@@ -92,9 +115,9 @@ export default function PortfolioGrid({ data }: { data: any }) {
         <PortfolioCard
           key={index}
           image={item.image}
+          video={item.video}
           heading={item.heading}
           count={34}
-          isVisible={isVisible}
         />
       ))}
     </div>

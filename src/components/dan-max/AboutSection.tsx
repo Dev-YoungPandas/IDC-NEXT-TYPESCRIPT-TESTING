@@ -34,6 +34,10 @@ export default function AboutSection({ data }: { data: any }) {
 
   if (!data) return null;
 
+
+  const isVideo = !!data?.section3Video1?.mediaItemUrl;
+  console.log(data.section3Video1.mediaItemUrl, "section3Video1")
+
   return (
     <div ref={ref} className="about-section">
       {isVisible && (
@@ -58,11 +62,25 @@ export default function AboutSection({ data }: { data: any }) {
       <div ref={section4Ref} className="section4 about-section4">
         <div className="about-section4-left">
           <div className="about-section4-img1">
-            <LazyImage
-              src={data.section3Image1?.sourceUrl}
-              alt={data.section3Image1?.altText}
-              className="w-full h-full object-cover"
-            />
+
+            {isVideo ? (
+              <video
+                src={data.section3Video1.mediaItemUrl}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="about-section4-media"
+              />
+            ) : (
+              <LazyImage
+                src={data.section3Image1?.sourceUrl}
+                alt={data.section3Image1?.altText}
+                className="about-section4-media"
+              />
+            )}
+
           </div>
           <div className="about-section4-img2">
             <LazyImage
@@ -77,7 +95,7 @@ export default function AboutSection({ data }: { data: any }) {
           {useMemo(() => {
             const text = (data.section3Paragraph3 || '').replace(/<[^>]*>/g, '').trim();
             const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
-            const perGroup = Math.ceil(sentences.length / 3);
+            const perGroup = Math.ceil(sentences.length / 4);
             const paragraphs = [];
             for (let i = 0; i < sentences.length; i += perGroup) {
               paragraphs.push(sentences.slice(i, i + perGroup).join('').trim());

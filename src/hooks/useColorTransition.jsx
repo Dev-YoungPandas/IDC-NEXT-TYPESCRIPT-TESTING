@@ -19,6 +19,8 @@ export function useColorTransition(triggerSelector, targetSelector) {
     let isMounted = true;
     let timeoutId = null;
 
+    const isMobile = window.innerWidth <= 740;
+
     const setup = async () => {
       const trigger = document.querySelector(triggerSelector);
       const section2 = document.querySelector('.section2');
@@ -43,9 +45,9 @@ export function useColorTransition(triggerSelector, targetSelector) {
 
       scrollTriggerRef.current = ScrollTrigger.create({
         trigger,
-        start: 'top -120%',
-        end: 'top -140%',
-        scrub:3,
+        start: isMobile ? 'top -30%' : 'top -120%',
+        end: isMobile ? 'top -50%' : 'top -140%',
+        scrub: 3,
         onUpdate: (self) => {
           const p = self.progress;
           const r = Math.round(255 - 255 * p);
