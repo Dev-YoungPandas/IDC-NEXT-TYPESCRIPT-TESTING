@@ -17,6 +17,17 @@
 }
 
 @font-face {
+  font-family: 'RemixaTest-semibold';
+  src: url('/fonts/RemixaTest-Semibold-BF649a5c1233077.otf');
+}
+
+@font-face {
+  font-family: 'Polysans';
+  src: url('/fonts/PolySans-Neutral.ttf');
+}
+
+
+@font-face {
   font-family: 'RemixaTest';
   src: url('/fonts/RemixaTest-Regular-BF649a5c12202eb-2.ttf') format('truetype');
   font-display: swap;
@@ -35,6 +46,14 @@
 @font-face {
   font-family: 'FormaDJRBanner';
   src: url('/fonts/FormaDJRBanner-Medium-Testing-1.woff') format('woff');
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'me2';
+  src: url('/fonts/me2-1.ttf') format('truetype');
   font-display: swap;
   font-weight: 500;
   font-style: normal;

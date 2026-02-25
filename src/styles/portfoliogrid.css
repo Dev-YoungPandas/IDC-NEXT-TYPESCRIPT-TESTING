@@ -13,7 +13,7 @@
 
 .portfolio-main-section {
     height: 40vmax;
-    width: 23vmax;
+    /* width: 23vmax; */
 }
 
 .portfolio-main-img {
@@ -30,7 +30,6 @@
 .portfolio-main-cen {
     display: flex;
     gap: 1vmax;
-    /* background-color: lightcyan; */
 
 }
 
@@ -40,9 +39,10 @@
     font-weight: 900;
     text-transform: uppercase;
     font-size: 2.1vw;
-    width: 10vmax;
+    /* width: 10vmax; */
     color: black;
     line-height: 1.2em;
+    width:min-content;
 
 }
 
@@ -71,7 +71,7 @@
     }
 
     .portfolio-main-section {
-        width: 65vw;
+        width: 65vw !important;
         height: auto;
     }
 

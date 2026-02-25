@@ -40,19 +40,23 @@ function PortfolioCard({
   heading,
   count,
   video,
+  totalItems,
 
 }: {
   image: any;
   heading: string;
   count: number;
-  video?: string
+  video?: string;
+  totalItems: number;
 }) {
 
   const isVideo = !!video;
 
 
   return (
-    <div className="portfolio-main-section ">
+    <div className="portfolio-main-section "
+      style={{ width: `${100 / totalItems - 2}vmax` } as React.CSSProperties}
+    >
       {/* ✅ LazyImage always rendered — native loading="lazy" handles visibility
           This lets the browser preparser discover image URLs early */}
 
@@ -93,18 +97,18 @@ function PortfolioCard({
 
 export default function PortfolioGrid({ data }: { data: any }) {
   // ✅ Single observer for the entire grid
-  const { ref , isVisible} = useLazyLoad({ threshold: 0.1 });
+  const { ref, isVisible } = useLazyLoad({ threshold: 0.1 });
 
   if (!data) return null;
 
-  console.log(data.section2Video4.mediaItemUrl, "ggg")
+  // console.log(data.section2Video4.mediaItemUrl, "ggg")
 
   const portfolioItems = [
-    { image: data.section2Images, video:data.section2Video1?.mediaItemUrl, heading: data.section2Heading1 },
-    { image: data.section2Image2, video:data.section2Video2?.mediaItemUrl, heading: data.section2Heading2 },
-    { image: data.section2Image3, video:data.section2Video3?.mediaItemUrl, heading: data.section2Heading3 },
-    { image: data.section2Image4, video:data.section2Video4?.mediaItemUrl, heading: data.section2Heading4 },
-  ];
+    { image: data.section2Images, video: data.section2Video1?.mediaItemUrl, heading: data.section2Heading1 },
+    { image: data.section2Image2, video: data.section2Video2?.mediaItemUrl, heading: data.section2Heading2 },
+    { image: data.section2Image3, video: data.section2Video3?.mediaItemUrl, heading: data.section2Heading3 },
+    { image: data.section2Image4, video: data.section2Video4?.mediaItemUrl, heading: data.section2Heading4 },
+  ].filter(item => item.image?.sourceUrl || item.video || item.heading)
 
   return (
     <div
@@ -118,6 +122,7 @@ export default function PortfolioGrid({ data }: { data: any }) {
           video={item.video}
           heading={item.heading}
           count={34}
+          totalItems={portfolioItems.length}
         />
       ))}
     </div>

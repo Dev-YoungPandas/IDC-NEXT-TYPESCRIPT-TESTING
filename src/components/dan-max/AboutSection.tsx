@@ -36,7 +36,7 @@ export default function AboutSection({ data }: { data: any }) {
 
 
   const isVideo = !!data?.section3Video1?.mediaItemUrl;
-  console.log(data.section3Video1.mediaItemUrl, "section3Video1")
+  // console.log(data.section3Video1.mediaItemUrl, "section3Video1")
 
   return (
     <div ref={ref} className="about-section">

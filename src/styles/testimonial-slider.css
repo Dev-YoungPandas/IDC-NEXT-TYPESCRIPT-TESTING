@@ -1,0 +1,252 @@
+
+
+.ts-section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000;
+  position: relative;
+  padding: clamp(60px, 8vw, 120px) clamp(40px, 8vw, 160px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ── "WHAT CLIENTS SAY" ── */
+.ts-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(11px, 1.1vw, 15px);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 clamp(16px, 2vw, 28px) 0;
+  padding-left: clamp(10px, 4vw, 80px);
+}
+
+/* ── "TESTIMONIALS" ── */
+.ts-main-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 8vw, 130px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin: 0 0 clamp(40px, 5vw, 80px) 0;
+  line-height: 0.95;
+  padding-left: clamp(10px, 4vw, 80px);
+}
+
+/* ── Yellow dot accent ── */
+.ts-yellow-dot {
+  position: absolute;
+  top: clamp(100px, 14vw, 180px);
+  left: clamp(340px, 48vw, 720px);
+  width: clamp(10px, 1vw, 16px);
+  height: clamp(10px, 1vw, 16px);
+  border-radius: 50%;
+  background-color: #e8e800;
+  pointer-events: none;
+}
+
+/* ── Slide area + animation ── */
+.ts-slide-area {
+  padding-left: clamp(10px, 4vw, 80px);
+  max-width: 820px;
+  flex: 1;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 450ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 450ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.ts-visible {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.ts-exit-left {
+  transform: translate3d(-60px, 0, 0);
+  opacity: 0;
+}
+
+.ts-exit-right {
+  transform: translate3d(60px, 0, 0);
+  opacity: 0;
+}
+
+.ts-enter-right {
+  transform: translate3d(60px, 0, 0);
+  opacity: 0;
+  transition: none !important;
+}
+
+.ts-enter-left {
+  transform: translate3d(-60px, 0, 0);
+  opacity: 0;
+  transition: none !important;
+}
+
+/* ── Bold keyword (SPECIAL, VISIONARY, etc.) ── */
+.ts-keyword {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 3.2vw, 52px);
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 0 clamp(20px, 2.5vw, 36px) 0;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.5px #ffffff;
+}
+
+/* ── Testimonial paragraph ── */
+.ts-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(15px, 1.55vw, 24px);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 clamp(24px, 3vw, 44px) 0;
+  max-width: 740px;
+}
+
+/* ── Author ── */
+.ts-author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ts-author-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(11px, 0.95vw, 15px);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+.ts-author-role {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(10px, 0.85vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+}
+
+/* ── Bottom bar ── */
+.ts-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: clamp(40px, 5vw, 80px);
+  padding-left: clamp(10px, 2vw, 40px);
+  padding-right: clamp(10px, 2vw, 40px);
+}
+
+/* ── Arrows ── */
+.ts-arrows {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 48px);
+}
+
+.ts-arrow-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  opacity: 0.8;
+  transition: opacity 0.25s ease, transform 0.2s ease;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+
+.ts-arrow-btn:hover {
+  opacity: 1;
+}
+
+.ts-arrow-btn:active {
+  transform: scale(0.92);
+}
+
+/* ── Counter (italic serif like screenshot) ── */
+.ts-counter {
+  display: flex;
+  align-items: center;
+}
+
+.ts-counter-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(28px, 3vw, 48px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════════ */
+@media screen and (max-width: 768px) {
+  .ts-section {
+    padding: 40px 20px;
+    min-height: auto;
+  }
+
+  .ts-label {
+    padding-left: 0;
+  }
+
+  .ts-main-heading {
+    padding-left: 0;
+    font-size: 42px;
+    margin-bottom: 36px;
+  }
+
+  .ts-yellow-dot {
+    top: 90px;
+    left: auto;
+    right: 30px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .ts-slide-area {
+    padding-left: 0;
+  }
+
+  .ts-keyword {
+    font-size: 26px;
+  }
+
+  .ts-text {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .ts-bottom-bar {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 40px;
+  }
+
+  .ts-counter-text {
+    font-size: 28px;
+  }
+}
+
+/* ── Reduce motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .ts-slide-area {
+    transition-duration: 0.01ms !important;
+  }
+}

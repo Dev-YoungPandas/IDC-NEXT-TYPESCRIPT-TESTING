@@ -113,13 +113,22 @@ export default function HeroSection({ data }: { data: any }) {
   return (
     <div className="hero-image">
       {/* Hero image */}
-      <img
+      {/* <img
         src={data.centerImage?.sourceUrl}
         alt={data.centerImage?.altText || data.photographerName}
         fetchPriority="high"
         loading="eager"
         decoding="sync"
-      />
+      /> */}
+
+
+      <video autoPlay
+       loop
+        muted
+         playsInline
+          preload="metadata" 
+           poster={data.centerImage?.sourceUrl || ''}
+          src={data?.heroVideo?.mediaItemUrl}></video>
 
 
       <div className="hero-section-center">
