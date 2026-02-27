@@ -144,6 +144,18 @@ export const GET_DAN_PAGE_QUERY = `
         altText
       }
       danMarquee
+
+      marqueeTopLineImage{
+      id
+      sourceUrl
+      altText
+        }
+
+      marqueeBottomLineImage{
+      id
+      sourceUrl
+      altText
+        }
       }
     }
   }
@@ -350,6 +362,18 @@ export const GET_YUKI_PAGE_QUERY =
       altText
       
       }
+
+      marqueeTopLineImage{
+      id
+      sourceUrl
+      altText
+        }
+
+      marqueeBottomLineImage{
+      id
+      sourceUrl
+      altText
+        }
       }
 
 
@@ -512,6 +536,9 @@ query GetCamillaPage {
       section5Paragraph4
       section5Paragraph2Work
 
+      section5Paragraph3Data3
+      section5Paragraph4Data4
+
       
       section5Paragraph3Work
       section5Paragraph4Work
@@ -546,6 +573,17 @@ query GetCamillaPage {
 
       }
 
+      marqueeTopLineImage{
+      id
+      sourceUrl
+      altText
+        }
+
+      marqueeBottomLineImage{
+      id
+      sourceUrl
+      altText
+        }
 
 
       }
@@ -705,6 +743,17 @@ query GetSachaPage {
         altText
       }
       danMarquee
+      marqueeTopLineImage{
+      id
+      sourceUrl
+      altText
+        }
+
+      marqueeBottomLineImage{
+      id
+      sourceUrl
+      altText
+        }
       }
     }
   }
@@ -757,7 +806,7 @@ query GetDeanPage {
         
         
       }
- section2Image2 {
+     section2Image2 {
           id
           sourceUrl
         }
@@ -855,7 +904,8 @@ query GetDeanPage {
       section5Paragraph4
       section5Paragraph2Work
 
-      
+      section5Paragraph3Data3
+
       section5Paragraph3Work
       section5Paragraph4Work
       
@@ -868,6 +918,12 @@ query GetDeanPage {
         sourceUrl
         altText
       }
+
+       section5Paragraph3Image3{
+        id
+        sourceUrl
+        altText
+      }
       danMarquee
       marqueeImage{
       id
@@ -875,6 +931,18 @@ query GetDeanPage {
       altText
       
       }
+
+      marqueeTopLineImage{
+      id
+      sourceUrl
+      altText
+        }
+
+      marqueeBottomLineImage{
+      id
+      sourceUrl
+      altText
+        }
       }
     }
   }
@@ -1148,13 +1216,18 @@ query GetGuyPage {
       section5Paragraph2Work
 
       section5Paragraph3Work
-      section5Paragraph4Work
-      
+      section5Paragraph3Data3
+
       section5Paragraph2Name
       section5Paragraph3Name
-      section5Paragraph4Name
+      
       
       section5Image{
+        id
+        sourceUrl
+        altText
+      }
+      section5Paragraph3Image3{
         id
         sourceUrl
         altText
@@ -1166,6 +1239,68 @@ query GetGuyPage {
       altText
       
       }
+
+      marqueeTopLineImage{
+      id
+      sourceUrl
+      altText
+        }
+
+      marqueeBottomLineImage{
+      id
+      sourceUrl
+      altText
+        }
+      }
+    }
+  }
+`
+
+
+export const GET_HOMEPAGE_QUERY = 
+`
+query GetHomePage {
+    pageBy(uri: "/homepage-idc/") {
+      id
+      title
+      slug
+      homepageidc {
+        photographerName1
+        photographerName2
+        photographerName3
+        photographerName4
+        photographerName5
+        photographerName6
+        photographer1Video1 {
+          id
+          mediaItemUrl
+          mimeType
+        }
+        photographer2Video2 {
+          id
+          mediaItemUrl
+          mimeType
+        }
+        photographer3Video3 {
+          id
+          mediaItemUrl
+          mimeType
+        }
+        photographer4Video4 {
+          id
+          mediaItemUrl
+          mimeType
+        }
+        photographer5Video5 {
+          id
+          mediaItemUrl
+          mimeType
+        }
+        photographer6Video6 {
+          id
+          mediaItemUrl
+          mimeType
+        }
       }
     }
   }

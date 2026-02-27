@@ -11,6 +11,7 @@
     margin-bottom: 6vmax;
 
 }
+
 .about-section4-media {
     width: 100%;
     height: 100%;
@@ -24,7 +25,7 @@
     margin-bottom: 1.2vmax;
     font-size: 1.3vw;
     color: #d1d1d1;
-    font-family: RemixaTest;
+    font-family: 'RemixaTest-regular';
 
 }
 
@@ -36,7 +37,7 @@
     font-size: 4.5vw;
     margin-top: 1.6vmax;
     margin-bottom: 1.6vmax;
-    font-family: RemixaTest;
+    font-family: 'RemixaTest-regular';
     text-transform: uppercase;
     line-height: 1;
     font-weight: 900;
@@ -56,7 +57,7 @@
     text-transform: uppercase;
     font-size: 1.1vw;
     color: #a8a8a8;
-    font-family: RemixaTest;
+    font-family: 'RemixaTest-regular';
 }
 
 .about-section4 {
@@ -68,7 +69,6 @@
     margin-top: 2vmax;
     padding: 1vw 3vw;
     opacity: 0;
-    /* background-color: lightpink; */
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
@@ -110,6 +110,17 @@
 
 @media screen and (max-width: 740px) {
 
+    .about-section {
+        width: 100%;
+        margin-top: 25vw;
+    }
+
+    .about-section4-media {
+        width: 20vw;
+        height: 104px;
+        object-fit: cover;
+        display: block;
+    }
 
     .aboutSec-textreaveal p {
         font-size: 3vw;
@@ -117,12 +128,18 @@
     }
 
     .aboutSec-textreaveal h1 {
-        font-size: 4vmax;
+        font-size: 32px;
+    }
+
+    .aboutSec-textreaveal {
+
+        margin-bottom: 10vmax;
+
     }
 
 
     .aboutSec-textreaveal h6 {
-
+        display: none;
         font-size: 3.6vw;
 
     }
@@ -135,7 +152,10 @@
 
     .aboutSec-textreaveal h5 {
 
-        font-size: 3.4vw;
+        font-size: 15px;
+
+        line-height: 1em;
+        letter-spacing: -0.03px;
         width: 90%;
 
     }
@@ -143,6 +163,7 @@
     .about-section4 {
         flex-direction: column;
         gap: 17vw;
+
     }
 
     .about-section4-img1 {
@@ -151,9 +172,15 @@
     }
 
     .about-section4-img2 {
-        width: 60vw;
+        width: 65vw;
         height: 30vh;
 
+    }
+
+    .about-section4-left {
+        display: flex;
+        flex-direction: row;
+        gap: 1vw;
     }
 
     .about-section4-right p {
@@ -164,7 +191,7 @@
 
 
     .about-section4-right {
-        width:70vw;
+        width: 70vw;
 
 
 

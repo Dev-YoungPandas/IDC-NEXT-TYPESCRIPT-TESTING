@@ -33,34 +33,53 @@ export default function DanMaxPage({ data }: { data: any }) {
     );
   }
 
+
+  console.log(data.section2Paragraph, "hhhh")
   return (
     <div className="danmax-section full-body-container">
-      <HeroSection data={data} />
 
-      <div className="danmax-section2 section2">
-        <div className="Quote-Section">
-          <TextReveal className="danmax-textreveal">
-            <h3>{data.section2Paragraph}</h3>
-            <div className="Quote-Section-para">
-              <p>- {data.photographerName}</p>
-            </div>
-          </TextReveal>
-        </div>
+      <div className='z-50'>
 
-        <PortfolioGrid data={data} />
+        <HeroSection data={data} />
 
-        <div className="danmax-btn-section">
-          <div className="danmax-btn">
-            <p className="color-transition-text">{data.section2Button}</p>
+        <div className="danmax-section2 section2">
+          <div className="Quote-Section">
+            <TextReveal className="danmax-textreveal">
+              <h3>{data.section2Paragraph}</h3>
+              <div className="Quote-Section-para">
+                <p>-{data.photographerName?.split(' ')[0]}</p>
+
+              </div>
+            </TextReveal>
           </div>
+
+          <PortfolioGrid data={data} />
+
+          <div className="danmax-btn-section">
+            <div className="danmax-btn">
+              <p className="color-transition-text">{data.section2Button}</p>
+            </div>
+          </div>
+
+          <AboutSection data={data} />
+          <TestimonialSection data={data} />
         </div>
 
-        <AboutSection data={data} />
-        <TestimonialSection data={data} />
+
+
       </div>
 
-      <CTASection data={data} />
-      <Footer />
+      <div className='w-full h-[131vh] xl:h-[177vh]'>
+        <CTASection data={data} />
+
+
+        <div className='fixed w-full bottom-0 z-[-1]'>
+          <Footer />
+        </div>
+      </div>
+
+
+
     </div>
   );
 }

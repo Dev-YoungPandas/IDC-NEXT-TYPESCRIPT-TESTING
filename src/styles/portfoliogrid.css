@@ -9,8 +9,6 @@
 
 }
 
-
-
 .portfolio-main-section {
     height: 40vmax;
     /* width: 23vmax; */
@@ -33,7 +31,6 @@
 
 }
 
-
 .portfolio-main-cen h2 {
     font-family: mo4;
     font-weight: 900;
@@ -42,7 +39,7 @@
     /* width: 10vmax; */
     color: black;
     line-height: 1.2em;
-    width:min-content;
+    width: min-content;
 
 }
 
@@ -63,7 +60,7 @@
     .portfolio-card {
         display: flex;
         flex-direction: column;
-        gap: 6vw;
+        gap: 12vw;
         padding-inline: 6vw;
         padding-top: 4vw;
         width: 100%;
@@ -71,9 +68,12 @@
     }
 
     .portfolio-main-section {
-        width: 65vw !important;
+        width: 58vw !important;
         height: auto;
+        /* background-color: lightgreen; */
     }
+
+
 
     .portfolio-main-img {
         height: 50vw;
@@ -104,6 +104,10 @@
 
     .portfolio-main-cen p {
         font-size: 3vw;
+    }
+
+    .portfolio-arrow {
+        font-size: 20px;
     }
 
     .portfolio-main-dets {

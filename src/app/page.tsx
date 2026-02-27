@@ -1,14 +1,65 @@
+// ============================================
+// FILE: app/page.tsx (Homepage - Server Component)
+// ============================================
+
+import { fetchGraphQL } from '@/lib/graphql/client';
+import { GET_HOMEPAGE_QUERY } from '@/lib/graphql/queries';
 import HomePage from '@/components/home/HomePage';
 
-const photographers = [
-  { name: 'Dan Max', slug: 'dan-max', image: 'https://images.unsplash.com/photo-1503673508983-5f2fbaf1df4d?w=800&auto=format&fit=crop&q=60', role: 'Photographer & Director' },
-  { name: 'Yuki Sato', slug: 'yuki-sato', image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&auto=format&fit=crop&q=60', role: 'Photographer' },
-  { name: 'Guy Coombes', slug: 'guy-coombes', image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&auto=format&fit=crop&q=60', role: 'Photographer' },
-  { name: 'Camilla Rutherford', slug: 'camilla-rutherford', image: 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&auto=format&fit=crop&q=60', role: 'Photographer' },
-  { name: 'Dean Mackenzie', slug: 'dean-mackenzie', image: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&auto=format&fit=crop&q=60', role: 'Photographer' },
-  { name: 'Sacha Stejko', slug: 'sacha-stejko', image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&auto=format&fit=crop&q=60', role: 'Photographer' },
-];
+// Slug mapping — maps each photographer name field to their slug and video field
+const PHOTOGRAPHER_SLUG_MAP: Record<number, string> = {
+  1: 'dan-max',
+  2: 'yuki-sato',
+  3: 'guy-coombes',
+  4: 'camilla-rutherford',
+  5: 'dean-mackenzie',
+  6: 'sacha-stejko',
+};
 
-export default function Home() {
+function transformHomepageData(homepageidc: any) {
+  if (!homepageidc) return [];
+
+  const photographers = [];
+
+  for (let i = 1; i <= 6; i++) {
+    const name = homepageidc[`photographerName${i}`];
+    const video = homepageidc[`photographer${i}Video${i}`];
+
+    if (name) {
+      photographers.push({
+        name,
+        slug: PHOTOGRAPHER_SLUG_MAP[i] || name.toLowerCase().replace(/\s+/g, '-'),
+        video: video?.mediaItemUrl || '',
+        mimeType: video?.mimeType || 'video/mp4',
+      });
+    }
+  }
+
+  return photographers;
+}
+
+export default async function Home() {
+  let photographers: any[] = [];
+
+  try {
+    const data = await fetchGraphQL(GET_HOMEPAGE_QUERY);
+    const homepageidc = data?.pageBy?.homepageidc;
+    photographers = transformHomepageData(homepageidc);
+  } catch (error) {
+    console.error('Failed to fetch homepage data:', error);
+  }
+
+  // Fallback if API fails
+  if (photographers.length === 0) {
+    photographers = [
+      { name: 'Dan Max', slug: 'dan-max', video: '', mimeType: 'video/mp4' },
+      { name: 'Yuki Sato', slug: 'yuki-sato', video: '', mimeType: 'video/mp4' },
+      { name: 'Guy Coombes', slug: 'guy-coombes', video: '', mimeType: 'video/mp4' },
+      { name: 'Camilla Rutherford', slug: 'camilla-rutherford', video: '', mimeType: 'video/mp4' },
+      { name: 'Dean Mackenzie', slug: 'dean-mackenzie', video: '', mimeType: 'video/mp4' },
+      { name: 'Sacha Stejko', slug: 'sacha-stejko', video: '', mimeType: 'video/mp4' },
+    ];
+  }
+
   return <HomePage photographers={photographers} />;
 }

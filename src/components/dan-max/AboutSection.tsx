@@ -54,7 +54,7 @@ export default function AboutSection({ data }: { data: any }) {
             {data.section3Paragraph2}
           </h5>
           <h6>
-            - {data.photographerName}
+            - {data.photographerName?.split(' ')[0]}
           </h6>
         </TextReveal>
       )}

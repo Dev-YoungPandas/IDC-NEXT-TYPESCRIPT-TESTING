@@ -1,20 +1,101 @@
+.ctasection-parent {
+    width: 100%;
+    height: 79vh;
+    /* background-color: lightcoral; */
+}
+
+.marqueeTopLine {
+    height: 3.3vh;
+    background-color: black;
+}
+
+.marqueeBottomLine {
+    height: 3.3vh;
+    background-color: #f8f8f8;
+    /* background-color: red; */
+}
+
+.marqueeTopLine-Image {
+    filter: brightness(53%) contrast(58%) saturate(113%) blur(0px) hue-rotate(0deg);
+    opacity: 1;
+
+}
+
 .ctasection {
     width: 100%;
     height: 70vh;
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     padding-top: 5vmax;
     overflow: hidden;
+    background-color: white;
+}
+
+.marquee-top-line {
+    /* height: 5vh; */
+    background-color: rebeccapurple;
+    z-index: 9999;
+}
+
+.marquee-top-line-img {
+    width: 20px;
+    opacity: 1;
+    height: 3px;
+    z-index: 100;
+    filter: brightness(53%) contrast(58%) saturate(113%) blur(0px) hue-rotate(0deg);
 }
 
 .marquee {
-    font-family: RemixaTest;
+    font-family: 'RemixaTest-regular';
     font-size: 4vmax;
     width: 100%;
+    color: white;
     font-weight: 900;
     z-index: 2;
+    mix-blend-mode: exclusion;
+    white-space: nowrap;
+}
+
+.ctasection-photographer-name {
+    position: absolute;
+    height: 5vmax;
+    bottom: 6vh;
+    text-transform: uppercase;
+    display: flex;
+    mix-blend-mode: exclusion;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    width: 100%;
+}
+
+.ctasection-photographer-name-inner {
+    display: flex;
+    gap: 1vw;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.ctasection-photographer-name svg {
+    height: 1.8vw;
+    mix-blend-mode: exclusion;
+    width: 2vw;
+}
+
+.marquee-photographer-name {
+    font-family: 'mo4';
+    font-size: 2.8vw;
+    /* width: 100%; */
+    /* background-color: lightcoral; */
+    color: white;
+    font-weight: 600;
+
+    text-align: center;
+    z-index: 2;
+    mix-blend-mode: exclusion;
     white-space: nowrap;
 }
 
@@ -24,13 +105,13 @@
     white-space: nowrap;
 }
 
-.ctasection img {
+.ctasection-bg-image {
     position: absolute;
     top: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.6;
+    opacity: 1;
     z-index: 1;
 }
 
@@ -46,4 +127,34 @@
     .marquee-item {
         padding-right: 4vmax;
     }
+
+    .marqueeTopLine {
+        height: 1.2vh;
+        width: 100%;
+        scale: 2.5;
+        background-color: black;
+
+    }
+
+ 
+    .marqueeBottomLine {
+        height: 0.2vh;
+        scale: 2.5;
+        background-color: #f8f8f8;
+    }
+
+
+    .ctasection-photographer-name {
+       
+        bottom: 1vh;
+        
+    }
+
+
+    .marquee-photographer-name {
+        font-size:16px;
+        
+    }
+
+
 }

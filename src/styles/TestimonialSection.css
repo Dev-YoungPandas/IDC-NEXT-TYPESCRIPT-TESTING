@@ -1,6 +1,7 @@
 .testimonial-section {
     width: 100%;
     margin-top: 15vw;
+    /* background-color: lightcoral; */
 }
 
 .Clients-Section {
@@ -17,15 +18,15 @@
     margin-bottom: 1.2vmax;
     font-size: 1.3vw;
     color: #d1d1d1;
-    font-family: RemixaTest;
+    font-family: 'RemixaTest-regular';
 }
 
 .testimonial-heading {
-    color: white;
+    color: #d1d1d1;
     font-size: 4.5vw;
     margin-top: 2vmax;
     margin-bottom: 1vmax;
-    font-family: RemixaTest;
+    font-family: 'RemixaTest-regular';
     text-transform: uppercase;
     line-height: 1;
     font-weight: 900;
@@ -35,20 +36,12 @@
     font-size: 4.5vw;
     margin-top: 1.5vmax;
     margin-bottom: 1.5vmax;
-    font-family: RemixaTest;
+    font-family: 'RemixaTest-regular';
     text-transform: uppercase;
     line-height: 1;
     font-weight: 900;
     width: 80%;
     color: white;
-}
-
-.Clients-Section h6 {
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 1.1vw;
-    color: #a8a8a8;
-    font-family: RemixaTest;
 }
 
 .Clients-Section .text-reveal {
@@ -67,7 +60,7 @@
 }
 
 .testimonial-grid-item {
-  height: 5vmax;
+    height: 5vmax;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,16 +69,14 @@
     border-right: 1px solid #686868;
 }
 
-/* Last column — remove right border */
-
 .testimonial-grid-item:nth-child(6n) {
     border-right: none;
 }
 
-/* Last row — remove bottom border */
 .testimonial-grid-item:nth-last-child(-n+6) {
     border-bottom: none;
 }
+
 .testimonial-grid-item img {
     max-height: 1.8vmax;
     max-width: 100%;
@@ -101,18 +92,125 @@
     width: 100%;
     padding-left: 24vw;
     margin-top: 13vw;
-    padding-bottom: 4.6vmax;
 }
 
-.Testimonial-textreveal img {
-    height: 3vmax;
-    width: auto;
+.testimonial-slider {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-carausal {
+    width: 81%;
+    overflow: hidden;
+    height: 33vmax;
+}
+
+/* ========================
+   CAROUSEL CONTAINER
+   ======================== */
+.testimonial-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-left: 15vw;
+    min-height: 20vw;
+}
+
+/* ========================
+   SLIDE BASE
+   ======================== */
+.testimonial-slide {
+    width: 100%;
+    will-change: transform, opacity;
+}
+
+/* Idle — visible */
+.testimonial-slide-active {
+    position: relative;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* ---- EXIT ANIMATIONS ---- */
+
+/* Current slide exits to the left */
+.testimonial-slide-exit-left {
+    position: relative;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 0.5s ease;
+}
+
+/* Current slide exits to the right */
+.testimonial-slide-exit-right {
+    position: relative;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 0.5s ease;
+}
+
+/* ---- ENTER ANIMATIONS ---- */
+
+/* New slide enters from right (auto-play & next arrow) */
+.testimonial-slide-enter-from-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 15vw;
+    animation: enterFromRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* New slide enters from left (prev arrow) */
+.testimonial-slide-enter-from-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 15vw;
+    animation: enterFromLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes enterFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes enterFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ========================
+   SLIDE CONTENT STYLES
+   ======================== */
+.testimonial-slide img {
+    height: auto;
+    width: 250px;
     margin-top: 4vmax;
     object-fit: cover;
-    margin-left: 1vmax;
 }
 
-.Testimonial-textreveal h6 {
+.testimonial-slide h6 {
     font-family: mo4;
     color: white;
     margin-bottom: 1.2vmax;
@@ -124,7 +222,15 @@
     letter-spacing: -0.03px;
 }
 
-.Testimonial-textreveal h4 {
+.testimonial-slide h5 {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.1vw;
+    color: #d1d1d1;
+    font-family: 'RemixaTest-regular';
+}
+
+.testimonial-slide h4 {
     font-family: mo4;
     color: white;
     font-size: 0.9vw;
@@ -133,16 +239,67 @@
     line-height: 1.2em;
 }
 
-.Testimonial-textreveal h5 {
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 1.1vw;
-    color: #d1d1d1;
-    font-family: RemixaTest;
-}
-
 .testimonial-bottom-text {
     margin-top: 3vw;
+}
+
+/* ========================
+   ARROW BUTTONS
+   ======================== */
+.testimonial-arrow-parent {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 1vmax 4vmax;
+    /* margin-top:10vmax; */
+    justify-content: space-between;
+
+}
+
+.testimonial-arrow {
+    display: flex;
+    gap: 0.5vw;
+
+
+}
+
+.testimonial-arrow svg {
+    height: 1.3em;
+    width: 120px;
+}
+
+.testimonial-arrow-btn {
+    background: none;
+    border: none;
+    padding: 0.5vw;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    position: relative;
+    z-index: 10;
+}
+
+.testimonial-arrow-btn:hover {
+    opacity: 1;
+}
+
+.testimonial-arrow-btn:active {
+    opacity: 0.9;
+}
+
+/* ========================
+   SLIDER NUMBER
+   ======================== */
+.slider-number p {
+    font-size: 1.8vw;
+    color: white;
+    font-style: italic;
+    font-family: 'NyghtSerif-Regular';
 }
 
 /* ========================
@@ -157,16 +314,46 @@
 
 @media screen and (max-width: 740px) {
     .client-nz {
-        margin-bottom: 1.2vmax;
-        font-size: 3vw;
+        margin-bottom: -1vmax;
+        font-size: 11px;
+    }
+
+    .testimonial-carausal {
+        width: 81%;
+        overflow: hidden;
+        height: 45vmax;
+
+    }
+
+    .testimonial-heading {
+        font-size: 32px;
+    }
+
+    .text-reveal {
+        padding-left: 5vmax;
+    }
+
+    .testimonial-section {
+        width: 100%;
+        margin-top: 15vw;
+        padding-bottom:6vmax;
     }
 
     .Clients-Section h1 {
-        font-size: 4vmax;
+        font-size: 32px;
+    }
+
+    .Clients-Section p {
+        font-size: 11px;
     }
 
     .Clients-Section h6 {
         font-size: 3.6vw;
+    }
+
+    .Testimonial-textreveal {
+
+        margin-top: 20vmax;
     }
 
     .testimonial-grid {
@@ -176,49 +363,140 @@
     }
 
     .testimonial-grid-item {
-        height: 6vmax;
+        height: 5.3vmax;
         padding: 1vmax;
     }
 
     .testimonial-grid-item img {
         max-height: 2.5vmax;
+        scale: 1.2;
     }
 
-    .Testimonial-textreveal {
-        padding-bottom: 10vmax;
-    }
+
 
     .testimonial-heading {
         font-size: 4vmax;
     }
 
-    .Testimonial-textreveal img {
-        height: 3vmax;
-        margin-top: 9vmax;
+    .testimonial-carousel-container {
+        padding-left: 5vw;
+        min-height: 50vw;
     }
 
-    .Testimonial-textreveal h6 {
+    .testimonial-slide-enter-from-right,
+    .testimonial-slide-enter-from-left {
+        padding-left: 5vw;
+    }
+
+    .testimonial-slide img {
+        width: 155px;
+        margin-top: 6vmax;
+    }
+
+    .testimonial-slide h6 {
         font-size: 15px;
-        width: 60%;
+        width: 80%;
         line-height: 1em;
     }
 
-    .Testimonial-textreveal h4 {
-        font-size:11px;
+    .testimonial-slide h4 {
+        font-size: 11px;
         margin-top: 2vmax;
     }
 
-    .Testimonial-textreveal h5 {
-        margin-top: 3vmax;
-        font-size:3.5vw;
+    .testimonial-slide h5 {
+        margin-top: 4vmax;
+        font-size: 3.5vw;
+    }
+
+    .testimonial-arrow-parent {
+        padding:0vmax 2vmax;
+        /* margin-top: 15vmax; */
+
+    }
+
+    .testimonial-arrow svg {
+        width: 36px;
+    }
+
+    .slider-number p {
+        font-size: 4vw;
+    }
+
+    .testimonial-arrow-btn {
+        padding: 2vw;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .testimonial-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .testimonial-section {
+        margin-top: 30vw;
+
+        /* background-color: lightcoral; */
     }
+
+    .Testimonial-textreveal {
+        padding-bottom:2vmax;
+    }
+
+     .testimonial-carausal {
+        width: 81%;
+        overflow: hidden;
+        height: 55vmax;
+
+    }
+
+    .testimonial-carausal h6 {
+        font-size: 13px;
+    }
+
+    .text-reveal h6 {
+        color: #353535;
+    }
+
+    .testimonial-grid {
+        width: 77vw;
+        margin-top: 30vw;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    /* .Testimonial-textreveal {
+        background-color: rgb(35, 36, 35);
+    } */
+
+    .testimonial-carousel-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        /* padding-left:16vw; */
+        min-height: 20vw;
+        margin-left: 5vmax;
+        /* background-color: lightseagreen; */
+    }
+
+    /* .testimonial-slider {
+        background-color: rgb(146, 46, 46);
+    } */
+
+    .testimonial-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .testimonial-grid-item:nth-child(3n) {
+        border-right: none;
+    }
+
+    .testimonial-grid-item:nth-last-child(-n+6) {
+        border-bottom: 1px solid #686868;
+    }
+
+    .testimonial-grid-item:nth-last-child(-n+3) {
+        border-bottom: none;
+    }
+
+    .testimonial-heading {
+        font-size: 32px;
+    }
+
 }
-
-
-

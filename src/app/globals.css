@@ -22,6 +22,16 @@
 }
 
 @font-face {
+  font-family: 'NyghtSerif-Regular';
+  src: url('/fonts/NyghtSerif-Regular.otf');
+}
+
+@font-face {
+  font-family: 'RemixaTest-regular';
+  src: url('/fonts/RemixaTest-Regular-BF649a5c12202eb-2.ttf');
+}
+
+@font-face {
   font-family: 'Polysans';
   src: url('/fonts/PolySans-Neutral.ttf');
 }

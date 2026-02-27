@@ -4,7 +4,7 @@
 .home-container {
     width: 100%;
     height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for mobile */
+    height: 100dvh;
     position: relative;
     overflow: hidden;
     background-color: #1a1a1a;
@@ -13,33 +13,38 @@
 /* Hide cursor only on desktop */
 @media (min-width: 1025px) {
     .home-container {
-        cursor: none;
+        /* cursor: pointer; */
     }
 }
 
 /* ============================================
-   BACKGROUND IMAGES (elem equivalents)
+   BACKGROUND VIDEOS (replaces background images)
    ============================================ */
 .photographer-bg {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background-size: cover;
-    background-position: center;
     opacity: 0;
     transition: opacity 0.6s ease;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .photographer-bg.active {
     opacity: 1;
 }
 
-/* Default/placeholder image before animation starts */
+/* Default/placeholder before animation starts */
 .photographer-bg.default-bg {
     background-color: #2a2a2a;
-    /* Or set a default background-image here:
-       background-image: url('/default-hero.jpg'); */
+}
+
+/* Video fills the container */
+.photographer-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* ============================================
@@ -51,6 +56,7 @@
     right: 0;
     z-index: 2;
     display: flex;
+    cursor: pointer;
     flex-direction: column;
     justify-content: flex-end;
 }
@@ -62,6 +68,7 @@
 
 .photographer-name h1 {
     text-align: end;
+    cursor: pointer;
     font-weight: 900;
     font-family: RemixaTest, sans-serif;
     mix-blend-mode: exclusion;
@@ -98,7 +105,7 @@
     .photographer-name h1 {
         font-size: 3vmax;
         height: 4.5vmax;
-        cursor: default;
+        cursor: pointer;
     }
 }
 
@@ -106,9 +113,10 @@
    MOBILE LAYOUT (≤ 1024px)
    ============================================ */
 @media (max-width: 1024px) {
-    .home-container{
+    .home-container {
         height: 90dvh;
     }
+
     .photographer-name {
         width: 100%;
         height: auto;
@@ -122,10 +130,9 @@
         padding: 1.8vw 0;
     }
 
-    /* Mobile: same animation, just slightly smaller scale */
+    /* Mobile: same animation, slightly smaller scale */
     .photographer-name h1.line-active {
         transform: scale(1.25);
-        /* Slightly less scale on mobile to prevent overflow */
     }
 }
 

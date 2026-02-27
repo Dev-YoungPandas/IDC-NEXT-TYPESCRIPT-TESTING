@@ -1,6 +1,7 @@
 .danmax-section {
     width: 100%;
     overflow: hidden;
+    /* background-color: white; */
 }
 
 .danmax-section2 {
@@ -10,8 +11,9 @@
 }
 
 .Quote-Section {
-    margin-top: 10vw;
+    /* margin-top: 10vw; */
     width: 100%;
+    padding-top: 10vw;
     padding-left: 8vmax;
     padding-bottom: 8vw;
     display: flex;
@@ -28,12 +30,13 @@
 .danmax-textreveal h3 {
     font-size: 1.8vw;
     margin-bottom: 0.5vmax;
-    font-family: RemixaTest;
+    font-family: 'RemixaTest-regular';
     font-weight: 900;
     text-transform: uppercase;
     line-height: 1em;
     color: black;
     text-align: end;
+    font-style: normal;
 }
 
 .Quote-Section-para {
@@ -59,7 +62,7 @@
     justify-content: end;
     padding-inline: 2vw;
     margin-top: 5vw;
-   
+
 }
 
 .danmax-btn {
@@ -76,6 +79,7 @@
 .danmax-btn p {
     font-size: 1.1vw;
     font-weight: 600;
+    line-height: 1.2em;
     text-transform: uppercase;
     font-family: FormaDJRBanner;
 }
@@ -89,14 +93,20 @@
 
 @media screen and (max-width:740px) {
     .danmax-textreveal h3 {
-        font-size:16px;
+        font-size: 16px;
         margin-bottom: 0.5vmax;
-        font-family: RemixaTest;
+        font-family: 'RemixaTest-regular';
         font-weight: 900;
         text-align: end;
         padding: 0vw 2vw 0vw 5vw;
         text-transform: uppercase;
         line-height: 1em;
+    }
+
+    .danmax-section2 {
+        background-color: white;
+        padding-top: 15vmax;
+
     }
 
     .Quote-Section-para {
@@ -110,28 +120,40 @@
         font-weight: 900;
         text-transform: uppercase;
         font-size: 3vw;
-                padding: 0vw 2vw 0vw 5vw;
-
+        padding: 0vw 2vw 0vw 5vw;
+        display: none;
         color: #221818;
-        font-family: RemixaTest;
+        font-family: 'RemixaTest-regular';
+    }
+
+    .Quote-Section {
+        margin-bottom: 3.2vmax;
     }
 
     .danmax-btn p {
-        font-size:11px;
+        font-size: 11px;
     }
 
     .danmax-btn-section {
-        padding-inline:15vw;
-            margin-top:15vw;
-
-       
+        padding-inline: 15vw;
+        margin-top: 15vw;
     }
+
     .danmax-btn {
-        width:18vmax;
-            height: 3vmax;
-
+        width: 18vmax;
+        height: 3.5vmax;
     }
 
-    
+
+
+
+}
+
+
+@media screen and (max-width: 480px) {
+    .danmax-btn {
+        width: 19vmax;
+        height: 3.5vmax;
+    }
 
 }

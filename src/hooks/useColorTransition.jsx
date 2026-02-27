@@ -45,8 +45,8 @@ export function useColorTransition(triggerSelector, targetSelector) {
 
       scrollTriggerRef.current = ScrollTrigger.create({
         trigger,
-        start: isMobile ? 'top -30%' : 'top -120%',
-        end: isMobile ? 'top -50%' : 'top -140%',
+        start: isMobile ? 'top -10%' : 'top -120%',
+        end: isMobile ? 'top -30%' : 'top -140%',
         scrub: 3,
         onUpdate: (self) => {
           const p = self.progress;

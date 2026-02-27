@@ -11,12 +11,12 @@
     padding-bottom: 1%;
     padding-left: 5%;
     padding-right: 5%;
-    background-color: #f5f5f5;
+    background-color: #f8f8f8;
     overflow: hidden;
 }
 
 /* Black Circle - top left */
-.footer-circle {
+/* .footer-circle {
     width: 13vw;
     height: 13vw;
     background-color: #000;
@@ -24,6 +24,32 @@
     position: absolute;
     top: 5vw;
     left: 4.5vw;
+} */
+
+.circle-top-section {
+    width: 20vmax;
+    height: 18vmax;
+    position: absolute;
+    top: 3vw;
+    left: 4.5vw;
+}
+
+.circle-top-section p {
+    font-size: 1.8vw;
+    font-weight: 400;
+    font-family: 'Polysans';
+    color: #000;
+    opacity: 1;
+    line-height: 1;
+
+
+}
+
+.footer-circle img {
+    height: 13.5vw;
+    width: 13.5vw;
+    margin-left: 0.5vw;
+
 }
 
 /* Main Content Area */
@@ -33,7 +59,7 @@
     align-items: flex-end;
     width: 100%;
     margin-top: 18vw;
-    padding-bottom: 3vw;
+    padding-bottom: 2vw;
 }
 
 /* ---- Left Side ---- */
@@ -159,10 +185,10 @@
 
 /* Footer Image */
 .footer-image {
-    width:52%;
-    max-width:63%;
+    width: 52%;
+    max-width: 63%;
 
-    height:30vh;
+    height: 30vh;
     overflow: hidden;
 }
 
@@ -194,11 +220,11 @@
 }
 
 .footer-rights-bold {
-    font-weight:900;
-    font-size:1.15vw;
+    font-weight: 900;
+    font-size: 1.15vw;
     text-transform: uppercase;
     color: #000;
-    line-height:1.4em;
+    line-height: 1.4em;
 }
 
 .footer-rights-text {
@@ -207,8 +233,8 @@
     font-family: 'mo4';
     text-transform: uppercase;
     line-height: 1.4em;
-    letter-spacing:0px;
-    font-weight:500;
+    letter-spacing: 0px;
+    font-weight: 500;
     mix-blend-mode: exclusion;
     text-align: right;
 }
@@ -218,7 +244,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1vw 0;
+    padding: 0.5vw 0;
+    /* background-color: red; */
     /* border-top: 1px solid #ddd; */
 }
 
@@ -236,18 +263,17 @@
     font-size: 0.8vw;
     color: #808080;
     font-weight: 700;
-        max-width: 100%;
+    max-width: 100%;
     height: auto;
 
-        filter: brightness(41%) contrast(100%) saturate(100%) blur(0px) hue-rotate(0deg);
+    filter: brightness(41%) contrast(100%) saturate(100%) blur(0px) hue-rotate(0deg);
 }
 
 .footer-dev-logo {
-    height: 1.2vw;
+    /* height: 1.2vw; */
     display: inline-block;
     vertical-align: middle;
-    width: 300px;
-    height: 29px;
+    width: 400px;
     text-align: center;
     aspect-ratio: auto 300 / 29;
     object-fit: cover;
@@ -256,38 +282,76 @@
 /* ============================================
    Mobile Responsive
    ============================================ */
+
+
+@media (max-width:1024px) {
+    .footer-email {
+        font-size: 5.4vw;
+        margin-bottom: 3vw;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .footer {
-        padding: 8vw 5vw 0;
+        min-height: 700px;
+        padding-top: 10vw;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        padding-bottom: 2vw;
     }
 
-    .footer-circle {
-        width: 25vw;
-        height: 25vw;
+
+    .circle-top-section {
+        width: 20vmax;
+        height: 15vmax;
+        position: absolute;
         top: 3vw;
-        left: 5vw;
+        /* background-color: lightblue; */
+        left: 4.5vw;
     }
+
+    .circle-top-section p {
+        font-size:16px;
+        font-weight: 400;
+        font-family: 'Polysans';
+        color: #000;
+        opacity: 1;
+        line-height: 1;
+
+
+    }
+
+    .footer-circle img {
+        height: 26vw;
+        width: 26vw;
+        margin-left: 0.5vw;
+        object-fit: cover;
+    }
+
+
 
     .footer-content {
         flex-direction: column;
         align-items: flex-start;
-        margin-top: 30vw;
+        margin-top: 40vw;
         gap: 10vw;
         padding-bottom: 6vw;
     }
 
     .footer-inquiry {
-        font-size: 3.5vw;
+        font-size: 18px;
+        font-weight: 500;
     }
 
     .footer-email {
-        font-size: 7vw;
-        margin-bottom: 3vw;
+        font-size: 30px;
+        margin-bottom: 8vw;
+        margin-top: 10vw;
     }
 
     .footer-socials {
-        gap: 3vw;
-        margin-bottom: 5vw;
+        gap: 6vw;
+        margin-bottom: 10vw;
     }
 
     .footer-social-icon svg {
@@ -297,14 +361,25 @@
 
     .footer-company-name {
         font-size: 3vw;
+        line-height: 10px;
     }
 
     .footer-address {
         font-size: 2.5vw;
     }
 
+    .footer-company {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3vw;
+        /* background-color: lightsalmon; */
+    }
+
     .footer-links a {
-        font-size: 2.5vw;
+        font-size: 10px;
+        margin-top: 5px;
+        line-height: 1.1em;
+        letter-spacing: 0.6px;
     }
 
     .footer-divider {
@@ -320,6 +395,7 @@
         width: 40vw;
         height: 40vw;
         align-self: flex-end;
+        display: none;
     }
 
     .footer-rights {
@@ -327,17 +403,30 @@
         max-width: 100%;
     }
 
-    .footer-rights-title {
-        font-size: 4vw;
+    .footer-rights-bold {
+        font-size: 10px;
+        font-weight: 900;
+        line-height: 1.2em;
+    }
+
+
+    .footer-rights-italic {
+        font-size: 12px;
+        line-height: 1.2em;
+
     }
 
     .footer-rights-text {
-        font-size: 2.2vw;
+        font-size: 7px;
+        line-height: 1.2em;
+        width: 70%;
         text-align: left;
     }
 
     .footer-bottom {
         padding: 4vw 0;
+        flex-direction: column;
+        align-items: start;
     }
 
     .footer-copyright {
@@ -351,5 +440,16 @@
 
     .footer-dev-logo {
         height: 3vw;
+    }
+
+
+    .footer-dev-logo {
+       
+        display: inline-block;
+        vertical-align: middle;
+        width: 300px;
+        height: auto;
+        text-align: center;
+        object-fit: cover;
     }
 }
