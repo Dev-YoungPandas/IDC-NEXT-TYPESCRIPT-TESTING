@@ -3,7 +3,9 @@
     flex-direction: row;
     justify-content: space-between;
     column-gap: 3vw;
-    padding-inline: 2vw;
+    padding-inline:2vw;
+    /* padding-inline:3vw; */
+
     padding-top: 2vw;
     width: 100%;
 

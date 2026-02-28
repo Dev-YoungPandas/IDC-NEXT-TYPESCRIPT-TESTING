@@ -162,8 +162,8 @@ export const GET_DAN_PAGE_QUERY = `
 `;
 
 
-export const GET_YUKI_PAGE_QUERY = 
-`
+export const GET_YUKI_PAGE_QUERY =
+  `
  query GetYukiPage {
     pageBy(uri: "/yuki-sato/") {
       id
@@ -384,7 +384,7 @@ export const GET_YUKI_PAGE_QUERY =
 
 
 export const GET_CAMILLA_PAGE_QUERY =
-`
+  `
 
 query GetCamillaPage {
     pageBy(uri: "/camilla-rutherford/") {
@@ -528,7 +528,177 @@ query GetCamillaPage {
         sourceUrl
         altText
       }
-      
+
+      awardParagraphMain
+      awardHeadingMain
+      awardMainYear
+
+      aw1Heading
+      aw2Heading
+      aw3Heading
+      aw4Heading
+      aw5Heading
+      aw6Heading
+      aw7Heading
+      aw8Heading
+      aw9Heading
+      aw10Heading
+      aw11Heading
+      aw12Heading
+      aw13Heading
+      aw14Heading
+      aw15Heading
+      aw16Heading
+      aw17Heading
+      aw18Heading
+
+      aw1Paragraph
+      aw2Paragraph
+      aw3Paragraph
+      aw4Paragraph
+      aw5Paragraph
+
+      aw6Paragraph
+      aw7Paragraph
+      aw8Paragraph
+      aw9Paragraph
+      aw10Paragraph
+      aw11Paragraph
+      aw12Paragraph
+      aw13Paragraph
+      aw14Paragraph
+      aw15Paragraph
+      aw16Paragraph
+      aw17Paragraph
+      aw18Paragraph
+
+      aw1Year
+      aw2Year
+      aw3Year
+      aw4Year
+      aw5Year
+      aw6Year
+      aw7Year
+      aw8Year
+      aw9Year
+      aw10Year
+      aw11Year
+      aw12Year
+      aw13Year
+      aw14Year
+      aw15Year
+      aw16Year
+      aw17Year
+      aw18Year
+
+      aw1Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw2Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw3Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw4Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw5Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw6Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw7Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw8Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw9Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw10Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw11Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw12Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw13Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw14Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw15Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw16Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw17Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw18Image{
+        id
+        sourceUrl
+        altText
+      }
+
       section5Heading
       section5Paragraph
       section5Paragraph2
@@ -592,8 +762,8 @@ query GetCamillaPage {
 `
 
 
-export const GET_SACHA_PAGE_QUERY = 
-`
+export const GET_SACHA_PAGE_QUERY =
+  `
 query GetSachaPage {
     pageBy(uri: "/sacha-stejko/") {
       id
@@ -761,8 +931,8 @@ query GetSachaPage {
 
 
 
-export const GET_DEAN_PAGE_QUERY = 
-`
+export const GET_DEAN_PAGE_QUERY =
+  `
 query GetDeanPage {
     pageBy(uri: "/dean-mackenzie/") {
       id
@@ -950,8 +1120,8 @@ query GetDeanPage {
 
 
 
-export const GET_GUY_PAGE_QUERY = 
-`
+export const GET_GUY_PAGE_QUERY =
+  `
 query GetGuyPage {
     pageBy(uri: "/guy-coombes/") {
       id
@@ -1221,6 +1391,28 @@ query GetGuyPage {
       section5Paragraph2Name
       section5Paragraph3Name
       
+      awardParagraphMain
+      awardHeadingMain
+      awardMainYear
+
+      
+      aw1Heading
+      aw2Heading
+      aw1Paragraph
+      aw2Paragraph
+      aw1Image{
+        id
+        sourceUrl
+        altText
+      }
+
+       aw2Image{
+        id
+        sourceUrl
+        altText
+      }
+
+
       
       section5Image{
         id
@@ -1257,8 +1449,8 @@ query GetGuyPage {
 `
 
 
-export const GET_HOMEPAGE_QUERY = 
-`
+export const GET_HOMEPAGE_QUERY =
+  `
 query GetHomePage {
     pageBy(uri: "/homepage-idc/") {
       id

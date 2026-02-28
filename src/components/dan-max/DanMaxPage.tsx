@@ -24,6 +24,11 @@ const CTASection = dynamic(() => import('./CTASection'), {
   loading: () => <div style={{ height: '30vh' }} />,
 });
 
+const AwardSection = dynamic(() => import('./AwardSection'),{
+  ssr:false,
+  loading: () => null
+})
+
 export default function DanMaxPage({ data }: { data: any }) {
   if (!data) {
     return (
@@ -62,6 +67,10 @@ export default function DanMaxPage({ data }: { data: any }) {
           </div>
 
           <AboutSection data={data} />
+
+          
+
+          {data?.awardHeadingMain && <AwardSection data={data}/>}
           <TestimonialSection data={data} />
         </div>
 
