@@ -1,10 +1,3 @@
-// ============================================
-// FILE: hooks/useColorTransition.jsx
-// ============================================
-// FIX: ScrollTrigger is now loaded lazily via loadScrollTrigger()
-// This keeps ScrollTrigger (~30KB) out of the initial JS bundle
-// It only loads when this hook actually runs (below the fold)
-
 'use client'
 
 import { useEffect, useRef } from 'react';
@@ -26,7 +19,6 @@ export function useColorTransition(triggerSelector, targetSelector) {
       const section2 = document.querySelector('.section2');
       const targets = document.querySelectorAll(targetSelector);
 
-      // Retry every 100ms until elements exist in DOM
       if (!trigger || !section2 || targets.length === 0) {
         attemptsRef.current++;
         if (attemptsRef.current < 30 && isMounted) {
@@ -35,7 +27,6 @@ export function useColorTransition(triggerSelector, targetSelector) {
         return;
       }
 
-      // ✅ Lazy-load ScrollTrigger only when elements are ready
       const { loadScrollTrigger } = await import('@/lib/animations/gsapConfig');
       const { ScrollTrigger } = await loadScrollTrigger();
 
@@ -43,11 +34,28 @@ export function useColorTransition(triggerSelector, targetSelector) {
 
       const targetsArray = Array.from(targets);
 
+      // FIX: Detect if Awards section exists and calculate its height
+      // Then offset the trigger start/end to compensate
+      const awardSection = document.querySelector('[class*="award-main-section"]');
+      const awardHeight = awardSection ? awardSection.getBoundingClientRect().height : 0;
+      
+      // Convert award height to a viewport percentage offset
+      const viewportHeight = window.innerHeight;
+      const awardOffsetPercent = (awardHeight / viewportHeight) * 100;
+
+      // Adjust trigger positions: push them further down by the award section height
+      const baseStart = isMobile ? 10 : 120;
+      const baseEnd = isMobile ? 30 : 140;
+      
+      const adjustedStart = baseStart + awardOffsetPercent;
+      const adjustedEnd = baseEnd + awardOffsetPercent;
+
       scrollTriggerRef.current = ScrollTrigger.create({
         trigger,
-        start: isMobile ? 'top -10%' : 'top -120%',
-        end: isMobile ? 'top -30%' : 'top -140%',
+        start: `top -${adjustedStart}%`,
+        end: `top -${adjustedEnd}%`,
         scrub: 3,
+        // markers: true,
         onUpdate: (self) => {
           const p = self.progress;
           const r = Math.round(255 - 255 * p);

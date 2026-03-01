@@ -104,10 +104,10 @@ export default function PortfolioGrid({ data }: { data: any }) {
   // console.log(data.section2Video4.mediaItemUrl, "ggg")
 
   const portfolioItems = [
-    { image: data.section2Images, video: data.section2Video1?.mediaItemUrl, heading: data.section2Heading1 },
-    { image: data.section2Image2, video: data.section2Video2?.mediaItemUrl, heading: data.section2Heading2 },
-    { image: data.section2Image3, video: data.section2Video3?.mediaItemUrl, heading: data.section2Heading3 },
-    { image: data.section2Image4, video: data.section2Video4?.mediaItemUrl, heading: data.section2Heading4 },
+    { count:data.section2Count1, image: data.section2Images, video: data.section2Video1?.mediaItemUrl, heading: data.section2Heading1 },
+    { count:data.section2Count2, image: data.section2Image2, video: data.section2Video2?.mediaItemUrl, heading: data.section2Heading2 },
+    { count:data.section2Count3, image: data.section2Image3, video: data.section2Video3?.mediaItemUrl, heading: data.section2Heading3 },
+    { count:data.section2Count4, image: data.section2Image4, video: data.section2Video4?.mediaItemUrl, heading: data.section2Heading4 },
   ].filter(item => item.image?.sourceUrl || item.video || item.heading)
 
   return (
@@ -121,7 +121,7 @@ export default function PortfolioGrid({ data }: { data: any }) {
           image={item.image}
           video={item.video}
           heading={item.heading}
-          count={34}
+          count={item.count}
           totalItems={portfolioItems.length}
         />
       ))}

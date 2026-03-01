@@ -36,6 +36,11 @@ export const GET_DAN_PAGE_QUERY = `
         section2Heading2
         section2Heading3
         section2Heading4
+        section2Count1
+        section2Count2
+        section2Count3
+        section2Count4
+
         section2Button
         section2Images {
           id
@@ -199,6 +204,10 @@ export const GET_YUKI_PAGE_QUERY =
         section2Heading2
         section2Heading3
         section2Heading4
+        section2Count1
+        section2Count2
+        section2Count3
+        section2Count4
         section2Button
         section2Images {
           id
@@ -421,6 +430,10 @@ query GetCamillaPage {
         section2Heading2
         section2Heading3
         section2Heading4
+        section2Count1
+        section2Count2
+        section2Count3
+        section2Count4
         section2Button
      
         section2Images {
@@ -799,6 +812,10 @@ query GetSachaPage {
       section2Heading2
       section2Heading3
       section2Heading4
+      section2Count1
+        section2Count2
+        section2Count3
+        section2Count4
       section2Button
       section2Images {
           id
@@ -968,6 +985,10 @@ query GetDeanPage {
       section2Heading2
       section2Heading3
       section2Heading4
+      section2Count1
+        section2Count2
+        section2Count3
+        section2Count4
       section2Button
       section2Images{
         id
@@ -1157,6 +1178,10 @@ query GetGuyPage {
         section2Heading2
         section2Heading3
         section2Heading4
+        section2Count1
+        section2Count2
+        section2Count3
+        section2Count4
         section2Button
       section2Images{
         id
