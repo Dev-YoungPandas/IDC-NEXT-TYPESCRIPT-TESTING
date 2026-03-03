@@ -5,7 +5,6 @@
     column-gap: 3vw;
     padding-inline: 2vw;
     /* padding-inline:3vw; */
-
     padding-top: 2vw;
     width: 100%;
 
@@ -79,7 +78,6 @@
     .portfolio-main-section {
         width: 58vw !important;
         height: auto;
-        /* background-color: lightgoldenrodyellow; */
     }
 
     .portfolio-main-img {
@@ -89,6 +87,10 @@
         max-width: fit-content;
         min-height: 220px;
         object-fit: cover;
+    }
+
+    .portfolio-main-video{
+        max-width: 100%;
     }
 
 
@@ -103,7 +105,6 @@
     }
 
     .portfolio-main-dets {
-        /* background-color: lightcoral; */
         margin-top: 10px;
     }
 
@@ -126,7 +127,6 @@
 
     .portfolio-main-dets svg {
         height: 13px;
-        /* font-size: 13px; */
         width: min-content;
     }
 }
@@ -144,7 +144,23 @@
         object-fit: cover;
     }
 
+     .portfolio-main-video{
+        max-width: 100%;
+    }
+
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -69,7 +69,7 @@ function PortfolioCard({
             loop
             playsInline
             preload='metadata'
-            className='portfolio-main-img'
+            className='portfolio-main-video portfolio-main-img'
           />
         ) : (
           <LazyImage

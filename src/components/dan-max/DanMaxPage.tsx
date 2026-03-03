@@ -42,6 +42,7 @@ export default function DanMaxPage({ data }: { data: any }) {
   console.log(data.section2Paragraph, "hhhh")
   return (
     <div className="danmax-section full-body-container">
+      
 
       <div className='z-50'>
 

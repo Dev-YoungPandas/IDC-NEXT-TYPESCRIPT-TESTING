@@ -5,13 +5,14 @@ import { useEffect, useRef } from 'react';
 export function useColorTransition(triggerSelector, targetSelector) {
   const scrollTriggerRef = useRef(null);
   const attemptsRef = useRef(0);
+  const rafRef = useRef(null);
+  const currentProgress = useRef(0);
 
   useEffect(() => {
     if (!triggerSelector || !targetSelector) return;
 
     let isMounted = true;
     let timeoutId = null;
-
     const isMobile = window.innerWidth <= 740;
 
     const setup = async () => {
@@ -34,36 +35,30 @@ export function useColorTransition(triggerSelector, targetSelector) {
 
       const targetsArray = Array.from(targets);
 
-      // FIX: Detect if Awards section exists and calculate its height
-      // Then offset the trigger start/end to compensate
-      const awardSection = document.querySelector('[class*="award-main-section"]');
-      const awardHeight = awardSection ? awardSection.getBoundingClientRect().height : 0;
-      
-      // Convert award height to a viewport percentage offset
-      const viewportHeight = window.innerHeight;
-      const awardOffsetPercent = (awardHeight / viewportHeight) * 100;
+      // Anchor to section2 bottom — consistent regardless of Awards height
+      const section2Bottom = section2.offsetTop + section2.offsetHeight;
+      const transitionDuration = window.innerHeight * (isMobile ? 0.3 : 0.2);
+      const endPos = section2Bottom - window.innerHeight * (isMobile ? 0.6 : 0.12);
+      const startPos = endPos - transitionDuration;
 
-      // Adjust trigger positions: push them further down by the award section height
-      const baseStart = isMobile ? 70 : 120;
-      const baseEnd = isMobile ? 80 : 140;
-      
-      const adjustedStart = baseStart + awardOffsetPercent;
-      const adjustedEnd = baseEnd + awardOffsetPercent;
+      // Apply color instantly — no lerp, no delay
+      const applyColors = (progress) => {
+        const p = Math.min(1, Math.max(0, progress));
+        const r = Math.round(255 - 255 * p);
+        const t = Math.round(255 * p);
+        section2.style.backgroundColor = `rgb(${r},${r},${r})`;
+        targetsArray.forEach(el => {
+          el.style.color = `rgb(${t},${t},${t})`;
+        });
+      };
 
       scrollTriggerRef.current = ScrollTrigger.create({
-        trigger,
-        start: `top -${adjustedStart}%`,
-        end: `top -${adjustedEnd}%`,
-        scrub: 3,
-        // markers: true,
+        trigger: document.body,
+        start: `${startPos}px top`,
+        end: `${endPos}px top`,
+        scrub: true,  // true = instant sync, no delay
         onUpdate: (self) => {
-          const p = self.progress;
-          const r = Math.round(255 - 255 * p);
-          section2.style.backgroundColor = `rgb(${r},${r},${r})`;
-          const t = Math.round(255 * p);
-          targetsArray.forEach(el => {
-            el.style.color = `rgb(${t},${t},${t})`;
-          });
+          applyColors(self.progress);
         },
       });
     };
@@ -73,6 +68,7 @@ export function useColorTransition(triggerSelector, targetSelector) {
     return () => {
       isMounted = false;
       if (timeoutId) clearTimeout(timeoutId);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
       if (scrollTriggerRef.current) {
         scrollTriggerRef.current.kill();
         scrollTriggerRef.current = null;
