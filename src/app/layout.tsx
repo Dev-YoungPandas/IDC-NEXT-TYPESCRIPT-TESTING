@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Dan Max — Photographer & Director",
+  title: "IDC",
   description: "NZ's best talent in photography, directing and cinematography",
 };
 

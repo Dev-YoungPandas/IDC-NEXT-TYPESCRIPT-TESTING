@@ -10,10 +10,6 @@
     background-color: #1a1a1a;
 }
 
-/* Hide cursor only on desktop */
-/* @media (min-width: 1025px) {
-   
-} */
 
 /* ============================================
    BACKGROUND VIDEOS (replaces background images)
@@ -112,7 +108,11 @@
    ============================================ */
 @media (max-width: 1024px) {
     .home-container {
-        height: 90dvh;
+        /* height: 90dvh; */
+        height: 750px;
+        max-height: 750px;
+        min-height: 750px;
+
     }
 
     .photographer-name {

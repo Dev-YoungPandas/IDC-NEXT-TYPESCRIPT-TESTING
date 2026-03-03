@@ -5,6 +5,7 @@
 import { fetchGraphQL } from '@/lib/graphql/client';
 import { GET_HOMEPAGE_QUERY } from '@/lib/graphql/queries';
 import HomePage from '@/components/home/HomePage';
+import HomeSection2 from '@/components/home/homeSection2/HomeSection2';
 
 // Slug mapping — maps each photographer name field to their slug and video field
 const PHOTOGRAPHER_SLUG_MAP: Record<number, string> = {
@@ -61,5 +62,32 @@ export default async function Home() {
     ];
   }
 
-  return <HomePage photographers={photographers} />;
+  return (
+    <>
+      <div>
+
+        <HomePage photographers={photographers} />
+
+        <div className="homesection2-top-dash">
+
+          <h5>Since 1999</h5>
+
+          <h5>top rated </h5>
+
+          <h5>Photography + Productiion</h5>
+
+          <h5>Auckland, NZ</h5>
+
+
+        </div>
+
+        <div>
+          <HomeSection2 />
+
+        </div>
+
+      </div>
+
+    </>
+  );
 }

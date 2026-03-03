@@ -44,8 +44,8 @@ export function useColorTransition(triggerSelector, targetSelector) {
       const awardOffsetPercent = (awardHeight / viewportHeight) * 100;
 
       // Adjust trigger positions: push them further down by the award section height
-      const baseStart = isMobile ? 10 : 120;
-      const baseEnd = isMobile ? 30 : 140;
+      const baseStart = isMobile ? 70 : 120;
+      const baseEnd = isMobile ? 80 : 140;
       
       const adjustedStart = baseStart + awardOffsetPercent;
       const adjustedEnd = baseEnd + awardOffsetPercent;

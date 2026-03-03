@@ -85,11 +85,38 @@ function PortfolioCard({
           <h2 className="color-transition-text">
             {heading}
           </h2>
-          <p className="color-transition-text">
+          <p className="portfolio-count color-transition-text">
             ({count})
           </p>
         </div>
-        <ArrowIcon className="color-transition-text portfolio-arrow" />
+        {/* <ArrowIcon className="color-transition-text portfolio-arrow" /> */}
+
+        <svg
+          className="color-transition-text portfolio-arrow"
+          xmlns="http://www.w3.org/2000/svg"
+          width="500"
+          height="500"
+          viewBox="0 0 375 374.999991"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <defs>
+            <clipPath id="dc73adff0a">
+              <path
+                d="M 40.539062 40.539062 L 334.539062 40.539062 L 334.539062 334.539062 L 40.539062 334.539062 Z M 40.539062 40.539062"
+                clipRule="nonzero"
+              />
+            </clipPath>
+          </defs>
+
+          <g clipPath="url(#dc73adff0a)">
+            <path
+              fill="#040606"
+              fillOpacity="1"
+              fillRule="nonzero"
+              d="M 334.449219 40.539062 L 334.449219 334.160156 L 275.679688 334.160156 L 275.679688 140.859375 L 82.09375 334.445312 L 40.539062 292.890625 L 234.125 99.308594 L 40.828125 99.308594 L 40.828125 40.539062 Z M 334.449219 40.539062"
+            />
+          </g>
+        </svg>
       </div>
     </div>
   );
@@ -104,10 +131,10 @@ export default function PortfolioGrid({ data }: { data: any }) {
   // console.log(data.section2Video4.mediaItemUrl, "ggg")
 
   const portfolioItems = [
-    { count:data.section2Count1, image: data.section2Images, video: data.section2Video1?.mediaItemUrl, heading: data.section2Heading1 },
-    { count:data.section2Count2, image: data.section2Image2, video: data.section2Video2?.mediaItemUrl, heading: data.section2Heading2 },
-    { count:data.section2Count3, image: data.section2Image3, video: data.section2Video3?.mediaItemUrl, heading: data.section2Heading3 },
-    { count:data.section2Count4, image: data.section2Image4, video: data.section2Video4?.mediaItemUrl, heading: data.section2Heading4 },
+    { count: data.section2Count1, image: data.section2Images, video: data.section2Video1?.mediaItemUrl, heading: data.section2Heading1 },
+    { count: data.section2Count2, image: data.section2Image2, video: data.section2Video2?.mediaItemUrl, heading: data.section2Heading2 },
+    { count: data.section2Count3, image: data.section2Image3, video: data.section2Video3?.mediaItemUrl, heading: data.section2Heading3 },
+    { count: data.section2Count4, image: data.section2Image4, video: data.section2Video4?.mediaItemUrl, heading: data.section2Heading4 },
   ].filter(item => item.image?.sourceUrl || item.video || item.heading)
 
   return (

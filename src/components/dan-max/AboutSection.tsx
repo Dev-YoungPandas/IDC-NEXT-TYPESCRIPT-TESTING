@@ -9,7 +9,6 @@ import { useColorTransition } from '@/hooks/useColorTransition';
 import TextReveal from '@/components/animations/TextReveal';
 import LazyImage from '@/components/ui/LazyImage';
 import { useLazyLoad } from '@/hooks/useLazyLoad';
-import { useMemo } from 'react';
 import "../../styles/aboutsection.css"
 import { useEffect, useRef } from 'react';
 
@@ -91,18 +90,14 @@ export default function AboutSection({ data }: { data: any }) {
           </div>
         </div>
 
-        <div className="about-section4-right">
-          {useMemo(() => {
-            const text = (data.section3Paragraph3 || '').replace(/<[^>]*>/g, '').trim();
-            const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
-            const perGroup = Math.ceil(sentences.length / 4);
-            const paragraphs = [];
-            for (let i = 0; i < sentences.length; i += perGroup) {
-              paragraphs.push(sentences.slice(i, i + perGroup).join('').trim());
-            }
-            return paragraphs.map((para, i) => <p key={i}>{para}</p>);
-          }, [data.section3Paragraph3])}
-        </div>
+
+        <div
+          className="about-section4-right"
+          dangerouslySetInnerHTML={{
+            __html: data.section3Paragraph3
+          }}
+        />
+
       </div>
     </div>
   );

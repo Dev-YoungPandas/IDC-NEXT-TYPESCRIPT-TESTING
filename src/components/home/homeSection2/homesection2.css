@@ -1,0 +1,139 @@
+.homeSection2-parent {
+    background-color: #FFFFFF;
+}
+
+
+.homesection2-center {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em 2em;
+    row-gap: 2em;
+    column-gap: 2em;
+    overflow: hidden;
+    padding-top: 15vw;
+    padding-bottom: 0vw;
+    padding-left: 12vw;
+    padding-right: 12vw;
+
+}
+
+.homesection2-center-top {
+    /* display: flex; */
+    width: 100%;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    text-align: center;
+}
+
+.homesection2-center h2 {
+    font-family: 'RemixaTest-regular';
+    font-size: 6.8vw;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000000;
+    line-height: 1.1;
+    text-align: center;
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+
+    justify-content: center;
+    transform: translate(0px, 0px);
+
+
+}
+
+
+
+.homesection2-center-img1 {
+    max-width: 10.5% !important;
+}
+
+.homesection2-center-bottom {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+
+}
+
+.homesection2-center-bottom p {
+    font-family: 'mo4';
+    font-size: 1.6vw;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000000;
+    text-align: center;
+    /* width: 87%; */
+
+}
+
+
+
+.homesection2-last {
+    width: 100%;
+    background-color: red;
+    padding-bottom: 10vw;
+    padding-left: 0vw;
+    padding-right: 0vw;
+
+}
+
+
+
+@media screen and (max-width: 740px) {
+
+
+    .homesection2-center {
+        gap: 30px 30px;
+        row-gap: 30px;
+        column-gap: 30px;
+        padding-top: 0px;
+        margin-top: 30%;
+        padding-bottom: 0vw;
+        padding-left: 3%;
+        padding-right: 3%;
+
+    }
+
+
+    .homesection2-center h2 {
+        font-size: 7.9vw;
+        font-weight: 900;
+        color: #000000;
+        line-height: 1em;
+        text-align: center;
+        display: flex;
+        gap: 1vw;
+        align-items: center;
+        justify-content: center;
+        transform: translate(0px, 0px);
+
+
+    }
+
+    .homesection2-center-img1 {
+        max-width: 10% !important;
+    }
+
+
+    .homesection2-center-bottom p {
+
+        font-size: 15.5px;
+        line-height: 1.2em;
+
+
+    }
+
+    .homesection2-last {
+        width: 100%;
+        background-color: red;
+        padding-bottom: 20vw;
+        padding-left: 0vw;
+        padding-right: 0vw;
+    }
+}

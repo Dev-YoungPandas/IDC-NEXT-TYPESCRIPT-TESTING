@@ -60,6 +60,8 @@
     font-family: 'RemixaTest-regular';
 }
 
+
+
 .about-section4 {
     width: 100%;
     display: flex;
@@ -81,7 +83,7 @@
 .about-section4-left {
     display: flex;
     flex-direction: row;
-    gap: 5vw;
+    gap: 5.5vw;
 }
 
 .about-section4-img1 {
@@ -91,12 +93,16 @@
 
 .about-section4-img2 {
     width: 37vw;
-    height: 88vh;
+    height: 85vh;
+    object-fit: cover;
+    object-position:center center;
 
 }
 
 .about-section4-right {
-    width: 23vw;
+    /* width: 23vw; */
+    width:21vw;
+    
 }
 
 .about-section4-right p {
@@ -134,12 +140,13 @@
     .aboutSec-textreaveal {
 
         margin-bottom: 10vmax;
+        padding-right: 5%;
 
     }
 
 
     .aboutSec-textreaveal h6 {
-        display: none;
+        /* display: none; */
         font-size: 3.6vw;
 
     }

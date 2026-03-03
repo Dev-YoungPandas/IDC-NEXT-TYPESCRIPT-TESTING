@@ -1,0 +1,57 @@
+
+
+
+
+
+
+
+
+
+.homesection3-top {
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+    padding-top: 0vw;
+    padding-bottom:10vw;
+    padding-left: 0vw;
+    padding-right: 0vw;
+    background-color: lightgreen;
+
+}
+
+
+.homesection3-heading-section {
+    width:200px;
+    display: flex;
+    margin-top: -9vw;
+    flex-direction: column;
+    flex-basis: auto;
+    flex-shrink: 1;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* mobile view */
+
+/* .homesection3-parent {
+    width: 100%;
+
+}
+
+.homesection3-center {
+    padding-left: 5%;
+    padding-bottom: 0%;
+    padding-right: 5%;
+    padding-top: 0%;
+} */
