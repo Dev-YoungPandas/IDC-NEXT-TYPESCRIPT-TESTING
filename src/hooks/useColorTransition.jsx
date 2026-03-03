@@ -37,8 +37,8 @@ export function useColorTransition(triggerSelector, targetSelector) {
 
       // Anchor to section2 bottom — consistent regardless of Awards height
       const section2Bottom = section2.offsetTop + section2.offsetHeight;
-      const transitionDuration = window.innerHeight * (isMobile ? 0.3 : 0.2);
-      const endPos = section2Bottom - window.innerHeight * (isMobile ? 0.6 : 0.12);
+      const transitionDuration = window.innerHeight * (isMobile ? 0.2 : 0.2);
+      const endPos = section2Bottom - window.innerHeight * (isMobile ? 0.8 : 0.12);
       const startPos = endPos - transitionDuration;
 
       // Apply color instantly — no lerp, no delay

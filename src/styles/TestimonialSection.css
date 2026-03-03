@@ -13,6 +13,16 @@
     mix-blend-mode: exclusion;
 }
 
+.Clients-Section h6 {
+    font-family: 'RemixaTest-regular';
+    font-size: 1.1vw;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.2em;
+    color: #353535;
+
+}
+
 .client-nz {
     text-transform: uppercase;
     font-weight: 600;
@@ -218,6 +228,7 @@
     margin-top: 1.6vmax;
     font-size: 1.6vw;
     width: 70%;
+    /* mix-blend-mode: exclusion; */
     font-weight: 400;
     line-height: 1.1em;
     letter-spacing: -0.03px;
@@ -337,7 +348,7 @@
     .testimonial-section {
         width: 100%;
         margin-top: 15vw;
-        padding-bottom:6vmax;
+        padding-bottom: 6vmax;
     }
 
     .Clients-Section h1 {
@@ -365,7 +376,9 @@
 
     .testimonial-grid-item {
         height: 5.3vmax;
-        padding: 1vmax;
+        /* padding: 1vmax; */
+        padding-top: 4vw;
+        padding-bottom: 4vw;
     }
 
     .testimonial-grid-item img {
@@ -382,6 +395,7 @@
     .testimonial-carousel-container {
         padding-left: 5vw;
         min-height: 50vw;
+        /* background-color: rgb(70, 26, 26); */
     }
 
     .testimonial-slide-enter-from-right,
@@ -396,22 +410,27 @@
 
     .testimonial-slide h6 {
         font-size: 15px;
-        width: 80%;
+        width: 60%;
         line-height: 1em;
+        /* background-color: lightpink; */
+
     }
 
     .testimonial-slide h4 {
         font-size: 11px;
+        
         margin-top: 2vmax;
     }
 
     .testimonial-slide h5 {
         margin-top: 4vmax;
         font-size: 3.5vw;
+
     }
 
     .testimonial-arrow-parent {
-        padding:0vmax 2vmax;
+        padding: 0vmax 2vmax;
+        
         /* margin-top: 15vmax; */
 
     }
@@ -437,10 +456,10 @@
     }
 
     .Testimonial-textreveal {
-        padding-bottom:2vmax;
+        padding-bottom: 2vmax;
     }
 
-     .testimonial-carausal {
+    .testimonial-carausal {
         width: 81%;
         overflow: hidden;
         height: 55vmax;
@@ -448,7 +467,7 @@
     }
 
     .testimonial-carausal h6 {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .text-reveal h6 {

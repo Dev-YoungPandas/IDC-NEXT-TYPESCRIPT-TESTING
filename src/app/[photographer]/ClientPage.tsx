@@ -25,7 +25,7 @@ export default function ClientPage({
         touchMultiplier: 2,
       }}
     >
-      <DanMaxPage data={data} />
+      <DanMaxPage data={data} photographer={photographer} />
     </ReactLenis>
   );
 }

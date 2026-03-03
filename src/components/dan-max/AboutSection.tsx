@@ -80,6 +80,8 @@ export default function AboutSection({ data }: { data: any }) {
               />
             )}
 
+            <p>behind the scene</p>
+
           </div>
           <div className="about-section4-img2">
             <LazyImage

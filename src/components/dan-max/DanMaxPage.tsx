@@ -29,7 +29,7 @@ const AwardSection = dynamic(() => import('./AwardSection'),{
   loading: () => null
 })
 
-export default function DanMaxPage({ data }: { data: any }) {
+export default function DanMaxPage({ data, photographer }: { data: any; photographer: string  }) {
   if (!data) {
     return (
       <div className="w-full h-screen flex items-center justify-center bg-gray-800">
@@ -39,7 +39,7 @@ export default function DanMaxPage({ data }: { data: any }) {
   }
 
 
-  console.log(data.section2Paragraph, "hhhh")
+console.log("photographer:", photographer);
   return (
     <div className="danmax-section full-body-container">
       
@@ -50,7 +50,7 @@ export default function DanMaxPage({ data }: { data: any }) {
 
         <div className="danmax-section2 section2">
           <div className="Quote-Section">
-            <TextReveal className="danmax-textreveal">
+            <TextReveal className={`danmax-textreveal ${photographer === "dan-max" ? "danmax-textreveal--narrow" : ''}`}>
               <h3>{data.section2Paragraph}</h3>
               <div className="Quote-Section-para">
                 <p>-{data.photographerName?.split(' ')[0]}</p>
@@ -68,8 +68,6 @@ export default function DanMaxPage({ data }: { data: any }) {
           </div>
 
           <AboutSection data={data} />
-
-          
 
           {data?.awardHeadingMain && <AwardSection data={data}/>}
           <TestimonialSection data={data} />

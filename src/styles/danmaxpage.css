@@ -24,8 +24,12 @@
 
 
 .danmax-textreveal {
-    /* width: 25vmax; */
-    width: 30vmax;
+    width: 45%;
+    padding: 0vw 3vw 0vw 7vw;
+}
+
+.danmax-textreveal.danmax-textreveal--narrow {
+    width: 42%;
 }
 
 .danmax-textreveal h3 {
@@ -104,6 +108,16 @@
         line-height: 1em;
     }
 
+    .danmax-textreveal {
+        width: 80%;
+        padding: 0vw 3vw 0vw 7vw;
+    }
+
+    .danmax-textreveal.danmax-textreveal--narrow {
+        width: 70%;
+    }
+
+
     .danmax-section2 {
         background-color: white;
         padding-top: 15vmax;
@@ -123,7 +137,7 @@
         font-size: 3vw;
         padding: 0vw 2vw 0vw 5vw;
         /* display: none; */
-        color: #221818;
+    color: #a8a8a8;
         font-family: 'RemixaTest-regular';
     }
 
