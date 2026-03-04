@@ -7,7 +7,7 @@
 import ReactLenis from 'lenis/react';
 import DanMaxPage from '@/components/dan-max/DanMaxPage';
 
-export default function ClientPage({ data }: { data: any }) {
+export default function ClientPage({ data, photographer }: { data: any; photographer: string; }) {
   return (
     <ReactLenis
       root
@@ -21,7 +21,7 @@ export default function ClientPage({ data }: { data: any }) {
         touchMultiplier: 2,
       }}
     >
-      <DanMaxPage data={data} />
+      <DanMaxPage data={data} photographer={photographer} />
     </ReactLenis>
   );
 }
