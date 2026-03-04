@@ -116,7 +116,8 @@
 .testimonial-carausal {
     width: 81%;
     overflow: hidden;
-    height: 33vmax;
+    height: 31vmax;
+    /* background-color: lightslategray; */
 }
 
 /* ========================
@@ -262,15 +263,17 @@
     display: flex;
     width: 100%;
     align-items: center;
-    padding: 1vmax 4vmax;
+    padding: 0.5vmax 6vmax;
     /* margin-top:10vmax; */
+    /* background-color: rgb(55, 55, 41); */
     justify-content: space-between;
 
 }
 
 .testimonial-arrow {
     display: flex;
-    gap: 0.5vw;
+    gap: 0vw;
+    /* background-color: rgb(60, 25, 25); */
 
 
 }

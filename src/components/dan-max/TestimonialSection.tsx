@@ -220,8 +220,8 @@ export default function TestimonialSection({ data }: { data: any }) {
                         type="button"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62.23 20.12">
-                          <line x1="2.4" y1="10.06" x2="61.23" y2="10.06" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-                          <path fill="#fff" d="M16.07,19.66c.3-.46.16-1.08-.31-1.38L2.86,10.06,15.77,1.84c.47-.3.6-.92.31-1.38-.3-.46-.92-.6-1.38-.31L.46,9.22c-.29.18-.46.5-.46.84s.17.66.46.84l14.23,9.06c.17.11.35.16.54.16.33,0,.65-.16.84-.46Z" />
+                          <line x1="2.4" y1="10.06" x2="61.23" y2="10.06" fill="none" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                          <path fill="white" d="M16.07,19.66c.3-.46.16-1.08-.31-1.38L2.86,10.06,15.77,1.84c.47-.3.6-.92.31-1.38-.3-.46-.92-.6-1.38-.31L.46,9.22c-.29.18-.46.5-.46.84s.17.66.46.84l14.23,9.06c.17.11.35.16.54.16.33,0,.65-.16.84-.46Z" />
                         </svg>
                       </button>
 
@@ -232,8 +232,8 @@ export default function TestimonialSection({ data }: { data: any }) {
                         type="button"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62.23 20.12">
-                          <line x1="59.83" y1="10.06" x2="1" y2="10.06" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-                          <path fill="#fff" d="M46.16.46c-.3.46-.16,1.08.31,1.38l12.91,8.22-12.91,8.22c-.47.3-.6.92-.31,1.38.3.46.92.6,1.38.31l14.23-9.06c.29-.18.46-.5.46-.84s-.17-.66-.46-.84L47.54.16c-.17-.11-.35-.16-.54-.16-.33,0-.65.16-.84.46Z" />
+                          <line x1="59.83" y1="10.06" x2="1" y2="10.06" fill="none" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                          <path fill="white" d="M46.16.46c-.3.46-.16,1.08.31,1.38l12.91,8.22-12.91,8.22c-.47.3-.6.92-.31,1.38.3.46.92.6,1.38.31l14.23-9.06c.29-.18.46-.5.46-.84s-.17-.66-.46-.84L47.54.16c-.17-.11-.35-.16-.54-.16-.33,0-.65.16-.84.46Z" />
                         </svg>
                       </button>
                     </div>

@@ -10,6 +10,7 @@ import {
 import ClientPage from './ClientPage';
 import { notFound } from 'next/navigation';
 
+
 const PHOTOGRAPHER_CONFIG: Record<string, { query: string; dataKey: string }> = {
   'dan-max': {
     query: GET_DAN_PAGE_QUERY,

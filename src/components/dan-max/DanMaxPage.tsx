@@ -6,6 +6,7 @@ import TextReveal from '../animations/TextReveal';
 import Footer from './Footer';
 
 import "../../styles/danmaxpage.css";
+import CamillaMotionPage from './CamillaMotionPage';
 
 const PortfolioGrid = dynamic(() => import('./PortfolioGrid'), {
   ssr: false,
@@ -24,12 +25,12 @@ const CTASection = dynamic(() => import('./CTASection'), {
   loading: () => <div style={{ height: '30vh' }} />,
 });
 
-const AwardSection = dynamic(() => import('./AwardSection'),{
-  ssr:false,
+const AwardSection = dynamic(() => import('./AwardSection'), {
+  ssr: false,
   loading: () => null
 })
 
-export default function DanMaxPage({ data, photographer }: { data: any; photographer: string  }) {
+export default function DanMaxPage({ data, photographer }: { data: any; photographer: string }) {
   if (!data) {
     return (
       <div className="w-full h-screen flex items-center justify-center bg-gray-800">
@@ -39,15 +40,16 @@ export default function DanMaxPage({ data, photographer }: { data: any; photogra
   }
 
 
-console.log("photographer:", photographer);
+  console.log("photographer:", photographer);
   return (
     <div className="danmax-section full-body-container">
-      
+
 
       <div className='z-50'>
 
         <HeroSection data={data} />
 
+        <CamillaMotionPage data={data} />
         <div className="danmax-section2 section2">
           <div className="Quote-Section">
             <TextReveal className={`danmax-textreveal ${photographer === "dan-max" ? "danmax-textreveal--narrow" : ''}`}>
@@ -69,7 +71,7 @@ console.log("photographer:", photographer);
 
           <AboutSection data={data} />
 
-          {data?.awardHeadingMain && <AwardSection data={data}/>}
+          {data?.awardHeadingMain && <AwardSection data={data} />}
           <TestimonialSection data={data} />
         </div>
 

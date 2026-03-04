@@ -1,0 +1,149 @@
+.camilla-motion-parent {
+    width: 100%;
+    /* height: 20vmax; */
+    background-color: white;
+    /* background-color: lightsteelblue; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    align-self: stretch;
+    gap: 10px 10px;
+    row-gap: 10px;
+    column-gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3vmax;
+    padding-right: 3vmax;
+
+}
+
+
+.camilla-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* padding-top: 1vw; */
+    /* padding-bottom: 1vw; */
+
+}
+
+
+.camilla-img-container img:nth-child(1) {
+
+    width: 110px;
+}
+
+.image-1,
+.image-2,
+.image-3,
+.image-7 img {
+    opacity: 0.65;
+    filter: brightness(100%) contrast(100%) saturate(0%) blur(0px) hue-rotate(0deg);
+
+}
+
+.image-4,
+.image-5,
+.image-6,
+.image-8 img {
+    opacity: 0.65;
+
+}
+
+
+
+.image-8 {
+    scale: 1.2;
+    /* width: 200px; */
+}
+
+
+.camilla-img-container img {
+
+    /* max-width: 100%; */
+    /* height: auto; */
+    display: inline-block;
+    vertical-align: middle;
+    width: 120px;
+    /* aspect-ratio: auto 300 / 300; */
+
+}
+
+
+@media screen and (max-width:767px) {
+
+    .camilla-motion-parent {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        align-self: stretch;
+        justify-content: space-around;
+        gap: 0px 0px;
+        row-gap: 0px;
+        column-gap: 0px;
+        background-color: white;
+        flex-wrap: wrap;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 5px;
+        padding-right: 5px;
+
+
+    }
+
+
+
+    .camilla-img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border-width: 0px 1px 1px 0px; */
+        border-top-width: 0px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 0px;
+        border-color: #969696;
+        width: 25%;
+        padding-top: 0vw;
+        padding-bottom: 10px;
+        padding-right: 6vw;
+        padding-left: 6vw;
+        /* background-color: lightgreen; */
+
+    }
+
+    .image-8,
+    .image-4 {
+        scale: 1;
+        border-right-width: 0px;
+
+        /* width: 200px; */
+    }
+
+    .image-5,
+    .image-6,
+    .image-7,
+    .image-8 {
+        border-bottom-width: 0px;
+
+    }
+
+
+
+    .camilla-img-container:nth-child(1) {
+        /* background-color: red; */
+        padding-top: 0vw;
+
+        padding-bottom: 1px;
+        padding-right: 7vw;
+        padding-left: 7vw;
+
+
+
+
+    }
+
+}

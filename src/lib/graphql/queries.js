@@ -435,6 +435,48 @@ query GetCamillaPage {
         section2Count3
         section2Count4
         section2Button
+
+        camillaMotionImage1 {
+        id
+        sourceUrl
+        }
+
+        camillaMotionImage2 {
+        id
+        sourceUrl
+        }
+
+        camillaMotionImage3 {
+        id
+        sourceUrl
+        }
+
+        camillaMotionImage4 {
+        id
+        sourceUrl
+        }
+
+        camillaMotionImage5 {
+        id
+        sourceUrl
+        }
+
+        camillaMotionImage6 {
+        id
+        sourceUrl
+        }
+
+        camillaMotionImage7 {
+        id
+        sourceUrl
+
+        }
+
+        camillaMotionImage8 {
+        id
+        sourceUrl
+        }
+
      
         section2Images {
           id
