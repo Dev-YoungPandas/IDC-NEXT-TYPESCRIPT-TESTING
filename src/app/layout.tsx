@@ -6,7 +6,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "IDC",
+  title: {
+
+    default: "IDC",
+    template: "%s | IDC",
+  },
   description: "NZ's best talent in photography, directing and cinematography",
 };
 

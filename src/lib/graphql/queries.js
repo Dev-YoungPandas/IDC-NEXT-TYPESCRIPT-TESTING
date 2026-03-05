@@ -7,6 +7,19 @@ export const GET_DAN_PAGE_QUERY = `
       title
       slug
       date
+        seo {
+      title
+      metaDesc
+      opengraphTitle
+      opengraphDescription
+      opengraphImage {
+        sourceUrl
+        mediaDetails { width height }
+      }
+      twitterTitle
+      twitterDescription
+      twitterImage { sourceUrl }
+    }
       dan {
         photographerName
         heroVideo {
@@ -175,6 +188,19 @@ export const GET_YUKI_PAGE_QUERY =
       title
       slug
       date
+        seo {
+      title
+      metaDesc
+      opengraphTitle
+      opengraphDescription
+      opengraphImage {
+        sourceUrl
+        mediaDetails { width height }
+      }
+      twitterTitle
+      twitterDescription
+      twitterImage { sourceUrl }
+    }
       yuki {
         photographerName
         heroVideo {
@@ -401,6 +427,19 @@ query GetCamillaPage {
     title
     slug
     date
+      seo {
+      title
+      metaDesc
+      opengraphTitle
+      opengraphDescription
+      opengraphImage {
+        sourceUrl
+        mediaDetails { width height }
+      }
+      twitterTitle
+      twitterDescription
+      twitterImage { sourceUrl }
+    }
     camilla {
       photographerName
        heroVideo {
@@ -825,6 +864,19 @@ query GetSachaPage {
     title
     slug
     date
+      seo {
+      title
+      metaDesc
+      opengraphTitle
+      opengraphDescription
+      opengraphImage {
+        sourceUrl
+        mediaDetails { width height }
+      }
+      twitterTitle
+      twitterDescription
+      twitterImage { sourceUrl }
+    }
     sacha {
       photographerName
        heroVideo {
@@ -998,6 +1050,19 @@ query GetDeanPage {
     title
     slug
     date
+      seo {
+      title
+      metaDesc
+      opengraphTitle
+      opengraphDescription
+      opengraphImage {
+        sourceUrl
+        mediaDetails { width height }
+      }
+      twitterTitle
+      twitterDescription
+      twitterImage { sourceUrl }
+    }
     dean {
       photographerName
        heroVideo {
@@ -1191,6 +1256,19 @@ query GetGuyPage {
     title
     slug
     date
+      seo {
+      title
+      metaDesc
+      opengraphTitle
+      opengraphDescription
+      opengraphImage {
+        sourceUrl
+        mediaDetails { width height }
+      }
+      twitterTitle
+      twitterDescription
+      twitterImage { sourceUrl }
+    }
     guy {
       photographerName
        heroVideo {
@@ -1523,6 +1601,19 @@ query GetHomePage {
       id
       title
       slug
+      seo {
+      title
+      metaDesc
+      opengraphTitle
+      opengraphDescription
+      opengraphImage {
+        sourceUrl
+        mediaDetails { width height }
+      }
+      twitterTitle
+      twitterDescription
+      twitterImage { sourceUrl }
+    }
       homepageidc {
         photographerName1
         photographerName2

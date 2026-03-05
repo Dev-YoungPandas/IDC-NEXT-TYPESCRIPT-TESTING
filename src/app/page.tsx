@@ -6,6 +6,45 @@ import { fetchGraphQL } from '@/lib/graphql/client';
 import { GET_HOMEPAGE_QUERY } from '@/lib/graphql/queries';
 import HomePage from '@/components/home/HomePage';
 import HomeSection2 from '@/components/home/homeSection2/HomeSection2';
+import { Metadata } from 'next';
+
+
+
+export async function generateMetadata(): Promise<Metadata> {
+
+  try {
+    const data = await fetchGraphQL(GET_HOMEPAGE_QUERY);
+    const seo = data?.pageBy?.seo;
+
+    return {
+      title: seo?.title || "IDC",
+      description: seo?.metaDesc || "NZ's best talent in photography, directing and cinematography",
+      openGraph: {
+        title: seo?.opengraphTitle || seo?.title || "IDC",
+        description: seo?.opengraphDescription || seo?.metaDesc || "",
+        images: seo?.opengraphImage?.sourceUrl
+          ? [{ url: seo.opengraphImage.sourceUrl, width: seo.opengraphImage.mediaDetails?.width, height: seo.opengraphImage.mediaDetails?.height }]
+          : [],
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: seo?.twitterTitle || seo?.title || "IDC",
+        description: seo?.twitterDescription || seo?.metaDesc || "",
+        images: seo?.twitterImage?.sourceUrl ? [seo.twitterImage.sourceUrl] : [],
+      },
+    }
+  } catch (error) {
+      return {
+        title:"IDC",
+        description: "NZ's best talent in photography, directing and cinematography",
+
+      }
+  }
+}
+
+
+
 
 // Slug mapping — maps each photographer name field to their slug and video field
 const PHOTOGRAPHER_SLUG_MAP: Record<number, string> = {

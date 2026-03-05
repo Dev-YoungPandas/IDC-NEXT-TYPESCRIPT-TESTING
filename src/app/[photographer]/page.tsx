@@ -9,6 +9,57 @@ import {
 } from '@/lib/graphql/queries';
 import ClientPage from './ClientPage';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ photographer: string }>
+}): Promise<Metadata> {
+  const { photographer } = await params;
+  const config = PHOTOGRAPHER_CONFIG[photographer];
+
+
+  if (!config) {
+    return { title: "Not Found" };
+  }
+
+  try {
+    const raw = await fetchGraphQL(config.query);
+    const seo = raw?.pageBy?.seo;
+    const photographerData = raw?.pageBy?.[config.dataKey];
+    const name = photographerData?.photographerName || photographer;
+
+    return {
+      title: seo?.title || name,
+      description: seo?.metaDesc || `${name} — IDC Photographer`,
+      openGraph: {
+        title: seo?.opengraphTitle || seo?.title || name,
+        description: seo?.opengraphDescription || seo?.metaDesc || "",
+        images: seo?.opengraphImage?.sourceUrl
+          ? [{ url: seo.opengraphImage.sourceUrl }]
+          : photographerData?.centerImage?.sourceUrl
+            ? [{ url: photographerData.centerImage.sourceUrl }]
+            : [],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seo?.twitterTitle || seo?.title || name,
+        description: seo?.twitterDescription || seo?.metaDesc || "",
+        images: seo?.twitterImage?.sourceUrl
+          ? [seo.twitterImage.sourceUrl]
+          : photographerData?.centerImage?.sourceUrl
+            ? [photographerData.centerImage.sourceUrl]
+            : [],
+      },
+    };
+  } catch {
+    return { title: photographer };
+  }
+
+}
 
 
 const PHOTOGRAPHER_CONFIG: Record<string, { query: string; dataKey: string }> = {
