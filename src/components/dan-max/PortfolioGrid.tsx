@@ -1,95 +1,59 @@
-// ============================================
-// FILE: components/dan-max/PortfolioGrid.tsx
-// ============================================
-// KEY CHANGES:
-// 1. Single IntersectionObserver for the entire grid instead of 4 separate ones
-//    (4 observers = 4x JS execution during initial load)
-// 2. Inline SVG arrow instead of importing react-icons/fi
-//    react-icons can pull in ~20-50KB depending on tree-shaking
-// 3. Images always in DOM with native lazy loading
-
 'use client';
 
+import { useState, useEffect } from 'react';
 import LazyImage from '../ui/LazyImage';
 import { useLazyLoad } from '../../hooks/useLazyLoad';
-
 import "../../styles/portfoliogrid.css"
 
-// ✅ Inline arrow icon — avoids importing the entire react-icons/fi bundle
-function ArrowIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      width="1em"
-      height="1em"
-    >
-      <line x1="7" y1="17" x2="17" y2="7" />
-      <polyline points="7 7 17 7 17 17" />
-    </svg>
-  );
-}
-
 function PortfolioCard({
-  image,
+  images,
   heading,
   count,
   video,
   totalItems,
-
+  currentPart,
 }: {
-  image: any;
+  images: any[];
   heading: string;
   count: number;
   video?: string;
   totalItems: number;
+  currentPart: number;
 }) {
-
   const isVideo = !!video;
 
+  // Pick the image for the current part (0, 1, or 2)
+  // If that part's image doesn't exist, fall back to first available
+  const currentImage = images[currentPart] || images[0];
 
   return (
-    <div className="portfolio-main-section "
+    <div
+      className="portfolio-main-section"
       style={{ width: `${100 / totalItems - 2}vmax` } as React.CSSProperties}
     >
-      {/* ✅ LazyImage always rendered — native loading="lazy" handles visibility
-          This lets the browser preparser discover image URLs early */}
+      {isVideo ? (
+        <video
+          src={video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="portfolio-main-video portfolio-main-img"
+        />
+      ) : (
+        <LazyImage
+          src={currentImage?.sourceUrl}
+          alt={heading}
+          className="portfolio-main-img"
+        />
+      )}
 
-      {
-        isVideo ? (
-          <video
-            src={video}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload='metadata'
-            className='portfolio-main-video portfolio-main-img'
-          />
-        ) : (
-          <LazyImage
-            src={image?.sourceUrl}
-            alt={heading}
-            className="portfolio-main-img"
-          />
-        )
-      }
-
-      <div className="portfolio-main-dets ">
+      <div className="portfolio-main-dets">
         <div className="portfolio-main-cen">
-          <h2 className="color-transition-text">
-            {heading}
-          </h2>
-          <p className="portfolio-count color-transition-text">
-            ({count})
-          </p>
+          <h2 className="color-transition-text">{heading}</h2>
+          <p className="portfolio-count color-transition-text">({count})</p>
         </div>
-        {/* <ArrowIcon className="color-transition-text portfolio-arrow" /> */}
 
         <svg
           className="color-transition-text portfolio-arrow"
@@ -107,7 +71,6 @@ function PortfolioCard({
               />
             </clipPath>
           </defs>
-
           <g clipPath="url(#dc73adff0a)">
             <path
               fill="#040606"
@@ -122,34 +85,91 @@ function PortfolioCard({
   );
 }
 
+// Calculate which part (0, 1, or 2) based on current time
+// Changes every 6 hours: 0→1→2→0→1→2...
+function getCurrentPart(): number {
+  const SIX_HOURS_MS = 6 * 60 * 60 * 1000;
+          // const SIX_HOURS_MS = 3 * 1000;
+
+  const now = Date.now();
+  // Divide total milliseconds since epoch by 6 hours, mod 3
+  return Math.floor(now / SIX_HOURS_MS) % 3;
+}
+
 export default function PortfolioGrid({ data }: { data: any }) {
-  // ✅ Single observer for the entire grid
   const { ref, isVisible } = useLazyLoad({ threshold: 0.1 });
+  const [currentPart, setCurrentPart] = useState(() => getCurrentPart());
+
+  useEffect(() => {
+    // Calculate ms until next 6-hour boundary
+    const SIX_HOURS_MS = 6 * 60 * 60 * 1000;
+        // const SIX_HOURS_MS = 3 * 1000;
+
+    const now = Date.now();
+    const msUntilNextChange = SIX_HOURS_MS - (now % SIX_HOURS_MS);
+
+    // Set timeout for the first change, then interval every 6 hours
+    const timeout = setTimeout(() => {
+      setCurrentPart(getCurrentPart());
+
+      const interval = setInterval(() => {
+        setCurrentPart(getCurrentPart());
+      }, SIX_HOURS_MS);
+
+      // Store interval id for cleanup
+      cleanupInterval = interval;
+    }, msUntilNextChange);
+
+    let cleanupInterval: NodeJS.Timeout | null = null;
+
+    return () => {
+      clearTimeout(timeout);
+      if (cleanupInterval) clearInterval(cleanupInterval);
+    };
+  }, []);
 
   if (!data) return null;
 
-  // console.log(data.section2Video4.mediaItemUrl, "ggg")
-
+  // Each card gets an array of 3 images (Part1, Part2, Part3)
+  // Video cards stay unchanged — only image cards rotate
   const portfolioItems = [
-    { count: data.section2Count1, image: data.section2Images, video: data.section2Video1?.mediaItemUrl, heading: data.section2Heading1 },
-    { count: data.section2Count2, image: data.section2Image2, video: data.section2Video2?.mediaItemUrl, heading: data.section2Heading2 },
-    { count: data.section2Count3, image: data.section2Image3, video: data.section2Video3?.mediaItemUrl, heading: data.section2Heading3 },
-    { count: data.section2Count4, image: data.section2Image4, video: data.section2Video4?.mediaItemUrl, heading: data.section2Heading4 },
-  ].filter(item => item.image?.sourceUrl || item.video || item.heading)
+    {
+      count: data.section2Count1,
+      images: [data.section2ImagePart1, data.section2ImagePart2, data.section2ImagePart3],
+      video: data.section2Video1?.mediaItemUrl,
+      heading: data.section2Heading1,
+    },
+    {
+      count: data.section2Count2,
+      images: [data.section2Image2Part1, data.section2Image2Part2, data.section2Image2Part3],
+      video: data.section2Video2?.mediaItemUrl,
+      heading: data.section2Heading2,
+    },
+    {
+      count: data.section2Count3,
+      images: [data.section2Image3Part1, data.section2Image3Part2, data.section2Image3Part3],
+      video: data.section2Video3?.mediaItemUrl,
+      heading: data.section2Heading3,
+    },
+    {
+      count: data.section2Count4,
+      images: [data.section2Image4Part1, data.section2Image4Part2, data.section2Image4Part3],
+      video: data.section2Video4?.mediaItemUrl,
+      heading: data.section2Heading4,
+    },
+  ].filter(item => item.images[0]?.sourceUrl || item.video || item.heading);
 
   return (
-    <div
-      ref={ref}
-      className="portfolio-card"
-    >
+    <div ref={ref} className="portfolio-card">
       {portfolioItems.map((item, index) => (
         <PortfolioCard
           key={index}
-          image={item.image}
+          images={item.images}
           video={item.video}
           heading={item.heading}
           count={item.count}
           totalItems={portfolioItems.length}
+          currentPart={currentPart}
         />
       ))}
     </div>

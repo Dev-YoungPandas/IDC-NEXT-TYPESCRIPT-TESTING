@@ -21,15 +21,20 @@ export function useTextReveal(enabled = true) {
     textElements.forEach((element) => {
       if (element.classList.contains('split-processed')) return;
 
-      const text = element.textContent;
-      const lines = text.split('\n').filter(line => line.trim());
-      
-      element.innerHTML = lines.map(line => `
-        <span class="line-wrapper">
-          <span class="line-inner">${line}</span>
-        </span>
-      `).join('');
-      
+      const wrapper = document.createElement('span');
+      wrapper.className = 'line-wrapper';
+
+      const inner = document.createElement('span');
+      inner.className = 'line-inner';
+
+      while (element.firstChild) {
+        inner.appendChild(element.firstChild);
+      }
+
+      wrapper.appendChild(inner);
+      element.appendChild(wrapper);
+
+
       element.classList.add('split-processed');
     });
 

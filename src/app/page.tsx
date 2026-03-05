@@ -35,11 +35,11 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     }
   } catch (error) {
-      return {
-        title:"IDC",
-        description: "NZ's best talent in photography, directing and cinematography",
+    return {
+      title: "IDC",
+      description: "NZ's best talent in photography, directing and cinematography",
 
-      }
+    }
   }
 }
 
@@ -124,6 +124,16 @@ export default async function Home() {
           <HomeSection2 />
 
         </div>
+
+        <div className='posthomeSection2'>
+
+        </div>
+
+        <div>
+          <img src="/images/home.png" alt="" />
+        </div>
+
+
 
       </div>
 

@@ -72,17 +72,14 @@
 
 }
 
-
-
 .homesection2-last {
     width: 100%;
-    background-color: red;
+    background-color: white;
     padding-bottom: 10vw;
     padding-left: 0vw;
     padding-right: 0vw;
 
 }
-
 
 
 @media screen and (max-width: 740px) {

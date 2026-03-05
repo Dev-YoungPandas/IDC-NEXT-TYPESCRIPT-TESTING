@@ -19,6 +19,7 @@
     font-weight: 600;
     text-transform: uppercase;
     line-height: 1.2em;
+    width: max-content;
     color: #353535;
 
 }
@@ -28,6 +29,7 @@
     font-weight: 600;
     margin-bottom: 1.2vmax;
     font-size: 1.3vw;
+    width: max-content;
     color: #d1d1d1;
     font-family: 'RemixaTest-regular';
 }
@@ -36,6 +38,7 @@
     color: #d1d1d1;
     font-size: 4.5vw;
     margin-top: 2vmax;
+    width: max-content;
     margin-bottom: 1vmax;
     font-family: 'RemixaTest-regular';
     text-transform: uppercase;

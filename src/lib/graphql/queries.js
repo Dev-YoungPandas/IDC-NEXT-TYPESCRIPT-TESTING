@@ -55,22 +55,65 @@ export const GET_DAN_PAGE_QUERY = `
         section2Count4
 
         section2Button
-        section2Images {
+        section2ImagePart1 {
           id
           sourceUrl
         }
-        section2Image2 {
+        section2Image2Part1 {
           id
           sourceUrl
         }
-        section2Image3 {
+        section2Image3Part1 {
           id
           sourceUrl
         }
-        section2Image4 {
+
+        section2Image4Part1 {
+        id
+          sourceUrl
+        }
+
+
+        section2ImagePart2 {
           id
           sourceUrl
         }
+    
+        section2Image2Part2 {
+          id
+          sourceUrl
+        }
+        section2Image3Part2 {
+          id
+          sourceUrl
+        }
+
+        section2Image4Part2 {
+          id
+          sourceUrl
+        }
+
+
+        section2ImagePart3 {
+          id
+          sourceUrl
+        }
+    
+        section2Image2Part3 {
+          id
+          sourceUrl
+        }
+        section2Image3Part3 {
+          id
+          sourceUrl
+        }
+
+        section2Image4Part3 {
+          id
+          sourceUrl
+        }
+
+
       section3Paragraph1
       section3Paragraph2
       section3Paragraph3
@@ -235,22 +278,50 @@ export const GET_YUKI_PAGE_QUERY =
         section2Count3
         section2Count4
         section2Button
-        section2Images {
+        
+        section2ImagePart1 {
           id
           sourceUrl
         }
-        section2Image2 {
+        section2Image2Part1 {
           id
           sourceUrl
         }
-        section2Image3 {
+        section2Image3Part1 {
           id
           sourceUrl
         }
-        section2Image4 {
+  
+       section2ImagePart2 {
           id
           sourceUrl
         }
+    
+        section2Image2Part2 {
+          id
+          sourceUrl
+        }
+        section2Image3Part2 {
+          id
+          sourceUrl
+        }
+
+    
+      section2ImagePart3 {
+          id
+          sourceUrl
+        }
+    
+      section2Image2Part3 {
+          id
+          sourceUrl
+        }
+        section2Image3Part3 {
+          id
+          sourceUrl
+        }
+
+    
       section3Paragraph1
       section3Paragraph2
       section3Paragraph3
@@ -517,15 +588,60 @@ query GetCamillaPage {
         }
 
      
-        section2Images {
+        section2ImagePart1 {
           id
           sourceUrl
         }
-        section2Image2 {
+        section2Image2Part1 {
           id
           sourceUrl
         }
-        section2Image3 {
+        section2Image3Part1 {
+          id
+          sourceUrl
+        }
+
+        section2Image4Part1 {
+        id
+          sourceUrl
+        }
+
+
+        section2ImagePart2 {
+          id
+          sourceUrl
+        }
+    
+        section2Image2Part2 {
+          id
+          sourceUrl
+        }
+        section2Image3Part2 {
+          id
+          sourceUrl
+        }
+
+        section2Image4Part2 {
+          id
+          sourceUrl
+        }
+
+
+        section2ImagePart3 {
+          id
+          sourceUrl
+        }
+    
+        section2Image2Part3 {
+          id
+          sourceUrl
+        }
+        section2Image3Part3 {
+          id
+          sourceUrl
+        }
+
+        section2Image4Part3 {
           id
           sourceUrl
         }
@@ -1097,22 +1213,47 @@ query GetDeanPage {
         section2Count3
         section2Count4
       section2Button
-      section2Images{
-        id
-        sourceUrl
-        altText
-        
-        
-      }
-     section2Image2 {
+      section2ImagePart1 {
           id
           sourceUrl
         }
-        section2Image3 {
+        section2Image2Part1 {
+          id
+          sourceUrl
+        }
+        section2Image3Part1 {
+          id
+          sourceUrl
+        }
+  
+       section2ImagePart2 {
+          id
+          sourceUrl
+        }
+    
+        section2Image2Part2 {
+          id
+          sourceUrl
+        }
+        section2Image3Part2 {
           id
           sourceUrl
         }
 
+    
+      section2ImagePart3 {
+          id
+          sourceUrl
+        }
+    
+      section2Image2Part3 {
+          id
+          sourceUrl
+        }
+        section2Image3Part3 {
+          id
+          sourceUrl
+        }
       
 
         
@@ -1303,29 +1444,61 @@ query GetGuyPage {
         section2Count3
         section2Count4
         section2Button
-      section2Images{
+     section2ImagePart1 {
+          id
+          sourceUrl
+        }
+        section2Image2Part1 {
+          id
+          sourceUrl
+        }
+        section2Image3Part1 {
+          id
+          sourceUrl
+        }
+
+      section2Image4Part1 {
         id
-        sourceUrl
-        altText
-        mediaDetails {
-          width
-          height
+          sourceUrl
         }
-        
-      }
-        section2Images {
+
+      
+       section2ImagePart2 {
           id
           sourceUrl
         }
-        section2Image2 {
+    
+      section2Image2Part2 {
           id
           sourceUrl
         }
-        section2Image3 {
+        section2Image3Part2 {
           id
           sourceUrl
         }
-        section2Image4 {
+
+      section2Image4Part2 {
+          id
+          sourceUrl
+        }
+     
+      
+      
+      section2ImagePart3 {
+          id
+          sourceUrl
+        }
+    
+      section2Image2Part3 {
+          id
+          sourceUrl
+        }
+        section2Image3Part3 {
+          id
+          sourceUrl
+        }
+
+      section2Image4Part3 {
           id
           sourceUrl
         }

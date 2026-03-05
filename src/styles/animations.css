@@ -7,10 +7,13 @@
 }
 
 .bottomToUp .line-wrapper .line-inner {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
   transform: translateY(101%);
   transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
-              opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
   opacity: 0;
 }
 
@@ -35,13 +38,42 @@
 
 
 /* Staggered delays (only 10 lines for performance) */
-.bottomToUp .line-wrapper:nth-child(1) .line-inner { transition-delay: 0s; }
-.bottomToUp .line-wrapper:nth-child(2) .line-inner { transition-delay: 0.15s; }
-.bottomToUp .line-wrapper:nth-child(3) .line-inner { transition-delay: 0.3s; }
-.bottomToUp .line-wrapper:nth-child(4) .line-inner { transition-delay: 0.45s; }
-.bottomToUp .line-wrapper:nth-child(5) .line-inner { transition-delay: 0.6s; }
-.bottomToUp .line-wrapper:nth-child(6) .line-inner { transition-delay: 0.75s; }
-.bottomToUp .line-wrapper:nth-child(7) .line-inner { transition-delay: 0.9s; }
-.bottomToUp .line-wrapper:nth-child(8) .line-inner { transition-delay: 1.05s; }
-.bottomToUp .line-wrapper:nth-child(9) .line-inner { transition-delay: 1.2s; }
-.bottomToUp .line-wrapper:nth-child(10) .line-inner { transition-delay: 1.35s; }
+.bottomToUp .line-wrapper:nth-child(1) .line-inner {
+  transition-delay: 0s;
+}
+
+.bottomToUp .line-wrapper:nth-child(2) .line-inner {
+  transition-delay: 0.15s;
+}
+
+.bottomToUp .line-wrapper:nth-child(3) .line-inner {
+  transition-delay: 0.3s;
+}
+
+.bottomToUp .line-wrapper:nth-child(4) .line-inner {
+  transition-delay: 0.45s;
+}
+
+.bottomToUp .line-wrapper:nth-child(5) .line-inner {
+  transition-delay: 0.6s;
+}
+
+.bottomToUp .line-wrapper:nth-child(6) .line-inner {
+  transition-delay: 0.75s;
+}
+
+.bottomToUp .line-wrapper:nth-child(7) .line-inner {
+  transition-delay: 0.9s;
+}
+
+.bottomToUp .line-wrapper:nth-child(8) .line-inner {
+  transition-delay: 1.05s;
+}
+
+.bottomToUp .line-wrapper:nth-child(9) .line-inner {
+  transition-delay: 1.2s;
+}
+
+.bottomToUp .line-wrapper:nth-child(10) .line-inner {
+  transition-delay: 1.35s;
+}
