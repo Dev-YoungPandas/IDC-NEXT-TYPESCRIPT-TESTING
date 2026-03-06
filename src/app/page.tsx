@@ -3,10 +3,15 @@
 // ============================================
 
 import { fetchGraphQL } from '@/lib/graphql/client';
-import { GET_HOMEPAGE_QUERY } from '@/lib/graphql/queries';
+import { GET_CAMILLA_PAGE_QUERY, GET_HOMEPAGE_QUERY } from '@/lib/graphql/queries';
 import HomePage from '@/components/home/HomePage';
 import HomeSection2 from '@/components/home/homeSection2/HomeSection2';
 import { Metadata } from 'next';
+import HomesSection3 from '@/components/home/homeSection3/HomesSection3';
+import HomeClientWrapper from './HomeClientWrapper';
+import HomeTestimonialSlider from '@/components/home/HomeTestimonialSlider';
+import CTASection from '@/components/dan-max/CTASection';
+import Footer from '@/components/dan-max/Footer';
 
 
 
@@ -61,6 +66,7 @@ function transformHomepageData(homepageidc: any) {
 
   const photographers = [];
 
+
   for (let i = 1; i <= 6; i++) {
     const name = homepageidc[`photographerName${i}`];
     const video = homepageidc[`photographer${i}Video${i}`];
@@ -80,11 +86,22 @@ function transformHomepageData(homepageidc: any) {
 
 export default async function Home() {
   let photographers: any[] = [];
+  let testimonialData: any = null;
+
+
 
   try {
-    const data = await fetchGraphQL(GET_HOMEPAGE_QUERY);
-    const homepageidc = data?.pageBy?.homepageidc;
+    const [homepageRes, camillaRes] = await Promise.all([
+      fetchGraphQL(GET_HOMEPAGE_QUERY),
+      fetchGraphQL(GET_CAMILLA_PAGE_QUERY),
+    ]);
+
+    const homepageidc = homepageRes?.pageBy?.homepageidc;
     photographers = transformHomepageData(homepageidc);
+
+    // Temporarily use Camilla's data for testimonials
+    testimonialData = camillaRes?.pageBy?.camilla || null;
+
   } catch (error) {
     console.error('Failed to fetch homepage data:', error);
   }
@@ -103,39 +120,65 @@ export default async function Home() {
 
   return (
     <>
-      <div>
+      <HomeClientWrapper>
 
-        <HomePage photographers={photographers} />
+        <div className='homepage-wrapper'>
 
-        <div className="homesection2-top-dash">
 
-          <h5>Since 1999</h5>
+          <HomePage photographers={photographers} />
 
-          <h5>top rated </h5>
+          <div className="homesection2-top-dash">
 
-          <h5>Photography + Productiion</h5>
+            <h5>Since 1999</h5>
 
-          <h5>Auckland, NZ</h5>
+            <h5>top rated </h5>
+
+            <h5>Photography + Productiion</h5>
+
+            <h5>Auckland, NZ</h5>
+
+
+          </div>
+
+          <div>
+            <HomeSection2 />
+
+          </div>
+
+          <div>
+            <HomesSection3 />
+
+
+          </div>
+
+
+
+          {testimonialData && (
+            <div>
+              <HomeTestimonialSlider data={testimonialData} />
+            </div>
+          )}
+
+
+          {/* <div className='w-full h-[131vh] xl:h-[177vh]'>
+            <CTASection data={testimonialData} />
+
+
+            <div className='fixed w-full bottom-0 z-[-1]'>
+              <Footer />
+            </div>
+          </div> */}
+
+           <CTASection data={testimonialData} />
+
+
+          <Footer />
+
 
 
         </div>
 
-        <div>
-          <HomeSection2 />
-
-        </div>
-
-        <div className='posthomeSection2'>
-
-        </div>
-
-        <div>
-          <img src="/images/home.png" alt="" />
-        </div>
-
-
-
-      </div>
+      </HomeClientWrapper>
 
     </>
   );

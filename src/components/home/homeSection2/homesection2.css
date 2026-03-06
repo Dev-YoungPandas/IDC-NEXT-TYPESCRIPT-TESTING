@@ -1,5 +1,5 @@
 .homeSection2-parent {
-    background-color: #FFFFFF;
+    /* background-color: bla; */
 }
 
 
@@ -33,7 +33,7 @@
     font-weight: 900;
     text-transform: uppercase;
     color: #000000;
-    line-height: 1.1;
+    line-height: 1;
     text-align: center;
     display: flex;
     gap: 1vw;
@@ -56,7 +56,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+margin-top: 3vmax;
 
 
 }
@@ -74,7 +74,7 @@
 
 .homesection2-last {
     width: 100%;
-    background-color: white;
+    /* background-color: red; */
     padding-bottom: 10vw;
     padding-left: 0vw;
     padding-right: 0vw;
@@ -101,8 +101,8 @@
     .homesection2-center h2 {
         font-size: 7.9vw;
         font-weight: 900;
-        color: #000000;
-        line-height: 1em;
+        color: #ffffff;
+        line-height: 1.3em;
         text-align: center;
         display: flex;
         gap: 1vw;
@@ -128,9 +128,20 @@
 
     .homesection2-last {
         width: 100%;
-        background-color: red;
-        padding-bottom: 20vw;
+        padding-bottom: 45vw;
         padding-left: 0vw;
         padding-right: 0vw;
+    }
+
+
+    .homesection2-center-bottom {
+        max-width: 100%;
+        display: flex;
+        margin-top:3vmax;
+        align-items: center;
+        justify-content: center;
+
+
+
     }
 }

@@ -173,6 +173,10 @@
   color: #000000;
 }
 
+.homepage-wrapper {
+  background-color: rgb(255, 255, 255);
+}
+
 
 @media screen and (max-width: 740px) {
   .homesection2-top-dash h5 {
