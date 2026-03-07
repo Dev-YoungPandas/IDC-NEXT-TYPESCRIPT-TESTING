@@ -134,8 +134,8 @@ export default function HomeTestimonialSlider({ data }: { data: any }) {
         : 'testimonial-slide-enter-from-left';
 
     return (
-        <div ref={ref} className="testimonial-section home-testimonial-section">
-            {isVisible && (
+        <div ref={ref} className="testimonial-section home-testimonial-section pb-[9vmax]">
+            (
 
                 <>
 
@@ -184,7 +184,7 @@ export default function HomeTestimonialSlider({ data }: { data: any }) {
                     </div>
 
                 </>
-            )}
+            )
         </div>
     );
 }

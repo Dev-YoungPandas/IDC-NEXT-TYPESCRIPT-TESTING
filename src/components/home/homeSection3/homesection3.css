@@ -360,3 +360,11 @@
     }
 
 }
+
+@media screen and (max-width: 740px) {
+    /* Lock parallax items — no transform allowed on mobile */
+    .h3-parallax-item {
+        transform: none !important;
+        will-change: auto !important;
+    }
+}

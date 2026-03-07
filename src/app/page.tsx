@@ -121,8 +121,19 @@ export default async function Home() {
   return (
     <>
       <HomeClientWrapper>
+        <div className='header-section'>
 
-        <div className='homepage-wrapper'>
+          <div>
+            <img src="https://idc.co.nz/headless/wp-content/uploads/2025/03/IDC-logo.svg" alt="" />
+          </div>
+
+
+          <div>
+            <h3>MENU</h3>
+          </div>
+        </div>
+        <div className='homepage-wrapper overflow-hidden'>
+
 
 
           <HomePage photographers={photographers} />
@@ -147,11 +158,7 @@ export default async function Home() {
 
           <div>
             <HomesSection3 />
-
-
           </div>
-
-
 
           {testimonialData && (
             <div>
@@ -160,22 +167,15 @@ export default async function Home() {
           )}
 
 
-          {/* <div className='w-full h-[131vh] xl:h-[177vh]'>
-            <CTASection data={testimonialData} />
+        </div>
+
+        <div className='w-full h-[131vh] xl:h-[177vh]'>
+          <CTASection data={testimonialData} />
 
 
-            <div className='fixed w-full bottom-0 z-[-1]'>
-              <Footer />
-            </div>
-          </div> */}
-
-           <CTASection data={testimonialData} />
-
-
-          <Footer />
-
-
-
+          <div className='fixed w-full bottom-0 z-[-1]'>
+            <Footer />
+          </div>
         </div>
 
       </HomeClientWrapper>

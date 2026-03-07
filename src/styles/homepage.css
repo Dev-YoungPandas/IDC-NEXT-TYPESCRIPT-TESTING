@@ -51,7 +51,7 @@
     z-index: 2;
     display: flex;
     cursor: pointer;
-        mix-blend-mode: exclusion;
+    mix-blend-mode: exclusion;
 
     flex-direction: column;
     /* justify-content: flex-end; */
@@ -96,7 +96,7 @@
         width: 40vmax;
         height: 30vmax;
         padding: 1vmax 4vmax;
-        padding-top:3vmax
+        padding-top: 3vmax
     }
 
     .photographer-name h1 {
@@ -140,18 +140,35 @@
    SMALL MOBILE (≤ 480px)
    ============================================ */
 @media (max-width: 480px) {
-    .photographer-name {
+    /* .photographer-name {
         padding: 3vw 4vw;
+        background-color: white;
         padding-bottom: calc(3vw + env(safe-area-inset-bottom, 0px));
+
+
+    } */
+
+    .photographer-name {
+        position: absolute;
+        bottom: 9%;
+        right: 0;
+       
+
+        padding: 3vw 4vw;
+        /* background-color: red; */
+        padding-bottom: calc(3vw + env(safe-area-inset-bottom, 0px));
+
+
     }
 
+
     .photographer-name h1 {
-        font-size: 7vw;
-        padding: 1.5vw 0;
+        font-size: 21px;
+        padding: 1vw 0;
     }
 
     .photographer-name h1.line-active {
-        transform: scale(1.2);
+        transform: scale(1.4);
     }
 }
 

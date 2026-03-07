@@ -80,7 +80,7 @@ export default function DanMaxPage({ data, photographer }: { data: any; photogra
           {data?.awardHeadingMain && <AwardSection data={data} />}
           <TestimonialSection data={data} />
 
-          
+
         </div>
 
 
@@ -94,7 +94,6 @@ export default function DanMaxPage({ data, photographer }: { data: any; photogra
           <Footer />
         </div>
       </div>
-
 
 
     </div>

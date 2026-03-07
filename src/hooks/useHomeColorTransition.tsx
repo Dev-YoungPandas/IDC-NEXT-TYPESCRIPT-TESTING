@@ -33,7 +33,7 @@ export function useHomeColorTransition() {
       // Calculate positions — same approach as useColorTransition
       const headingTop = headingSection.getBoundingClientRect().top + window.scrollY;
       const transitionDuration = window.innerHeight * (isMobile ? 0.3 : 0.2);
-      const startPos = headingTop - window.innerHeight * (isMobile ? 0.3 : 0.8);
+      const startPos = headingTop - window.innerHeight * (isMobile ? 0.7 : 0.8);
       const endPos = startPos + transitionDuration;
 
       const applyColors = (progress: number) => {

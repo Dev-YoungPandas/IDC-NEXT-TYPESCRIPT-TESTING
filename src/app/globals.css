@@ -145,8 +145,38 @@
 }
 
 
-
 /* this is in page.tsx section css */
+
+
+.header-section {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  padding: 2.5vmax 2.5vmax;
+  /* height: 100px; */
+  z-index: 40;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  mix-blend-mode: exclusion;
+  /* background-color: black; */
+}
+
+.header-section img {
+  height: 3vmax;
+}
+
+.header-section h3 {
+
+  font-family: 'RemixaTest-regular';
+  font-size: 2vw;
+  font-weight: 900;
+  line-height: 1;
+  color: #FFFFFF;
+  
+
+}
 
 .homesection2-top-dash {
   width: 100%;
@@ -165,6 +195,12 @@
 
 }
 
+.homepage-wrapper {
+  background-color: rgb(255, 255, 255);
+  /* position: relative; */
+  /* z-index: 2; */
+}
+
 .homesection2-top-dash h5 {
   font-family: 'RemixaTest-regular';
   font-size: 1.3vw;
@@ -175,7 +211,13 @@
 
 .homepage-wrapper {
   background-color: rgb(255, 255, 255);
+  /* position: relative; */
+  overflow: hidden;
+  /* z-index: 1; */
 }
+
+
+
 
 
 @media screen and (max-width: 740px) {
@@ -185,7 +227,7 @@
 
   }
 
-  .homesection2-top-dash h5:nth-child(3) {
+  .homesection2-top-dash h5:nth-child(2) {
     display: none;
   }
 
@@ -195,4 +237,6 @@
     padding-left: 5%;
     padding-right: 5%;
   }
+
+
 }
