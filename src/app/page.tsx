@@ -12,11 +12,10 @@ import HomeClientWrapper from './HomeClientWrapper';
 import HomeTestimonialSlider from '@/components/home/HomeTestimonialSlider';
 import CTASection from '@/components/dan-max/CTASection';
 import Footer from '@/components/dan-max/Footer';
-
+import MenuOverlay from '@/components/home/Menuoverlay'; // ← Import the new component
 
 
 export async function generateMetadata(): Promise<Metadata> {
-
   try {
     const data = await fetchGraphQL(GET_HOMEPAGE_QUERY);
     const seo = data?.pageBy?.seo;
@@ -31,7 +30,6 @@ export async function generateMetadata(): Promise<Metadata> {
           ? [{ url: seo.opengraphImage.sourceUrl, width: seo.opengraphImage.mediaDetails?.width, height: seo.opengraphImage.mediaDetails?.height }]
           : [],
       },
-
       twitter: {
         card: "summary_large_image",
         title: seo?.twitterTitle || seo?.title || "IDC",
@@ -43,15 +41,12 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       title: "IDC",
       description: "NZ's best talent in photography, directing and cinematography",
-
     }
   }
 }
 
 
-
-
-// Slug mapping — maps each photographer name field to their slug and video field
+// Slug mapping
 const PHOTOGRAPHER_SLUG_MAP: Record<number, string> = {
   1: 'dan-max',
   2: 'yuki-sato',
@@ -65,7 +60,6 @@ function transformHomepageData(homepageidc: any) {
   if (!homepageidc) return [];
 
   const photographers = [];
-
 
   for (let i = 1; i <= 6; i++) {
     const name = homepageidc[`photographerName${i}`];
@@ -88,8 +82,6 @@ export default async function Home() {
   let photographers: any[] = [];
   let testimonialData: any = null;
 
-
-
   try {
     const [homepageRes, camillaRes] = await Promise.all([
       fetchGraphQL(GET_HOMEPAGE_QUERY),
@@ -98,10 +90,7 @@ export default async function Home() {
 
     const homepageidc = homepageRes?.pageBy?.homepageidc;
     photographers = transformHomepageData(homepageidc);
-
-    // Temporarily use Camilla's data for testimonials
     testimonialData = camillaRes?.pageBy?.camilla || null;
-
   } catch (error) {
     console.error('Failed to fetch homepage data:', error);
   }
@@ -121,39 +110,21 @@ export default async function Home() {
   return (
     <>
       <HomeClientWrapper>
-        <div className='header-section'>
+        {/* ── Menu + Header (replaces all inline header HTML + scripts) ── */}
+        <MenuOverlay photographers={photographers} />
 
-          <div>
-            <img src="https://idc.co.nz/headless/wp-content/uploads/2025/03/IDC-logo.svg" alt="" />
-          </div>
-
-
-          <div>
-            <h3>MENU</h3>
-          </div>
-        </div>
         <div className='homepage-wrapper overflow-hidden'>
-
-
-
           <HomePage photographers={photographers} />
 
           <div className="homesection2-top-dash">
-
             <h5>Since 1999</h5>
-
             <h5>top rated </h5>
-
-            <h5>Photography + Productiion</h5>
-
+            <h5>Photography + Production</h5>
             <h5>Auckland, NZ</h5>
-
-
           </div>
 
           <div>
             <HomeSection2 />
-
           </div>
 
           <div>
@@ -165,21 +136,15 @@ export default async function Home() {
               <HomeTestimonialSlider data={testimonialData} />
             </div>
           )}
-
-
         </div>
 
         <div className='w-full h-[131vh] xl:h-[177vh]'>
           <CTASection data={testimonialData} />
-
-
           <div className='fixed w-full bottom-0 z-[-1]'>
             <Footer />
           </div>
         </div>
-
       </HomeClientWrapper>
-
     </>
   );
 }
