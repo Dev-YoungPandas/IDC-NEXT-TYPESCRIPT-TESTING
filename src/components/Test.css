@@ -1,0 +1,543 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FONTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'mo4';
+  src: url('/fonts/mo4-1.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RemixaTest';
+  src: url('/fonts/RemixaTest-Regular-BF649a5c12202eb-2.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RemixaTest-semibold';
+  src: url('/fonts/RemixaTest-Semibold-BF649a5c1233077.otf');
+}
+
+@font-face {
+  font-family: 'NyghtSerif-Regular';
+  src: url('/fonts/NyghtSerif-Regular.otf');
+}
+
+@font-face {
+  font-family: 'RemixaTest-regular';
+  src: url('/fonts/RemixaTest-Regular-BF649a5c12202eb-2.ttf');
+}
+
+@font-face {
+  font-family: 'Polysans';
+  src: url('/fonts/PolySans-Neutral.ttf');
+}
+
+@font-face {
+  font-family: 'RemixaTest';
+  src: url('/fonts/RemixaTest-Regular-BF649a5c12202eb-2.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RemixaTest';
+  src: url('/fonts/RemixaTest-Regular-BF649a5c12202eb-2.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FormaDJRBanner';
+  src: url('/fonts/FormaDJRBanner-Medium-Testing-1.woff') format('woff');
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'me2';
+  src: url('/fonts/me2-1.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LINE-BY-LINE REVEAL ANIMATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.bottomToUp .line-wrapper {
+  overflow: hidden;
+  display: block;
+}
+
+.bottomToUp .line-wrapper .line-inner {
+  display: block;
+  transform: translateY(101%);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0;
+}
+
+.bottomToUp .line-wrapper.animate .line-inner {
+  transform: translateY(0);
+  opacity: 1;
+  will-change: transform, opacity;
+  animation: removeWillChange 0.8s forwards;
+}
+
+@keyframes removeWillChange {
+  to {
+    will-change: auto;
+  }
+}
+
+.bottomToUp .line-wrapper:nth-child(1) .line-inner { transition-delay: 0s; }
+.bottomToUp .line-wrapper:nth-child(2) .line-inner { transition-delay: 0.15s; }
+.bottomToUp .line-wrapper:nth-child(3) .line-inner { transition-delay: 0.3s; }
+.bottomToUp .line-wrapper:nth-child(4) .line-inner { transition-delay: 0.45s; }
+.bottomToUp .line-wrapper:nth-child(5) .line-inner { transition-delay: 0.6s; }
+.bottomToUp .line-wrapper:nth-child(6) .line-inner { transition-delay: 0.75s; }
+.bottomToUp .line-wrapper:nth-child(7) .line-inner { transition-delay: 0.9s; }
+.bottomToUp .line-wrapper:nth-child(8) .line-inner { transition-delay: 1.05s; }
+.bottomToUp .line-wrapper:nth-child(9) .line-inner { transition-delay: 1.2s; }
+.bottomToUp .line-wrapper:nth-child(10) .line-inner { transition-delay: 1.35s; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.header-section {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  color: white;
+}
+
+.header-upper {
+  width: 100%;
+  padding: 2.5vmax;
+  position: fixed;
+  top: 0;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  z-index: 9999;
+  mix-blend-mode: exclusion;
+  pointer-events: none; /* let clicks pass through except on interactive children */
+}
+
+.header-upper .logo__pre,
+.header-upper .h3 {
+  pointer-events: auto; /* re-enable clicks on logo and menu button */
+}
+
+.logo__pre img {
+  height: 3vmax;
+}
+
+.header-section h3 {
+  font-family: 'RemixaTest-regular';
+  font-size: 2vw;
+  font-weight: 900;
+  line-height: 1;
+  color: #FFFFFF;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   OVERLAY
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh; /* dynamic viewport height for mobile browsers */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease, visibility 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MENU OPTIONS (Desktop: two-column layout)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.menu-options {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  justify-content: space-between;
+  padding: 3vw;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BACKGROUND IMAGES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.menu-bg-images {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  pointer-events: none;
+}
+
+.menu-bg-images img {
+  width: 100%;
+  height: 135vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.image1, .image2, .image3, .image4, .image5, .image6 {
+  opacity: 0;
+  scale: 0;
+  transition: opacity 0.5s ease-in, scale 0.5s ease-in;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LEFT COLUMN: Page links, socials, text
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.other-options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.Container {
+  margin-top: 3vmax;
+}
+
+.Container p {
+  font-size: 1vw;
+  font-weight: 400;
+  font-family: 'RemixaTest-regular';
+}
+
+.page-option {
+  width: 100%;
+}
+
+.menu-item {
+  align-items: start;
+  display: flex;
+  overflow: hidden;
+}
+
+.menu-item h2 {
+  font-size: 2vw;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.2em;
+  font-family: 'RemixaTest-regular';
+}
+
+.menu-item h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SOCIAL ICONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.social-media-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2vw;
+  overflow: hidden;
+}
+
+.social-media-icon a {
+  display: flex;
+  align-items: center;
+}
+
+.social-media-icon svg {
+  color: #FFFFFF;
+  height: 2vw;
+  width: 2vw;
+  cursor: pointer;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RIGHT COLUMN: Photographer names (desktop)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.name-wrapper-desktop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+  z-index: 2;
+}
+
+.name-wrapper-desktop h2 {
+  font-family: 'RemixaTest-regular';
+  font-weight: 400;
+  font-size: 4vw;
+  overflow: hidden;
+}
+
+/* Mobile photographer names — hidden on desktop */
+.name-wrapper-mobile {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CORNER DECORATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.full-site-corner {
+  width: 70px;
+  height: 70px;
+  gap: 20px;
+  position: fixed;
+}
+
+.corners-bottom-right {
+  position: fixed;
+  right: 1vw;
+  bottom: 1vw;
+  z-index: 3;
+}
+
+.corners-top-right {
+  right: 1vw;
+  top: 1vw;
+  z-index: 70;
+}
+
+.corners-bottom-left {
+  position: fixed;
+  left: 1vw;
+  bottom: 1vw;
+  z-index: 3;
+}
+
+.corners-top-left {
+  left: 1vw;
+  top: 1vw;
+  z-index: 70;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HOMEPAGE SECTIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.homepage-wrapper {
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+.homesection2-top-dash {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 2vw 3vw;
+  justify-content: space-between;
+}
+
+.homesection2-top-dash h5 {
+  font-family: 'RemixaTest-regular';
+  font-size: 1.3vw;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE (≤ 1024px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 1024px) {
+
+  /* ── Header ── */
+  .header-upper {
+    padding: 5vw;
+  }
+
+  .header-upper h3 {
+    font-size: 16px;
+    line-height: 1em;
+  }
+
+  .logo__pre img {
+    height: 5vmax;
+  }
+
+  /* ── Overlay ── */
+  .menu-options {
+    flex-direction: column;
+    padding: 20vw 7vw 7vw;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── Hide desktop right-column photographer names ── */
+  .name-wrapper-desktop {
+    display: none;
+  }
+
+  /* ── Show mobile photographer names (inside left column, at top) ── */
+  .name-wrapper-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8vw;
+  }
+
+  .name-wrapper-mobile .menu-item {
+    justify-content: center;
+  }
+
+  .name-wrapper-mobile .menu-item h2 {
+    font-family: 'RemixaTest-regular';
+    font-size: 7.5vw;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.3em;
+    text-align: center;
+  }
+
+  /* ── Page links: right-aligned on mobile ── */
+  .page-option {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .page-option .menu-item {
+    justify-content: flex-end;
+  }
+
+  .page-option .menu-item h2 {
+    font-size: 4vw;
+    text-align: right;
+    line-height: 1.6em;
+  }
+
+  /* ── Social icons: right-aligned on mobile ── */
+  .social-media-icon {
+    justify-content: flex-end;
+    gap: 4vw;
+    margin-top: 6vw;
+  }
+
+  .social-media-icon svg {
+    height: 5vw;
+    width: 5vw;
+  }
+
+  /* ── Container / paragraph text ── */
+  .Container {
+    display: none; /* hide "imagedrivencontent" on mobile */
+  }
+
+  /* ── Other options: stack with space ── */
+  .other-options {
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  /* ── Background images: still visible but dimmed ── */
+  .menu-bg-images img {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  /* ── Corners: smaller on mobile ── */
+  .full-site-corner {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* ── Homepage section dash ── */
+  .homesection2-top-dash h5 {
+    font-size: 11px;
+  }
+
+  .homesection2-top-dash h5:nth-child(2) {
+    display: none;
+  }
+
+  .homesection2-top-dash {
+    padding: 2% 5%;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SMALL MOBILE (≤ 480px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 480px) {
+  .name-wrapper-mobile .menu-item h2 {
+    font-size: 8.5vw;
+  }
+
+  .page-option .menu-item h2 {
+    font-size: 4.5vw;
+    line-height: 1.8em;
+  }
+
+  .social-media-icon svg {
+    height: 6vw;
+    width: 6vw;
+  }
+
+  .header-upper {
+    padding: 6vw;
+  }
+
+  .menu-options {
+    padding: 22vw 6vw 6vw;
+  }
+}
+
+
+
+ /* width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease, visibility 0.3s ease;
+  background-color: transparent; */

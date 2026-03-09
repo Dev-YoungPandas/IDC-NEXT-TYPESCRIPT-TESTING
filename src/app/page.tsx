@@ -113,7 +113,7 @@ export default async function Home() {
         {/* ── Menu + Header (replaces all inline header HTML + scripts) ── */}
         <MenuOverlay photographers={photographers} />
 
-        <div className='homepage-wrapper overflow-hidden'>
+        <div className='homepage-wrapper '>
           <HomePage photographers={photographers} />
 
           <div className="homesection2-top-dash">
