@@ -84,16 +84,16 @@ export default function CategoriesPage({ categories }: CategoriesPageProps) {
     });
 
     const mm = gsap.matchMedia();
-    mm.add('(min-width: 768px)', () => {
-      document.querySelectorAll('.cat-hide-container').forEach((c) => {
-        gsap.to(c, { opacity: 0, scrollTrigger: { trigger: c, start: 'bottom 12%', end: 'bottom 2%', scrub: true } });
-      });
-    });
-    mm.add('(max-width: 767px)', () => {
-      document.querySelectorAll('.cat-hide-container').forEach((c) => {
-        gsap.to(c, { opacity: 0, scrollTrigger: { trigger: c, start: 'bottom 5%', end: 'bottom 1%', scrub: true } });
-      });
-    });
+    // mm.add('(min-width: 768px)', () => {
+    //   document.querySelectorAll('.cat-hide-container').forEach((c) => {
+    //     gsap.to(c, { opacity: 0, scrollTrigger: { trigger: c, start: 'bottom 12%', end: 'bottom 2%', scrub: true } });
+    //   });
+    // });
+    // mm.add('(max-width: 767px)', () => {
+    //   document.querySelectorAll('.cat-hide-container').forEach((c) => {
+    //     gsap.to(c, { opacity: 0, scrollTrigger: { trigger: c, start: 'bottom 5%', end: 'bottom 1%', scrub: true } });
+    //   });
+    // });
 
     return () => { ScrollTrigger.getAll().forEach((st) => st.kill()); mm.revert(); };
   }, []);

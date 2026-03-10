@@ -101,10 +101,23 @@ const CATEGORIES = [
 export default function Categories() {
   return (
     <>
-      <MenuOverlay />
-      <CategoriesPage categories={CATEGORIES} />
-      {/* <CTASection /> */}
-      <Footer />
+      <div className='bg-white '>
+        <MenuOverlay />
+        <CategoriesPage categories={CATEGORIES} />
+
+      </div>
+
+
+      <div className='w-full  h-[131vh] xl:h-[177vh]'>
+        <div className='mt-[-3.5vw] xl:bg-white'>
+          <CTASection />
+        </div>
+
+        <div className='fixed w-full bottom-0 z-[-1]'>
+          <Footer />
+        </div>
+      </div>
+
     </>
   );
 }

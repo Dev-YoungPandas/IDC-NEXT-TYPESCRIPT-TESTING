@@ -138,7 +138,7 @@ export default async function Home() {
           )}
         </div>
 
-        <div className='w-full h-[131vh] xl:h-[177vh]'>
+        <div className='w-full mt-[-4vw]  h-[131vh] xl:h-[177vh]'>
           <CTASection data={testimonialData} />
           <div className='fixed w-full bottom-0 z-[-1]'>
             <Footer />

@@ -7,7 +7,7 @@
 
 .marqueeTopLine {
     height: 3.3vh;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .marqueeBottomLine {
@@ -132,30 +132,34 @@
     .marqueeTopLine {
         height: 1.2vh;
         width: 100%;
+        margin-top: 1vw;
         scale: 2.5;
-        background-color: black;
+        /* background-color: black; */
 
     }
 
- 
+
     .marqueeBottomLine {
-        height: 0.2vh;
+        height: 1.2vh;
         scale: 2.5;
+        margin-top:1.5vw;
         background-color: #f8f8f8;
     }
 
 
     .ctasection-photographer-name {
-       
+
         bottom: 1vh;
-        
+
     }
 
 
     .marquee-photographer-name {
-        font-size:16px;
-        
+        font-size: 16px;
+
     }
+
+    
 
 
 }

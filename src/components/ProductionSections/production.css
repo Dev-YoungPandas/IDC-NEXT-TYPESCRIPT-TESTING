@@ -1,0 +1,296 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRODUCTION PAGE — Section 1: Hero + Section 2: Content
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Section 1: Hero ────────────────────────────────────────────────────── */
+.prod-hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 0 0 3vw 0;
+}
+
+/* Video background — fills entire hero */
+.prod-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Gradient overlay — bottom fade to black */
+.prod-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: linear-gradient(180deg, transparent 73%, #000000 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ── IDC heading — bottom left ─────────────────────────────────────────── */
+.prod-hero__heading {
+  position: absolute;
+  bottom: 3vw;
+  left: 0;
+  z-index: 2;
+  font-family: 'RemixaTest-regular', sans-serif;
+  font-size: 14vw;
+  font-weight: 900;
+  color: #fff;
+  line-height: 0.85;
+  margin: 0;
+  padding-left: 3vw;
+  mix-blend-mode: exclusion;
+  text-transform: uppercase;
+}
+
+/* ── PRODUCING RESULTS — bottom right ──────────────────────────────────── */
+.prod-hero__subheadings {
+  position: absolute;
+  bottom: 3vw;
+  right: 3vw;
+  z-index: 2;
+  text-align: right;
+  mix-blend-mode: exclusion;
+}
+
+.prod-hero__subheading {
+  font-family: 'RemixaTest-regular', sans-serif;
+  font-size: 3.3vw;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.05;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Info bar — just below hero top, full width ────────────────────────── */
+.prod-hero__infobar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2vw 3vw;
+  margin: 0;
+}
+
+.prod-hero__info-item {
+  font-family: 'RemixaTest-regular', sans-serif;
+  font-size: 1.3vw;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+  line-height: 1;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Section 2: Content (Dark panel)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.prod-content {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8vw 3vw;
+  position: relative;
+}
+
+.prod-content__inner {
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── Heading ───────────────────────────────────────────────────────────── */
+.prod-content__heading {
+  font-family: 'RemixaTest-regular', sans-serif;
+  font-size: 4.2vw;
+  font-weight: 900;
+  line-height: 1.05;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 0 3vw 0;
+}
+
+/* ── Paragraph ─────────────────────────────────────────────────────────── */
+.prod-content__paragraph {
+  font-family: 'mo4', sans-serif;
+  font-size: 1vw;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 4vw 0;
+  max-width: 60vw;
+}
+
+/* ── CTA Button (Testimonials →) ───────────────────────────────────────── */
+.prod-content__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2vw;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 1.2vw 2.5vw;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.prod-content__cta:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #fff;
+}
+
+.prod-content__cta-text {
+  font-family: 'RemixaTest-regular', sans-serif;
+  font-size: 1.6vw;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.prod-content__cta-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prod-content__cta-icon svg {
+  width: 1.5vw;
+  height: 1.5vw;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Responsive — Mobile (≤ 740px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media screen and (max-width: 740px) {
+
+  /* ── Hero ─────────────────────────────────────────────────────────── */
+  .prod-hero {
+    min-height: 100dvh;
+    padding-bottom: 5vw;
+  }
+
+  .prod-hero__heading {
+    font-size: 25vw;
+    bottom: 5vw;
+    padding-left: 5vw;
+  }
+
+  .prod-hero__subheadings {
+    bottom: 5vw;
+    right: 5vw;
+  }
+
+  .prod-hero__subheading {
+    font-size: 6vw;
+  }
+
+  .prod-hero__infobar {
+    padding: 3vw 5vw;
+  }
+
+  .prod-hero__info-item {
+    font-size: 11px;
+  }
+
+  /* Hide "top rated" on mobile (matching Elementor) */
+  .prod-hero__info-item:nth-child(2) {
+    display: none;
+  }
+
+  /* ── Content ─────────────────────────────────────────────────────── */
+  .prod-content {
+    padding: 15vw 5vw;
+    min-height: auto;
+  }
+
+  .prod-content__inner {
+    max-width: 100%;
+  }
+
+  .prod-content__heading {
+    font-size: 8vw;
+    margin-bottom: 6vw;
+  }
+
+  .prod-content__paragraph {
+    font-size: 3.5vw;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-bottom: 8vw;
+  }
+
+  .prod-content__cta {
+    padding: 3vw 6vw;
+    gap: 3vw;
+  }
+
+  .prod-content__cta-text {
+    font-size: 4vw;
+  }
+
+  .prod-content__cta-icon svg {
+    width: 4vw;
+    height: 4vw;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Tablet (741px — 1024px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media screen and (min-width: 741px) and (max-width: 1024px) {
+
+  .prod-hero__heading {
+    font-size: 16vw;
+  }
+
+  .prod-hero__subheading {
+    font-size: 4.5vw;
+  }
+
+  .prod-hero__info-item {
+    font-size: 1.5vw;
+  }
+
+  .prod-content__heading {
+    font-size: 5vw;
+  }
+
+  .prod-content__paragraph {
+    font-size: 1.6vw;
+    max-width: 80%;
+  }
+
+  .prod-content__cta-text {
+    font-size: 2.2vw;
+  }
+
+  .prod-content__cta-icon svg {
+    width: 2vw;
+    height: 2vw;
+  }
+}

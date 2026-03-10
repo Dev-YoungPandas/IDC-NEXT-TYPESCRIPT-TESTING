@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface Photographer {
@@ -41,12 +41,15 @@ const PHOTOGRAPHER_IMAGES = [
   'https://images.unsplash.com/photo-1503104538136-7491acef4d5d?q=80&w=1470&auto=format&fit=crop',
 ];
 
+const PRELOADER_SESSION_KEY = 'idc_preloader_shown';
+
 // ─── Component ───────────────────────────────────────────────────────────────
 export default function MenuOverlay({ photographers }: MenuOverlayProps) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const isImageClicked = useRef(false);
   const isAnimating = useRef(false);
+  const pathname = usePathname();
 
   // ─── Refs ──────────────────────────────────────────────────────────────
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -84,12 +87,38 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
   // ═══════════════════════════════════════════════════════════════════════
   useEffect(() => {
     // Lock scroll during entire preloader sequence
+    const smallCorners = getElements(smallCornersRef);
+    const fullSiteCorners = getElements(fullSiteCornersRef);
+    const isHomepage = pathname === '/';
+
+
+    if (!isHomepage) {
+      if (preloaderRef.current) preloaderRef.current.style.display = 'none';
+      if (smallFrameRef.current) smallFrameRef.current.style.display = 'none';
+      smallCorners.forEach((el) => { el.style.display = 'none'; });
+      fullSiteCorners.forEach((c) => { c.style.display = 'block'; });
+
+      if (logoRef.current) {
+        logoRef.current.style.transform = 'translateY(0)';
+        logoRef.current.style.opacity = '1';
+      }
+      if (menuTextRef.current) {
+        menuTextRef.current.style.transform = 'translateY(0)';
+        menuTextRef.current.style.opacity = '1';
+      }
+
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.overflow = 'auto';
+      return;
+    }
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 
     const mobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-    const smallCorners = getElements(smallCornersRef);
-    const fullSiteCorners = getElements(fullSiteCornersRef);
+
+
+
+
 
     // Initial states
     gsap.set(fullSiteCorners, { display: 'none' });
@@ -194,12 +223,16 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
     tl.call(() => {
       document.documentElement.style.overflow = 'auto';
       document.body.style.overflow = 'auto';
+
+
+      try { sessionStorage.setItem(PRELOADER_SESSION_KEY, '1'); } catch { }
+
     });
 
     return () => {
       tl.kill();
     };
-  }, []);
+  }, [pathname]);
 
   // ─── Set initial GSAP states for menu items ────────────────────────────
   useEffect(() => {
@@ -442,26 +475,33 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
       {/* ═══════════════════════════════════════════════════════════════════
           HEADER + OVERLAY
           The "center" class is used by the preloader to blur/unblur this.
-          ═══════════════════════════════════════════════════════════════════ */}
-      <div ref={headerSectionRef} className="header-section center hero">
-        <div className="header-upper">
+        
+        ═══════════════════════════════════════════════════════════════════ */}
+
+
+      <div className="header-upper">
+        <a href="/">
           <div ref={logoRef} className="logo__pre">
+
             <img
               src="https://idc.co.nz/headless/wp-content/uploads/2025/03/IDC-logo.svg"
               alt="IDC Logo"
             />
           </div>
-          <div>
-            <h3
-              ref={menuTextRef}
-              className="h3 menutext"
-              onClick={handleMenuToggle}
-              style={{ cursor: 'pointer' }}
-            >
-              {isOpen ? 'CLOSE' : 'MENU'}
-            </h3>
-          </div>
+        </a>
+        <div>
+          <h3
+            ref={menuTextRef}
+            className="h3 menutext"
+            onClick={handleMenuToggle}
+            style={{ cursor: 'pointer' }}
+          >
+            {isOpen ? 'CLOSE' : 'MENU'}
+          </h3>
         </div>
+      </div>
+      <div ref={headerSectionRef} className="header-section center hero">
+
 
         {/* ── Overlay ── */}
         <div ref={overlayRef} className="overlay">

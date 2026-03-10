@@ -10,6 +10,7 @@
   background-color: #ffffff;
   color: #000000;
   position: relative;
+  padding-bottom:10vw;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -18,6 +19,7 @@
 
 .categories-hero-section {
   width: 100%;
+  
   padding: 6vw 3vw 0 3vw;
 }
 
@@ -356,7 +358,7 @@
 
   .cat-title {
     font-size: 15.5px;
-    letter-spacing: -0.08em;
+    /* letter-spacing: -0.08em; */
     line-height: 1.2em;
   }
 
@@ -376,14 +378,23 @@
   }
 
   .categories-main-heading {
-    font-size: 28px;
+    font-size:40px;
   }
 
+   .cat-mob-text {
+    gap: 5vw;
+    padding-top: 5vw;
+  }
+
+
   .cat-title {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .cat-count {
-    font-size: 10px;
+    font-size: 11px;
   }
+
+
+ 
 }
