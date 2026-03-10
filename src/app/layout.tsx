@@ -4,6 +4,7 @@
 
 import type { Metadata } from "next";
 import "./globals.css";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -53,7 +54,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
+        <SmoothScrollProvider>
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );

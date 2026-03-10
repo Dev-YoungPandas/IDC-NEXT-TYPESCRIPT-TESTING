@@ -1,0 +1,365 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   CATEGORIES PAGE — Pixel-perfect WP Elementor match
+   Each item has its own class for INDIVIDUAL spacing control.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.categories-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #000000;
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO HEADING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.categories-hero-section {
+  width: 100%;
+  padding: 6vw 3vw 0 3vw;
+}
+
+.categories-main-heading {
+  font-family: 'Remixa', 'RemixaTest-regular', sans-serif;
+  font-size: 5.7vw;
+  font-weight: 900;
+  line-height: 1.05;
+  color: #000000;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 2vw;
+}
+
+/* Line-by-line reveal */
+.categories-main-heading .line-wrapper {
+  overflow: hidden;
+  display: block;
+}
+
+.categories-main-heading .line-inner {
+  display: block;
+  transform: translateY(101%);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.categories-main-heading .line-wrapper.animate .line-inner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.categories-main-heading .line-wrapper:nth-child(1) .line-inner {
+  transition-delay: 0s;
+}
+
+.categories-main-heading .line-wrapper:nth-child(2) .line-inner {
+  transition-delay: 0.15s;
+}
+
+.cat-heading-line {
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GRID LAYOUT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.categories-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  background-color: lightgreen;
+  padding: 0;
+}
+
+.categories-col {
+  display: flex;
+  background-color: lightskyblue;
+  flex-direction: column;
+}
+
+.categories-col-left {
+  /* width: 48%; */
+  background-color: lightgoldenrodyellow;
+}
+
+.categories-col-right {
+  /* width: 52%; */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE ITEM STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.cat-grid-item {
+  width: 100%;
+}
+
+/* Left column default horizontal padding */
+.categories-col-left .cat-grid-item {
+  padding-left: 3vw;
+  padding-right: 7vw;
+}
+
+/* Right column default horizontal padding */
+.categories-col-right .cat-grid-item {
+  padding-left: 1.5vw;
+  background-color: antiquewhite;
+  padding-right: 3vw;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PER-ITEM SPACING — Tune each one individually!
+   
+   Left column order:   0=Beauty, 1=Landscapes, 2=Portraits, 3=Kids+Young, 4=Sports
+   Right column order:  0=Still+Products, 1=Lifestyle, 2=People In Places, 3=Fashion, 4=Food+Beverage
+   
+   Adjust margin-top / margin-bottom on any item WITHOUT affecting others.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── LEFT COLUMN ── */
+
+/* 0: Beauty — first item, no top margin */
+.cat-left-0 {
+  margin-top: 0;
+  margin-bottom: 4vw;
+}
+
+/* 1: Landscapes — gap after Beauty title */
+.cat-left-1 {
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+  width: 100%;
+}
+.cat-left-1 img {
+    /* width: 100%; */
+}
+
+/* 2: Portraits — gap after Landscapes */
+.cat-left-2 {
+  margin-top: 6vw;
+  margin-bottom: 4vw;
+}
+
+/* 3: Kids + Young People */
+.cat-left-3 {
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+}
+
+/* 4: Sports */
+.cat-left-4 {
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+}
+
+/* ── RIGHT COLUMN ── */
+
+/* 0: Still + Products — offset from top to create masonry stagger */
+.cat-right-0 {
+  margin-top: 0vw;
+  margin-bottom: 4vw;
+}
+
+/* 1: Lifestyle — gap after Still+Products */
+.cat-right-1 {
+  margin-top: 18vw;
+  margin-bottom: 4vw;
+  
+}
+
+.cat-right-1 img {
+  /* width: 60%; */
+}
+
+
+/* 2: People In Places */
+.cat-right-2 {
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+}
+
+/* 3: Fashion */
+.cat-right-3 {
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+}
+
+/* 4: Food + Beverage */
+.cat-right-4 {
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   IMAGE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.cat-image-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.cat-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cat-image-link {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TITLE + COUNT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.cat-text {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.5vw;
+  padding-top:2vw;
+  padding-bottom: 0;
+}
+
+.cat-title-link,
+.cat-count-link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.cat-title {
+  font-family: 'mo4', sans-serif;
+  font-size:2.1vw;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.2em;
+  margin: 0;
+  color: #000000;
+}
+
+.cat-count {
+  font-family: 'mo4', sans-serif;
+  font-size: 0.9vw;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  color: #000000;
+  position: relative;
+  top: -0.5em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TABLET (≤ 1024px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 1024px) {
+  .categories-hero-section {
+    padding: 10vw 3vw 0 3vw;
+  }
+
+  .categories-main-heading {
+    font-size: 5.3vw;
+  }
+
+  .cat-title {
+    font-size: 2vw;
+  }
+
+  .cat-count {
+    font-size: 1vw;
+  }
+
+  /* Reduce right-column offset on tablet */
+  .cat-right-0 {
+    margin-top: 10vw;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE (≤ 767px) — single column, all items stack
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 767px) {
+  .categories-hero-section {
+    padding: 22vw 5vw 4vw 5vw;
+  }
+
+  .categories-main-heading {
+    font-size: 32px;
+    line-height: 1.1;
+    margin-bottom: 6vw;
+  }
+
+  .categories-grid {
+    flex-direction: column;
+  }
+
+  .categories-col,
+  .categories-col-left,
+  .categories-col-right {
+    width: 100%;
+  }
+
+  /* Reset ALL per-item margins on mobile to uniform spacing */
+  .cat-left-0, .cat-left-1, .cat-left-2, .cat-left-3, .cat-left-4,
+  .cat-right-0, .cat-right-1, .cat-right-2, .cat-right-3, .cat-right-4 {
+    margin-top: 0;
+    margin-bottom: 6vw;
+  }
+
+  /* Reset column-specific horizontal padding */
+  .categories-col-left .cat-grid-item,
+  .categories-col-right .cat-grid-item {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .cat-text {
+    gap: 2vw;
+    padding-top: 2vw;
+  }
+
+  .cat-title {
+    font-size: 15.5px;
+    letter-spacing: -0.08em;
+    line-height: 1.2em;
+  }
+
+  .cat-count {
+    font-size: 11px;
+    top: -0.2em;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SMALL MOBILE (≤ 480px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 480px) {
+  .categories-hero-section {
+    padding: 25vw 5vw 3vw 5vw;
+  }
+
+  .categories-main-heading {
+    font-size: 28px;
+  }
+
+  .cat-title {
+    font-size: 14px;
+  }
+
+  .cat-count {
+    font-size: 10px;
+  }
+}

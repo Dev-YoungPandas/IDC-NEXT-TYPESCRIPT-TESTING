@@ -281,7 +281,7 @@
   top: 0;
   z-index: 4;
   color: white;
-    pointer-events: none;
+  pointer-events: none;
 
   /* NO background-color here */
 }
@@ -291,12 +291,14 @@
   padding: 2.5vmax;
   position: fixed;
   top: 0;
-  color: white;
   align-items: center;
   justify-content: space-between;
   display: flex;
+  mix-blend-mode: exclusion;
   z-index: 9999999999;
-    pointer-events: auto;
+  pointer-events: auto;
+
+
 
 }
 
@@ -307,9 +309,10 @@
 .header-section h3 {
   font-family: 'RemixaTest-regular';
   font-size: 2vw;
+  mix-blend-mode: exclusion;
   font-weight: 900;
   line-height: 1;
-  color: #FFFFFF;
+  color: #000000;
 }
 
 
@@ -331,7 +334,7 @@
   backdrop-filter: blur(12px);
   opacity: 0;
   visibility: hidden;
-    pointer-events: auto;
+  pointer-events: auto;
 
   background-color: transparent;
   /* ★ NO transition property — GSAP controls this */
@@ -470,7 +473,7 @@
   pointer-events: none;
   mix-blend-mode: exclusion !important;
   z-index: 70;
-    /* opacity: 0; */
+  /* opacity: 0; */
 
   display: none;
   /* Shown by preloader GSAP animation */
@@ -650,7 +653,7 @@
   }
 
   .logo__pre img {
-    height: 5vmax;
+    height: 3vmax;
   }
 }
 
