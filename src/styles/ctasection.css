@@ -1,6 +1,7 @@
 .ctasection-parent {
     width: 100%;
     height: 79vh;
+    overflow: hidden;
     /* background-color: lightcoral; */
 }
 

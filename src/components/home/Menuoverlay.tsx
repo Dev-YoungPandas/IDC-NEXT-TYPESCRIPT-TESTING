@@ -58,6 +58,15 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
   const noBlurRef = useRef<(HTMLDivElement | null)[]>([]);
   const imagesRef = useRef<(HTMLImageElement | null)[]>([]);
 
+  // Preloader refs
+  const preloaderRef = useRef<HTMLDivElement>(null);
+  const smallFrameRef = useRef<HTMLDivElement>(null);
+  const smallCornersRef = useRef<(HTMLDivElement | null)[]>([]);
+  const fullSiteCornersRef = useRef<(HTMLDivElement | null)[]>([]);
+  const headerSectionRef = useRef<HTMLDivElement>(null);
+  const preloaderLogoRef = useRef<HTMLImageElement>(null);
+  const preloaderBgRef = useRef<HTMLDivElement>(null);
+
   const photoList = photographers?.length ? photographers : DEFAULT_PHOTOGRAPHERS;
 
   const isMobile = useCallback(() => {
@@ -68,27 +77,131 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
   const getElements = (refs: React.MutableRefObject<(HTMLElement | null)[]>) =>
     refs.current.filter(Boolean) as HTMLElement[];
 
-  // ─── Header intro animation ────────────────────────────────────────────
+  // ═══════════════════════════════════════════════════════════════════════
+  // PRELOADER + HEADER INTRO ANIMATION
+  // Replaces the old separate "Header intro animation" useEffect.
+  // Sequence: preloader → header fade-in
+  // ═══════════════════════════════════════════════════════════════════════
   useEffect(() => {
+    // Lock scroll during entire preloader sequence
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 
-    const tl = gsap.timeline();
-    tl.fromTo(logoRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 1 }, 'same')
-      .fromTo(menuTextRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 1 }, 'same');
+    const mobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const smallCorners = getElements(smallCornersRef);
+    const fullSiteCorners = getElements(fullSiteCornersRef);
 
-    const timeout = setTimeout(() => {
+    // Initial states
+    gsap.set(fullSiteCorners, { display: 'none' });
+    gsap.set(logoRef.current, { y: 50, opacity: 0 });
+    gsap.set(menuTextRef.current, { y: 50, opacity: 0 });
+
+    if (preloaderBgRef.current) {
+      gsap.set(preloaderBgRef.current, { filter: 'blur(20px)' });
+    }
+
+    const tl = gsap.timeline();
+
+    // ── Step 1: Preloader logo slides UP into view ──
+    tl.fromTo(
+      preloaderLogoRef.current,
+      { y: 150 },
+      { y: 0, duration: 0.5 }
+    );
+
+    // ── Step 2: Preloader logo slides UP and OUT (after 1s pause) ──
+    tl.fromTo(
+      preloaderLogoRef.current,
+      { y: 0 },
+      { y: -150, delay: 1, duration: 0.8 }
+    );
+
+    // ── Step 3: All simultaneous ("h1" label) ──
+    // 3a: Small frame EXPANDS to full viewport
+    tl.fromTo(
+      smallFrameRef.current,
+      {
+        width: mobile ? '40vw' : '20vw',
+        height: mobile ? '120px' : '10vw',
+      },
+      {
+        width: mobile ? '97vw' : '97vw',
+        height: mobile ? '98vh' : '94vh',
+        duration: 1,
+        onComplete: () => {
+          if (smallFrameRef.current) {
+            smallFrameRef.current.style.display = 'none';
+          }
+        },
+      },
+      'expand'
+    );
+
+    // 3b: Header section UN-BLURS (reveals the page behind)
+    if (preloaderBgRef.current) {
+      tl.fromTo(
+        preloaderBgRef.current,
+        { filter: 'blur(20px)' },
+        { filter: 'blur(0px)', duration: 1 },
+        'expand'
+      );
+    }
+
+    // 3c: Small corners GROW from 20px to full-site-corner size
+    tl.fromTo(
+      smallCorners,
+      {
+        width: mobile ? '15px' : '20px',
+        height: mobile ? '15px' : '20px',
+      },
+      {
+        width: mobile ? '30px' : '70px',
+        height: mobile ? '30px' : '70px',
+        duration: 1,
+        onComplete: () => {
+          // Hide all small corners
+          smallCorners.forEach((el) => {
+            el.style.display = 'none';
+          });
+        },
+      },
+      'expand'
+    );
+
+    // 3d: Show full-site corners (swap from small to full)
+    tl.call(
+      () => {
+        fullSiteCorners.forEach((corner) => {
+          gsap.set(corner, { display: 'block' });
+        });
+      },
+      [],
+      'expand'
+    );
+
+    // ── Step 4: Hide preloader container ──
+    tl.call(() => {
+      if (preloaderRef.current) {
+        preloaderRef.current.style.display = 'none';
+      }
+    });
+
+    // ── Step 5: Header intro (logo + MENU text fade in) ──
+    tl.to(logoRef.current, { y: 0, opacity: 1, duration: 0.8 }, 'headerIn');
+    tl.to(menuTextRef.current, { y: 0, opacity: 1, duration: 0.8 }, 'headerIn');
+
+    // ── Step 6: Unlock scroll ──
+    tl.call(() => {
       document.documentElement.style.overflow = 'auto';
       document.body.style.overflow = 'auto';
-    }, 1000);
+    });
 
     return () => {
-      clearTimeout(timeout);
       tl.kill();
     };
   }, []);
 
-  // ─── Set initial GSAP states ───────────────────────────────────────────
+  // ─── Set initial GSAP states for menu items ────────────────────────────
   useEffect(() => {
     gsap.set(getElements(menuItemsARef), { y: '110%' });
     gsap.set(getElements(menuItemsBRef), { y: '110%' });
@@ -142,6 +255,37 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
       setTimeout(() => { isAnimating.current = false; }, 600);
     } else {
       // ── CLOSE ──
+
+      // ★ MOBILE CLOSE: simple fade + hard reset
+      if (isMobile()) {
+        gsap.to(overlay, {
+          opacity: 0,
+          duration: 0.3,
+          onComplete: () => {
+            overlay.style.visibility = 'hidden';
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+
+            // Reset menu items to initial off-screen positions
+            gsap.set(itemsA, { y: '110%', opacity: 1, filter: 'none' });
+            gsap.set(itemsB, { y: '110%', opacity: 1, filter: 'none' });
+            gsap.set(noBlur, { y: '110%' });
+            gsap.set(getElements(imagesRef), { opacity: 0, scale: 0.8 });
+
+            // Nuke ALL inline styles on header elements to restore them
+            if (logoRef.current) logoRef.current.style.cssText = '';
+            if (menuTextRef.current) menuTextRef.current.style.cssText = '';
+
+            isAnimating.current = false;
+          },
+        });
+
+        isImageClicked.current = false;
+        setIsOpen(false);
+        return;
+      }
+
+      // ── DESKTOP CLOSE ──
       const words = paragraphRef.current?.querySelectorAll('.word') || [];
 
       gsap.to(words, { x: '-100%', opacity: 0, duration: 0.5, stagger: 0.05, ease: 'power3.in' });
@@ -167,7 +311,7 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
       isImageClicked.current = false;
       setIsOpen(false);
     }
-  }, [isOpen]);
+  }, [isOpen, isMobile]);
 
   // ─── Name hover → image reveal (desktop only) ─────────────────────────
   const handleNameEnter = useCallback((index: number) => {
@@ -254,11 +398,52 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
   }, [isMobile, router]);
 
   // ─── Render ────────────────────────────────────────────────────────────
-  // HTML structure matches your original WordPress/page.tsx exactly
   return (
     <>
-      {/* ── Fixed Header ── */}
-      <div className="header-section hero">
+      {/* ═══════════════════════════════════════════════════════════════════
+          PRELOADER
+          ═══════════════════════════════════════════════════════════════════ */}
+      <div ref={preloaderRef} className="preloader-hero">
+
+        <div ref={preloaderBgRef} className="preloader-bg"></div>
+
+        {/* Small frame with L-shaped corners */}
+        <div ref={smallFrameRef} className="smallFrame">
+          <div
+            className="corners smallCorner smallCorner1"
+            ref={(el) => { smallCornersRef.current[0] = el; }}
+          ></div>
+          <div
+            className="corners smallCorner smallCorner2"
+            ref={(el) => { smallCornersRef.current[1] = el; }}
+          ></div>
+          <div
+            className="corners smallCorner smallCorner3"
+            ref={(el) => { smallCornersRef.current[2] = el; }}
+          ></div>
+          <div
+            className="corners smallCorner smallCorner4"
+            ref={(el) => { smallCornersRef.current[3] = el; }}
+          ></div>
+        </div>
+
+        {/* Preloader IDC logo (centered, animates up then out) */}
+        <div className="heading">
+          <div className="elem">
+            <img
+              ref={preloaderLogoRef}
+              src="https://idc.co.nz/headless/wp-content/uploads/2025/03/IDC-logo.svg"
+              alt="IDC Logo"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          HEADER + OVERLAY
+          The "center" class is used by the preloader to blur/unblur this.
+          ═══════════════════════════════════════════════════════════════════ */}
+      <div ref={headerSectionRef} className="header-section center hero">
         <div className="header-upper">
           <div ref={logoRef} className="logo__pre">
             <img
@@ -281,10 +466,6 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
         {/* ── Overlay ── */}
         <div ref={overlayRef} className="overlay">
           <div className="menu-options">
-            {/* Corner elements inside overlay */}
-            <div className="corners-bottom-right"></div>
-            <div className="corners-bottom-left full-site-corner blend-text"></div>
-
             {/* ── Background Images ── */}
             <div className="images">
               {photoList.map((p, i) => (
@@ -299,7 +480,7 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
               ))}
             </div>
 
-            {/* ── Left Column: Logo + Page Links + Socials ── */}
+            {/* ── Left Column: Page Links + Socials ── */}
             <div className="other-options">
               <div className="Container">
                 <p ref={paragraphRef} className="p">
@@ -307,7 +488,7 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
                 </p>
               </div>
 
-              <div className="page-option bg-amber-300">
+              <div className="page-option">
                 {PAGE_LINKS.map((link, i) => (
                   <div key={link.href} style={{ overflow: 'hidden' }}>
                     <div
@@ -350,7 +531,7 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
               </div>
             </div>
 
-            {/* ── Right Column: Photographer Names (original .name-wrapper) ── */}
+            {/* ── Right Column: Photographer Names ── */}
             <div className="name-wrapper blend-text">
               {photoList.map((p, i) => (
                 <div key={p.slug} style={{ overflow: 'hidden' }}>
@@ -385,11 +566,26 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
         </div>
       </div>
 
-      {/* ── Corner decorations (outside overlay) ── */}
-      <div className="full-site-corner blend-text corners-bottom-right"></div>
-      <div className="full-site-corner blend-text corners-top-right"></div>
-      <div className="full-site-corner blend-text corners-bottom-left"></div>
-      <div className="full-site-corner blend-text corners-top-left"></div>
+      {/* ═══════════════════════════════════════════════════════════════════
+          CORNER DECORATIONS (outside everything, independent z-index)
+          Hidden initially by CSS, shown by preloader animation via ref.
+          ═══════════════════════════════════════════════════════════════════ */}
+      <div
+        className="full-site-corner blend-text corners-bottom-right"
+        ref={(el) => { fullSiteCornersRef.current[0] = el; }}
+      ></div>
+      <div
+        className="full-site-corner blend-text corners-top-right"
+        ref={(el) => { fullSiteCornersRef.current[1] = el; }}
+      ></div>
+      <div
+        className="full-site-corner blend-text corners-bottom-left"
+        ref={(el) => { fullSiteCornersRef.current[2] = el; }}
+      ></div>
+      <div
+        className="full-site-corner blend-text corners-top-left"
+        ref={(el) => { fullSiteCornersRef.current[3] = el; }}
+      ></div>
     </>
   );
 }

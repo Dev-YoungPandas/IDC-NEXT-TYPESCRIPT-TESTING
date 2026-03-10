@@ -36,7 +36,6 @@
   src: url('/fonts/PolySans-Neutral.ttf');
 }
 
-
 @font-face {
   font-family: 'RemixaTest';
   src: url('/fonts/RemixaTest-Regular-BF649a5c12202eb-2.ttf') format('truetype');
@@ -69,9 +68,11 @@
   font-style: normal;
 }
 
-/* animations.css - OPTIMIZED VERSION */
 
-/* Line-by-line reveal */
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 .bottomToUp .line-wrapper {
   overflow: hidden;
   display: block;
@@ -85,15 +86,10 @@
   opacity: 0;
 }
 
-/* Only add will-change when animating (performance) */
 .bottomToUp .line-wrapper.animate .line-inner {
   transform: translateY(0);
   opacity: 1;
   will-change: transform, opacity;
-}
-
-/* Remove will-change after animation completes */
-.bottomToUp .line-wrapper.animate .line-inner {
   animation: removeWillChange 0.8s forwards;
 }
 
@@ -103,7 +99,6 @@
   }
 }
 
-/* Staggered delays (only 10 lines for performance) */
 .bottomToUp .line-wrapper:nth-child(1) .line-inner {
   transition-delay: 0s;
 }
@@ -145,23 +140,155 @@
 }
 
 
-/* this is in page.tsx section css */
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRELOADER
+   
+   The preloader sits on top of everything (z-index: 9999).
+   It contains a centered frame (.smallFrame) with 4 L-shaped corners
+   (.smallCorner) and a centered logo (.heading > .elem > img).
+   
+   Animation flow:
+   1. Logo slides up into view, pauses, slides up and out
+   2. Frame expands to full viewport, corners grow to match full-site-corner
+   3. Frame + small corners hide, full-site-corner shows (seamless swap)
+   4. Preloader container hides, header animates in
+   ═══════════════════════════════════════════════════════════════════════════ */
 
+.preloader-hero {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.preloader-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #00000070;
+  background-image: url('https://images.unsplash.com/photo-1503104538136-7491acef4d5d?q=80&w=1470&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.smallFrame {
+  width: 20vw;
+  min-height: 10vw;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+}
+
+/* L-shaped corners inside .smallFrame */
+.corners {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-color: #FFFFFF;
+  border-style: solid;
+  border-width: 0;
+}
+
+.smallCorner1 {
+  left: 0;
+  top: 0;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.smallCorner2 {
+  right: 0;
+  top: 0;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.smallCorner3 {
+  left: 0;
+  bottom: 0;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.smallCorner4 {
+  right: 0;
+  bottom: 0;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* Preloader logo section */
+.heading {
+  width: 17vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.elem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elem img {
+  height: 5vw;
+  object-fit: cover;
+}
+
+/* Initial visibility states — preloader corners visible, full-site hidden */
+.smallFrame,
+.smallCorner {
+  display: block;
+}
+
+.full-site-corner {
+  display: none;
+  /* Hidden initially, GSAP shows them during preloader animation */
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADER
+   
+   .header-section wraps header-upper + overlay.
+   It starts with filter:blur(20px) (set by GSAP), preloader unblurs it.
+   NO background-color — it must be transparent so corners show through.
+   height:100vh so it serves as a full-screen container during preloader.
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 .header-section {
   width: 100%;
+  height: 100vh;
   position: fixed;
   top: 0;
-  /* height: 100px; */
   z-index: 4;
   color: white;
-  background-color: lightgray;
+    pointer-events: none;
 
+  /* NO background-color here */
 }
 
 .header-upper {
   width: 100%;
-  padding: 2.5vmax 2.5vmax;
+  padding: 2.5vmax;
   position: fixed;
   top: 0;
   color: white;
@@ -169,30 +296,29 @@
   justify-content: space-between;
   display: flex;
   z-index: 9999999999;
-
+    pointer-events: auto;
 
 }
 
 .logo__pre img {
   height: 3vmax;
-  /* z-index: 9999999999999999; */
 }
 
 .header-section h3 {
-
   font-family: 'RemixaTest-regular';
   font-size: 2vw;
   font-weight: 900;
   line-height: 1;
   color: #FFFFFF;
-
 }
 
 
-.menu-item svg {
-  font-size: 2vw;
-  height: 2vw;
-}
+/* ═══════════════════════════════════════════════════════════════════════════
+   OVERLAY
+   
+   NO CSS transition — GSAP handles all opacity/visibility changes.
+   The CSS transition was fighting GSAP on mobile close.
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 .overlay {
   width: 100%;
@@ -205,50 +331,35 @@
   backdrop-filter: blur(12px);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.1s ease, visibility 0.3s ease;
+    pointer-events: auto;
+
   background-color: transparent;
+  /* ★ NO transition property — GSAP controls this */
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MENU CONTENT
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 .menu-options {
   width: 100%;
   height: 100vh;
   display: flex;
-  background-color: lightgreen;
   justify-content: space-between;
-  padding-left: 3vw;
-  padding-right: 3vw;
-  padding-top: 3vw;
-  padding-bottom: 3vw;
-
+  padding: 3vw;
 }
 
-.corners-bottom-right {
-  width: 70px;
-  height: 70px;
-  position: fixed;
-  bottom: 1vw;
-  right: 1vw;
-  z-index: 70;
-
-}
-
-.corners-bottom-left {
-  width: 70px;
-  height: 70px;
-  position: fixed;
-  bottom: 1vw;
-  left: 1vw;
-  z-index: 3;
+.menu-item svg {
+  font-size: 2vw;
+  height: 2vw;
 }
 
 .images {
-  /* width: 100%; */
   height: 100vh;
   justify-content: center;
   align-items: center;
   display: flex;
-  background-color: rgb(46, 34, 34);
-
 }
 
 .images img {
@@ -257,43 +368,33 @@
   position: absolute;
   left: 0;
   top: 0;
-
   object-fit: cover;
   object-position: top center;
-
 }
-
 
 .other-options {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 }
 
 .page-option {
   width: 100%;
-
 }
 
 .menu-item {
   align-items: start;
   display: flex;
   overflow: hidden;
-  /* background-color: red; */
-
 }
 
 .social-media-icon {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 2vw 2vw;
-  row-gap: 2vw;
-  column-gap: 2vw;
+  gap: 2vw;
   overflow: hidden;
-
 }
 
 .social-media-icon svg {
@@ -302,7 +403,6 @@
   width: 1em;
   font-size: 2vw;
   cursor: none;
-
 }
 
 .Container {
@@ -313,8 +413,6 @@
   font-size: 1vw;
   font-weight: 400;
   font-family: 'RemixaTest-regular';
-
-
 }
 
 .menu-item h2 {
@@ -322,9 +420,7 @@
   font-weight: 400;
   text-transform: uppercase;
   line-height: 1.2em;
-
   font-family: 'RemixaTest-regular';
-
 }
 
 .menu-item h2 a {
@@ -338,8 +434,6 @@
   flex-direction: column;
   justify-content: end;
   align-items: end;
-  background-color: lightsalmon;
-
 }
 
 .name-wrapper h2 {
@@ -347,10 +441,9 @@
   font-weight: 400;
   font-size: 4vw;
   overflow: hidden;
-
 }
 
-.image1,
+/* .image1,
 .image2,
 .image3,
 .image4,
@@ -358,34 +451,41 @@
 .image6 {
   opacity: 0;
   scale: 0;
-  transition: opacity 2s easeInSine, scale 0.5s easeInSine;
-}
+  transition: opacity 2s ease-in, scale 0.5s ease-in;
+} */
 
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CORNER DECORATIONS (full-site-corner)
+   
+   ★ ALL corners z-index: 70 — above header-section (4) and overlay (5).
+   ★ Each selector appears ONCE — no duplicates.
+   ★ display:none initially — GSAP toggles to display:block during preloader.
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 .full-site-corner {
   width: 70px;
   height: 70px;
-  gap: 20px;
   position: fixed;
+  pointer-events: none;
   mix-blend-mode: exclusion !important;
+  z-index: 70;
+    /* opacity: 0; */
 
+  display: none;
+  /* Shown by preloader GSAP animation */
 }
 
 .corners-bottom-right {
-  position: fixed;
   right: 1vw;
   bottom: 1vw;
-  z-index: 3;
   border-bottom: 2px solid #FFFFFF;
   border-right: 2px solid #FFFFFF;
 }
 
 .corners-top-right {
   right: 1vw;
-
   top: 1vw;
-  
-  z-index: 70;
   border-top: 2px solid #FFFFFF;
   border-right: 2px solid #FFFFFF;
 }
@@ -393,7 +493,6 @@
 .corners-bottom-left {
   left: 1vw;
   bottom: 1vw;
-  z-index: 3;
   border-bottom: 2px solid #FFFFFF;
   border-left: 2px solid #FFFFFF;
 }
@@ -403,32 +502,25 @@
   top: 1vw;
   border-top: 2px solid #FFFFFF;
   border-left: 2px solid #FFFFFF;
-  z-index: 70;
-  /* background-color: red; */
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HOMEPAGE SECTIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 .homesection2-top-dash {
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-right: 0px;
-  margin-left: 0px;
-  padding-top: 2vw;
-  padding-bottom: 2vw;
-  padding-left: 3vw;
-  padding-right: 3vw;
+  margin: 0;
+  padding: 2vw 3vw;
   justify-content: space-between;
-
-
-
 }
 
 .homepage-wrapper {
   background-color: rgb(255, 255, 255);
-  /* position: relative; */
-  /* z-index: 2; */
+  overflow: hidden;
 }
 
 .homesection2-top-dash h5 {
@@ -439,18 +531,9 @@
   color: #000000;
 }
 
-.homepage-wrapper {
-  background-color: rgb(255, 255, 255);
-  /* position: relative; */
-  overflow: hidden;
-  /* z-index: 1; */
-}
-
-
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   MOBILE RESPONSIVE — your original 740px breakpoint kept,
-   plus new 1024px breakpoint for menu layout
+   MOBILE (≤ 740px)
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @media screen and (max-width: 740px) {
@@ -463,10 +546,7 @@
   }
 
   .homesection2-top-dash {
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 2% 5%;
   }
 
   .header-upper h3 {
@@ -474,36 +554,38 @@
     line-height: 1em;
   }
 
+  /* Preloader: smaller on mobile */
+  .heading {
+    width: 40vw;
+  }
 
-
+  .elem img {
+    width: 60%;
+  }
 }
 
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   TABLET / MOBILE MENU (≤ 1024px)
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-
-/* ── Menu mobile layout (≤ 1024px) ── */
 @media screen and (max-width: 1024px) {
 
-  /* Overlay: use dvh for mobile browser address bar */
   .overlay {
     height: 100dvh;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.806);
   }
 
-  /* Menu: stack into single column */
   .menu-options {
     flex-direction: column;
     height: 100dvh;
-    background-color: lightskyblue;
     padding: 20vw 7vw 7vw;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Name-wrapper: move to top, center, bigger text */
   .name-wrapper {
     order: -1;
-    background-color: lightpink;
     justify-content: end;
     align-items: end;
     margin-bottom: 8vw;
@@ -517,13 +599,11 @@
     justify-content: center;
   }
 
-  /* Other-options: below names */
   .other-options {
     justify-content: flex-start;
     gap: 0;
   }
 
-  /* Page links: right-aligned */
   .page-option {
     display: flex;
     flex-direction: column;
@@ -540,7 +620,6 @@
     line-height: 1.6em;
   }
 
-  /* Social icons: right-aligned */
   .social-media-icon {
     justify-content: flex-end;
     gap: 4vw;
@@ -553,24 +632,19 @@
     font-size: 5vw;
   }
 
-  /* Hide paragraph text on mobile */
   .Container {
     display: none;
   }
 
-  /* Background images height */
   .images img {
     height: 100dvh;
   }
 
-  /* Corners smaller */
   .full-site-corner {
     width: 30px;
     height: 30px;
-    
   }
 
-  /* Header padding */
   .header-upper {
     padding: 5vw;
   }
@@ -580,7 +654,11 @@
   }
 }
 
-/* ── Small mobile (≤ 480px) ── */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SMALL MOBILE (≤ 480px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 @media screen and (max-width: 480px) {
   .name-wrapper h2 {
     font-size: 8.3vw;
