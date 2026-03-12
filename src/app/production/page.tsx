@@ -16,7 +16,17 @@ export default function Production() {
       <MenuOverlay />
       <ProductionSections />
       {/* <CTASection variant="subscribe" /> */}
-      <Footer />
+
+
+      <div className='w-full  h-[131vh] xl:h-[177vh]'>
+        <div className='mt-[-3.5vw] xl:bg-white'>
+          <CTASection />
+        </div>
+
+        <div className='fixed w-full bottom-0 z-[-1]'>
+          <Footer />
+        </div>
+      </div>
     </>
   );
 }

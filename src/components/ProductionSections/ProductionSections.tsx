@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 import './production.css';
+import AccordianSection from './AccordianSection';
+import ProductionApproach from './ProductionApproach';
 
 // ─── Hardcoded data (replace with API data later) ────────────────────────
 const HERO_DATA = {
-  videoUrl: 'https://idc.yp-studio.com/media/2025/03/09215501/Vid2Production30.webm',
+  videoUrl: 'https://player.vimeo.com/video/1008670231?muted=1&autoplay=1&loop=1&background=1&app_id=122963',
   heading: 'IDC',
   subHeading1: 'PRODUCING',
   subHeading2: 'RESULTS',
@@ -88,6 +90,7 @@ export default function ProductionSections() {
   }, []);
 
   // ─── Content section scroll animation ──────────────────────────────
+
   useEffect(() => {
     let cancelled = false;
 
@@ -134,15 +137,24 @@ export default function ProductionSections() {
           SECTION 1 — HERO (Video + IDC + PRODUCING RESULTS)
           ═══════════════════════════════════════════════════════════════ */}
       <section ref={heroRef} className="prod-hero">
-        {/* Video background */}
-        <video
+
+        <img
+          className="prod-hero__poster"
+          src="https://idc.yp-studio.com/media/2025/04/04073441/Sacha_Stejko_IDC_TBWA_Anchor_MakeAmazing_Woman_Pouring_Cream_A_optimized.jpg"
+          alt="IDC Production"
+          loading="eager"
+          fetchPriority="high"
+        />
+
+
+        <iframe
           className="prod-hero__video"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          src={`${HERO_DATA.videoUrl}#t=0,100000`}
+          src="https://player.vimeo.com/video/1008670231?muted=1&autoplay=1&loop=1&background=1&app_id=122963"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+          referrerPolicy="strict-origin-when-cross-origin"
+          title="IDC TBWA BTS with ANCHOR Make Amazing"
+          data-ready="true"
         />
 
         {/* Gradient overlay */}
@@ -164,12 +176,16 @@ export default function ProductionSections() {
         </div>
 
         {/* Info bar — top strip */}
+
+      </section>
+
+      <div>
         <div ref={infoBarRef} className="prod-hero__infobar content__inner">
           {HERO_DATA.infoItems.map((item, i) => (
             <h5 key={i} className="prod-hero__info-item">{item}</h5>
           ))}
         </div>
-      </section>
+      </div>
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 2 — CONTENT (Heading + Paragraph + CTA)
@@ -219,6 +235,17 @@ export default function ProductionSections() {
           </a>
         </div>
       </section>
+
+
+     
+
+      <ProductionApproach/>
+
+
+
+      <div>
+        <AccordianSection />
+      </div>
     </>
   );
 }
