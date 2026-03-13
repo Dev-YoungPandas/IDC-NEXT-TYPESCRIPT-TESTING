@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import './productionapproach.css';
+import TextReveal from '../animations/TextReveal';
 
 // ─── Section Data ────────────────────────────────────────────────────────────
 const APPROACH_DATA = {
@@ -46,10 +47,44 @@ export default function ProductionApproach() {
                     });
                 }
 
-                /* ── Video parallax ─────────────────────────────────────────── */
-                if (videoWrapRef.current) {
+                if (window.innerWidth < 740 && stickyRef.current && sectionRef.current) {
+                    ScrollTrigger.create({
+                        trigger: sectionRef.current,
+                        start: '200px 100px',
+                        end: '+=400vh',
+                        pin: stickyRef.current,
+                        pinSpacing: false,
+                    });
+                }
+
+
+
+                if (window.innerWidth > 740 && videoWrapRef.current) {
 
                     const parallaxAmount = -15;
+
+                    const tl1 = gsap.fromTo(
+                        videoWrapRef.current,
+                        { yPercent: 0 },
+                        {
+                            yPercent: parallaxAmount * 2.3,
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: videoWrapRef.current,
+                                start: 'top bottom',
+                                end: 'bottom top',
+                                scrub: 0.6,
+                                invalidateOnRefresh: true,
+                            },
+                        }
+                    );
+                }
+
+
+                /* ── Video parallax ─────────────────────────────────────────── */
+                if (window.innerWidth < 740 && videoWrapRef.current) {
+
+                    const parallaxAmount = -20;
 
                     const tl1 = gsap.fromTo(
                         videoWrapRef.current,
@@ -103,26 +138,6 @@ export default function ProductionApproach() {
                     );
                 });
 
-                /* ── Sticky heading text entrance ───────────────────────────── */
-                if (stickyRef.current) {
-                    const headings = stickyRef.current.querySelectorAll('.prod-approach__sticky-text');
-                    gsap.fromTo(
-                        headings,
-                        { y: 40, opacity: 0 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            duration: 0.9,
-                            stagger: 0.15,
-                            ease: 'power2.out',
-                            scrollTrigger: {
-                                trigger: stickyRef.current,
-                                start: 'top 80%',
-                                once: true,
-                            },
-                        }
-                    );
-                }
             });
         });
 
@@ -130,18 +145,21 @@ export default function ProductionApproach() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="prod-approach">
+        <section ref={sectionRef} className="prod-approach ">
             {/* ── Left Column ──────────────────────────────────────────────── */}
             <div className="prod-approach__left">
                 {/* Sticky heading block */}
-                <div ref={stickyRef} className="prod-approach__sticky">
-                    <h2 className="prod-approach__sticky-text prod-approach__subtitle blend-text">
-                        {APPROACH_DATA.subtitle}
-                    </h2>
-                    <h2 className="prod-approach__sticky-text prod-approach__name blend-text">
-                        {APPROACH_DATA.name}
-                    </h2>
-                </div>
+                <TextReveal>
+                    <div ref={stickyRef} className="prod-approach__sticky">
+                        <h2 className="prod-approach__sticky-text prod-approach__subtitle blend-text">
+                            {APPROACH_DATA.subtitle}
+                        </h2>
+                        <h2 className="prod-approach__sticky-text prod-approach__name blend-text">
+                            {APPROACH_DATA.name}
+                        </h2>
+                    </div>
+
+                </TextReveal>
 
                 {/* Video block with parallax */}
                 <div ref={videoWrapRef} className="prod-approach__video-wrap">

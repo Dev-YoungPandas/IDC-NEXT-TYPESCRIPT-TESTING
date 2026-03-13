@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import './production.css';
 import AccordianSection from './AccordianSection';
 import ProductionApproach from './ProductionApproach';
+import ProductionPremier from './ProductionPremier';
 
 // ─── Hardcoded data (replace with API data later) ────────────────────────
 const HERO_DATA = {
@@ -161,7 +162,7 @@ export default function ProductionSections() {
         <div className="prod-hero__overlay" />
 
         {/* Main heading — bottom left */}
-        <h1 ref={headingRef} className="prod-hero__heading blend-text">
+        <h1 className="prod-hero__heading blend-text">
           {HERO_DATA.heading}
         </h1>
 
@@ -180,7 +181,7 @@ export default function ProductionSections() {
       </section>
 
       <div>
-        <div ref={infoBarRef} className="prod-hero__infobar content__inner">
+        <div className="prod-hero__infobar content__inner">
           {HERO_DATA.infoItems.map((item, i) => (
             <h5 key={i} className="prod-hero__info-item">{item}</h5>
           ))}
@@ -190,18 +191,18 @@ export default function ProductionSections() {
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 2 — CONTENT (Heading + Paragraph + CTA)
           ═══════════════════════════════════════════════════════════════ */}
-      <section className="prod-content">
+      <section className="prod-content ">
         <div className="prod-content__inner">
-          <h1 ref={contentHeadingRef} className="prod-content__heading">
+          <h1 className="prod-content__heading">
             {CONTENT_DATA.heading}
           </h1>
 
-          <p ref={contentParaRef} className="prod-content__paragraph">
+          <p className="prod-content__paragraph">
             {CONTENT_DATA.paragraph}
           </p>
 
           <a
-            ref={contentCtaRef}
+
             href={CONTENT_DATA.ctaHref}
             className="prod-content__cta blend-text"
           >
@@ -237,9 +238,30 @@ export default function ProductionSections() {
       </section>
 
 
-     
+      <ProductionApproach />
 
-      <ProductionApproach/>
+
+      <div className='prod-section3-main'>
+
+        <h2>Conscious Creativity</h2>
+
+        <h2>Inclusive Collaboration</h2>
+
+        <h2>People & Planet First</h2>
+
+      </div>
+
+
+
+      <div>
+        <ProductionPremier />
+      </div>
+
+      <div>
+        <img src="/images/123.png" alt="" />
+      </div>
+
+
 
 
 

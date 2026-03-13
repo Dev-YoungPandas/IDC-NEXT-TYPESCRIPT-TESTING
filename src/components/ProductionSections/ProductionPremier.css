@@ -1,0 +1,256 @@
+.prod-premier-main {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 13vw;
+    padding-bottom: 4vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    gap: 10.5vmax;
+    position: relative;
+    background-color: white;
+    /* background-color: lightgoldenrodyellow; */
+}
+
+
+.prod-premier-left {
+    /* background-color: lightgray; */
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10vw;
+    gap: 0;
+
+
+}
+
+.prod-premier__sticky {
+    width: 100%;
+    z-index: 2;
+    mix-blend-mode: exclusion;
+}
+
+.prod-premier__name {
+    font-family: 'RemixaTest-regular', sans-serif;
+    font-size: 4.2vw;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0;
+    position: relative;
+    width: 100%;
+    color: black;
+    line-height: 1.05;
+}
+
+.prod-premier__video-wrap {
+    width: 100%;
+    height: 62vh;
+    position: relative;
+    /* overflow: hidden; */
+    margin-top: 3vw;
+}
+
+.prod-premier__image {
+    width: 45vw;
+    height: 62vh;
+    object-fit: cover;
+    display: block;
+}
+
+.prod-premier-right {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.premier-accordion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.premier-accordion__item {
+    border-bottom: 1px solid black;
+}
+
+.premier-accordion__item:first-child {
+    /* border-top: 1px solid #000; */
+}
+
+/* ── Trigger button (title row) ────────────────────────────────────────── */
+.premier-accordion__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 16px 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.premier-accordion__trigger:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+/* ── Title text ────────────────────────────────────────────────────────── */
+.premier-accordion__title {
+    font-family: 'mo4';
+    font-size: 1.6vw;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #7A7A7A;
+    line-height: 1.2;
+    flex: 1;
+    transition: color 0.25s ease;
+}
+
+.premier-accordion__item--open .premier-accordion__title {
+    color: #7A7A7A;
+    /* stays same color when open, matching reference */
+}
+
+/* ── Chevron ───────────────────────────────────────────────────────────── */
+.premier-accordion__chevron {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+}
+
+.premier-accordion__chevron-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Collapsible panel ─────────────────────────────────────────────────── */
+.premier-accordion__panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Content inside panel ──────────────────────────────────────────────── */
+.premier-accordion__content {
+    padding: 8px 10px 24px 10px;
+}
+
+.premier-accordion__content p {
+    font-family: 'mo4', sans-serif;
+    font-size: 1.1vw;
+    font-weight: 400;
+    line-height: 1.1em;
+    color: #000;
+    margin: 1.5vw 0 12px 10px;
+}
+
+.premier-accordion__content p:last-child {
+    margin-bottom: 2vw;
+}
+
+.premier-accordion__content ul {
+    list-style: disc;
+    padding-left: 1.2em;
+    /* margin: 0px 0; */
+    margin-bottom: 2vw;
+    margin-top: 1.5vw;
+}
+
+.premier-accordion__content ul li {
+    font-family: 'mo4', sans-serif;
+    font-size: 1.1vw;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #000;
+    margin-bottom: 0px;
+}
+
+.premier-accordion__content ul li:last-child {
+    margin-bottom: 0;
+}
+
+.premier-accordion__content strong {
+    font-weight: 700;
+    color: #000;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Mobile (≤ 740px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media screen and (max-width: 740px) {
+    .prod-premier-main {
+        flex-direction: column;
+        /* padding: 20vw 5vw 10vw 5vw; */
+        padding-top: 200px;
+        padding-left: 6vw;
+        padding-right: 6vw;
+
+        gap: 0vw;
+    }
+
+    .prod-premier-left {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .prod-premier-right {
+        width: 100%;
+    }
+
+    .premier-accordion__title {
+        font-size: 14px;
+    }
+
+    .premier-accordion__content p,
+    .premier-accordion__content ul li {
+        font-size: 13px;
+    }
+
+
+    .prod-premier__video-wrap {
+        width: 100%;
+        height: 35vh;
+        position: relative;
+        /* overflow: hidden; */
+        margin-top: 3vw;
+    }
+
+    .prod-premier__image {
+        width: 100%;
+        height: 35vh;
+        object-fit: cover;
+        display: block;
+    }
+
+
+
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Tablet (741px — 1024px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media screen and (min-width: 741px) and (max-width: 1024px) {
+    .premier-accordion__title {
+        font-size: 2vw;
+    }
+
+    .premier-accordion__content p,
+    .premier-accordion__content ul li {
+        font-size: 1.5vw;
+    }
+}
