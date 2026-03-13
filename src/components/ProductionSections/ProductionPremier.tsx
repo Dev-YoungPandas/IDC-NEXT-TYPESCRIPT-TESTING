@@ -158,7 +158,7 @@ export default function ProductionPremier() {
                 /* ── Video parallax mobile ─────────────────────────────────────────── */
                 if (window.innerWidth < 740 && videoWrapRef.current) {
 
-                    const parallaxAmount = -20;
+                    const parallaxAmount = -30;
 
                     const tl1 = gsap.fromTo(
                         videoWrapRef.current,

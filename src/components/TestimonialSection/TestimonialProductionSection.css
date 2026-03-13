@@ -1,0 +1,303 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Production Testimonial Slider
+   Identical design to TestimonialSection — isolated class names (pt-*)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.pt-section {
+  width: 100%;
+  /* margin-top: 15vw; */
+  background-color: black;
+  display: flex;
+  align-items: center;
+  padding-top: 13vw;
+  padding-bottom: 13vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+
+}
+
+/* ── Heading block ─────────────────────────────────────────────────────── */
+.pt-heading-wrap {
+  width: 100%;
+  padding-left: 24vw;
+  margin-bottom: 1vmax;
+}
+
+.pt-heading {
+  font-size: 4.5vw;
+  font-family: 'RemixaTest-regular';
+  text-transform: uppercase;
+  line-height: 1;
+  font-weight: 900;
+  color: #d1d1d1;
+  margin: 0;
+}
+
+/* ── Color transition utility ──────────────────────────────────────────── */
+.pt-color-text {
+  color: #d1d1d1;
+}
+
+/* ── Subtext (paragraph4) ──────────────────────────────────────────────── */
+.pt-subtext {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.3vw;
+  color: #d1d1d1;
+  font-family: 'RemixaTest-regular';
+  padding-left: 24vw;
+  margin-bottom: 2vmax;
+}
+
+/* ── Slider wrapper ────────────────────────────────────────────────────── */
+.pt-slider {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Carousel outer ────────────────────────────────────────────────────── */
+.pt-carousel {
+  width: 81%;
+  overflow: hidden;
+  /* height: 31vmax; */
+}
+
+/* ── Carousel container ────────────────────────────────────────────────── */
+.pt-carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 15vw;
+  /* background-color: lightcoral; */
+  height: 16vw;
+}
+
+/* ── Slide base ────────────────────────────────────────────────────────── */
+.pt-slide {
+  width: 100%;
+  will-change: transform, opacity;
+}
+
+/* Idle — visible */
+.pt-slide-active {
+  position: relative;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ── Exit animations ───────────────────────────────────────────────────── */
+.pt-slide-exit-left {
+  position: relative;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.5s ease;
+}
+
+.pt-slide-exit-right {
+  position: relative;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.5s ease;
+}
+
+/* ── Enter animations ──────────────────────────────────────────────────── */
+.pt-slide-enter-from-right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 15vw;
+  animation: ptEnterFromRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.pt-slide-enter-from-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 15vw;
+  animation: ptEnterFromLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes ptEnterFromRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes ptEnterFromLeft {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* ── Slide content ─────────────────────────────────────────────────────── */
+.pt-slide h6 {
+  font-family: mo4;
+  color: white;
+  margin-bottom: 1.2vmax;
+  margin-top: 1.6vmax;
+  font-size: 1.6vw;
+  width: 70%;
+  font-weight: 400;
+  line-height: 1.1em;
+  letter-spacing: -0.03px;
+}
+
+.pt-slide h5 {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.1vw;
+  color: #d1d1d1;
+  font-family: 'RemixaTest-regular';
+}
+
+.pt-slide h4 {
+  font-family: mo4;
+  color: white;
+  font-size: 0.9vw;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1.2em;
+}
+
+.pt-slide-bottom {
+  margin-top: 3vw;
+}
+
+/* ── Arrow buttons ─────────────────────────────────────────────────────── */
+.pt-arrow-parent {
+  display: flex;
+  width: 100%;
+  margin-top: 2vmax;
+  align-items: center;
+  padding: 0.5vmax 6vmax;
+  justify-content: space-between;
+}
+
+.pt-arrow {
+  display: flex;
+  gap: 0;
+}
+
+.pt-arrow svg {
+  height: 1.3em;
+  width: 120px;
+}
+
+.pt-arrow-btn {
+  background: none;
+  border: none;
+  padding: 0.5vw;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  position: relative;
+  z-index: 10;
+}
+
+.pt-arrow-btn:hover { opacity: 1; }
+.pt-arrow-btn:active { opacity: 0.9; }
+
+/* ── Slide counter ─────────────────────────────────────────────────────── */
+.pt-slider-count {
+  font-size: 1.8vw;
+  color: white;
+  font-style: italic;
+  font-family: 'NyghtSerif-Regular';
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Responsive — Mobile (≤ 740px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media screen and (max-width: 740px) {
+  .pt-section {
+    margin-top: 15vw;
+    padding-bottom: 6vmax;
+  }
+
+  .pt-heading-wrap {
+    padding-left: 5vw;
+  }
+
+  .pt-heading {
+    font-size: 32px;
+  }
+
+  .pt-subtext {
+    font-size: 11px;
+    padding-left: 5vw;
+  }
+
+  .pt-carousel {
+    width: 81%;
+    height: 45vmax;
+  }
+
+  .pt-carousel-container {
+    padding-left: 5vw;
+    min-height: 50vw;
+  }
+
+  .pt-slide-enter-from-right,
+  .pt-slide-enter-from-left {
+    padding-left: 5vw;
+  }
+
+  .pt-slide h6 {
+    font-size: 15px;
+    width: 60%;
+    line-height: 1em;
+  }
+
+  .pt-slide h4 {
+    font-size: 11px;
+    margin-top: 2vmax;
+  }
+
+  .pt-slide h5 {
+    margin-top: 4vmax;
+    font-size: 3.5vw;
+  }
+
+  .pt-arrow-parent {
+    padding: 0vmax 2vmax;
+  }
+
+  .pt-arrow svg {
+    width: 36px;
+  }
+
+  .pt-slider-count {
+    font-size: 4vw;
+  }
+
+  .pt-arrow-btn {
+    padding: 2vw;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Responsive — Small Mobile (≤ 480px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media screen and (max-width: 480px) {
+  .pt-section {
+    margin-top: 30vw;
+  }
+
+  .pt-carousel {
+    height: 55vmax;
+  }
+
+  .pt-carousel-container {
+    margin-left: 5vmax;
+  }
+}

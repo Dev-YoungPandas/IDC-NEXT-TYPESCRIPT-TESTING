@@ -5,6 +5,7 @@ import './production.css';
 import AccordianSection from './AccordianSection';
 import ProductionApproach from './ProductionApproach';
 import ProductionPremier from './ProductionPremier';
+import TestimonialProductionSection from '../TestimonialSection/TestimonialProductionSection';
 
 // ─── Hardcoded data (replace with API data later) ────────────────────────
 const HERO_DATA = {
@@ -251,18 +252,13 @@ export default function ProductionSections() {
 
       </div>
 
-
-
       <div>
         <ProductionPremier />
       </div>
 
       <div>
-        <img src="/images/123.png" alt="" />
+        <TestimonialProductionSection />
       </div>
-
-
-
 
 
       <div>

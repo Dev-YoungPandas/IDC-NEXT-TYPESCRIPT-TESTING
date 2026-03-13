@@ -199,13 +199,25 @@
         padding-top: 200px;
         padding-left: 6vw;
         padding-right: 6vw;
-
+        padding-bottom: 40vw;
         gap: 0vw;
     }
 
     .prod-premier-left {
         width: 100%;
         padding-right: 0;
+        align-items: start;
+        justify-content: start;
+
+    }
+
+    .prod-premier__sticky {
+
+    }
+    .prod-premier__name {
+        font-size: 32px;
+        width: 80%;
+
     }
 
     .prod-premier-right {
@@ -227,7 +239,7 @@
         height: 35vh;
         position: relative;
         /* overflow: hidden; */
-        margin-top: 3vw;
+        margin-top: 30vw;
     }
 
     .prod-premier__image {
