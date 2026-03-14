@@ -125,13 +125,27 @@
 }
 
 @keyframes ptEnterFromRight {
-  0% { transform: translateX(100%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes ptEnterFromLeft {
-  0% { transform: translateX(-100%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* ── Slide content ─────────────────────────────────────────────────────── */
@@ -157,10 +171,10 @@
 
 .pt-slide h4 {
   font-family: mo4;
-  color: white;
+  color: #7A7A7A;
   font-size: 0.9vw;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.2em;
 }
 
@@ -204,8 +218,13 @@
   z-index: 10;
 }
 
-.pt-arrow-btn:hover { opacity: 1; }
-.pt-arrow-btn:active { opacity: 0.9; }
+.pt-arrow-btn:hover {
+  opacity: 1;
+}
+
+.pt-arrow-btn:active {
+  opacity: 0.9;
+}
 
 /* ── Slide counter ─────────────────────────────────────────────────────── */
 .pt-slider-count {
@@ -220,12 +239,18 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 @media screen and (max-width: 740px) {
   .pt-section {
-    margin-top: 15vw;
-    padding-bottom: 6vmax;
+    /* margin-top: 15vw; */
+    /* padding-bottom: 6vmax; */
+
+    padding-top: 40vw;
+    padding-bottom: 40vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
+
   }
 
   .pt-heading-wrap {
-    padding-left: 5vw;
+    padding-left: 0vw;
   }
 
   .pt-heading {
@@ -238,13 +263,16 @@
   }
 
   .pt-carousel {
-    width: 81%;
-    height: 45vmax;
+    width: 100%;
+    /* background-color: lightcoral; */
+    height: 30vmax;
   }
 
   .pt-carousel-container {
     padding-left: 5vw;
     min-height: 50vw;
+    width: 100%;
+    /* background-color: rgb(47, 57, 47); */
   }
 
   .pt-slide-enter-from-right,
@@ -254,22 +282,23 @@
 
   .pt-slide h6 {
     font-size: 15px;
-    width: 60%;
+    width: 80%;
     line-height: 1em;
   }
 
   .pt-slide h4 {
-    font-size: 11px;
-    margin-top: 2vmax;
+    font-size: 3.5vw;
+    line-height: 1.1em;
+    margin-top: 4vmax;
   }
 
   .pt-slide h5 {
-    margin-top: 4vmax;
-    font-size: 3.5vw;
+    margin-top: 2vmax;
+    font-size: 11px;
   }
 
   .pt-arrow-parent {
-    padding: 0vmax 2vmax;
+    padding: 0vmax 0vmax;
   }
 
   .pt-arrow svg {
@@ -290,14 +319,15 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 @media screen and (max-width: 480px) {
   .pt-section {
-    margin-top: 30vw;
+    /* margin-top: 30vw; */
   }
 
   .pt-carousel {
-    height: 55vmax;
+    height: 50vw;
   }
 
   .pt-carousel-container {
-    margin-left: 5vmax;
+    /* margin-left: 5vmax; */
+    padding-left: 0vw;
   }
 }

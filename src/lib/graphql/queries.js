@@ -1830,3 +1830,36 @@ query GetHomePage {
 `
 
 
+
+
+
+
+export const GET_PRODUCTION_QUERY =
+`
+ query GetProductionTestimonial {
+    pageBy(uri: "/production/") {
+      id
+      title
+      slug
+      productionPageData {
+        productionTestimonialHeading
+        productionTestimonialParagraph1
+        productionTestimonialPara1Role1
+        productionTestimonialPara1Name1
+        productionTestimonialParagraph2
+        productionTestimonialPara2Role2
+        productionTestimonialPara2Name2
+        productionTestimonialParagraph3
+        productionTestimonialPara3Role3
+        productionTestimonialPara3Name3
+        productionTestimonialParagraph4
+
+      productionTestimonialMarqueeHeading
+      productionTestimonialMarqueeParagraph
+      productionTestimonialMarqueeContact
+      }
+    }
+
+  }
+`
+
