@@ -1834,9 +1834,8 @@ query GetHomePage {
 
 
 
-export const GET_PRODUCTION_QUERY =
-`
- query GetProductionTestimonial {
+export const GET_PRODUCTION_QUERY = `
+  query GetProductionTestimonial {
     pageBy(uri: "/production/") {
       id
       title
@@ -1854,12 +1853,24 @@ export const GET_PRODUCTION_QUERY =
         productionTestimonialPara3Name3
         productionTestimonialParagraph4
 
-      productionTestimonialMarqueeHeading
-      productionTestimonialMarqueeParagraph
-      productionTestimonialMarqueeContact
+        productionTestimonialMarqueeHeading
+        productionTestimonialMarqueeParagraph
+        productionTestimonialMarqueeContact
+
+        productionCtaBgImage {
+           sourceUrl
+        }
+        
       }
     }
-
   }
-`
+`;
 
+
+// productionCtaMarqueeTopLineImage {
+//   sourceUrl
+// }
+        
+// productionCtaBgImage {
+//   sourceUrl
+// }

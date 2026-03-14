@@ -72,6 +72,12 @@
     width: 100%;
 }
 
+
+.ctasection-photographer-name--production {
+    mix-blend-mode: normal;
+}
+
+
 .ctasection-photographer-name-inner {
     display: flex;
     gap: 1vw;
@@ -113,8 +119,93 @@
     height: 100%;
     object-fit: cover;
     opacity: 1;
+    
     z-index: 1;
 }
+
+
+/* production marquee page heading */
+
+.production-testimonial-marqueeHeading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.production-center-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.production-testimonial-marqueeHeading h1 {
+    font-family: 'RemixaTest-regular';
+    font-size: 3.3vw;
+    width: 65%;
+    text-align: center;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+    mix-blend-mode: exclusion;
+}
+
+.productionpage-marquee-data1 {
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    /* height: 25vmax; */
+    mix-blend-mode: exclusion;
+    align-items: center;
+    top: 10%;
+    /* background-color: lightgreen; */
+}
+
+.productionpage-marquee-data2 {
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    /* height: 25vmax; */
+    /* mix-blend-mode: exclusion; */
+    align-items: center;
+    top: 68%;
+    /* background-color: lightgreen; */
+}
+
+
+.productionTestimonialMarqueeParagraph p {
+    font-family: 'RemixaTest-regular';
+    font-size: 1.1vw;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.2em;
+    color: #fff;
+    width: 50%;
+    text-align: center;
+
+}
+
+
+.productionTestimonialMarqueeContact a {
+    font-size: 2.8vw;
+    font-weight: 600;
+    font-family: 'mo4';
+    color: white;
+    text-align: center;
+}
+
+
+
 
 @media screen and (max-width: 740px) {
     .ctasection {
@@ -142,7 +233,7 @@
     .marqueeBottomLine {
         height: 1.2vh;
         scale: 2.5;
-        margin-top:1.5vw;
+        margin-top: 1.5vw;
         background-color: #f8f8f8;
     }
 
@@ -159,7 +250,48 @@
 
     }
 
-    
+    .production-testimonial-marqueeHeading h1 {
+        font-family: 'RemixaTest-regular';
+        font-size: 23px;
+        width: 100%;
+
+    }
+
+    .productionTestimonialMarqueeParagraph p {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        line-height: 1.1em;
+        width: 80%;
+
+    }
+
+    .productionpage-marquee-data2 {
+
+        align-items: center;
+        top: 80%;
+    }
+
+    .marquee-photographer-name {
+        font-family: 'mo4';
+        font-size: 20px;
+        line-height: 1;
+        font-weight: 600;
+        text-align: center;
+
+    }
+
+    .ctasection-photographer-name svg {
+        height: 14px;
+        mix-blend-mode: exclusion;
+        width: 14px;
+
+    }
+
+    .ctasection-photographer-name-inner {
+       
+        gap:2vw;
+    }
 
 
 }

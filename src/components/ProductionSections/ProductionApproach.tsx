@@ -13,9 +13,10 @@ const APPROACH_DATA = {
     portraitImg: 'https://idc.yp-studio.com/media/2025/03/09144103/Michele_Richards_Berry-e1741531286763.jpg',
     heading: 'Our Hands-On Approach to Production Excellence',
     paragraph:
-        'At IDC, we believe the best productions are built on communication, precision, and adaptability. Our team remains involved from start to finish, ensuring consistency and care at every phase. Unlike larger production companies, we maintain personal oversight of each project—giving clients direct access to decision-makers and production leads. This approach ensures seamless collaboration and on-the-ground problem-solving that keeps your photography project on track.',
+    'At IDC, we believe the best productions are built on communication, precision, and adaptability. Our team remains involved from start to finish, ensuring consistency and care at every phase. Unlike larger production companies, we maintain personal oversight of each project—giving clients direct access to decision-makers and production leads. This approach ensures seamless collaboration and on-the-ground problem-solving that keeps your photography project on track.',
     attribution: '— Michele, Production Director',
 };
+
 
 // ─── Component ───────────────────────────────────────────────────────────────
 export default function ProductionApproach() {
@@ -27,6 +28,7 @@ export default function ProductionApproach() {
     const paraRef = useRef<HTMLParagraphElement>(null);
     const attrRef = useRef<HTMLParagraphElement>(null);
     const mobileImgRef = useRef<HTMLImageElement>(null);
+
 
     useEffect(() => {
         let cancelled = false;
@@ -147,7 +149,10 @@ export default function ProductionApproach() {
     return (
         <section ref={sectionRef} className="prod-approach ">
             {/* ── Left Column ──────────────────────────────────────────────── */}
+            
             <div className="prod-approach__left">
+                
+
                 {/* Sticky heading block */}
                 <TextReveal>
                     <div ref={stickyRef} className="prod-approach__sticky">
