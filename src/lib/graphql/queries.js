@@ -1867,6 +1867,51 @@ export const GET_PRODUCTION_QUERY = `
 `;
 
 
+
+// Add to src/lib/graphql/queries.js
+
+export const GET_PHOTOGRAPHY_SERVICE_QUERY = `
+  query GetProductionTestimonial {
+  pageBy(uri: "/photography-service/") {
+    id
+    title
+    slug
+    date
+    photographyService {
+      photographyServiceHerosectionHeading
+      photographyServiceHeroBottom1
+      photographyServiceHeroBottom2
+      photographyServiceHeroBottom3
+      photographyServiceHeroBottom4
+      photographyServiceSec2Heading
+      photographyServiceSec2Paragraph
+      photographyServiceSec2AccordionTitle1
+      photographyServiceSec2AccordionTitle2
+      photographyServiceSec2AccordionTitle3
+      
+    }
+    productionPageData {
+      productionTestimonialHeading
+      productionTestimonialParagraph1
+      productionTestimonialPara1Role1
+      productionTestimonialPara1Name1
+      productionTestimonialParagraph2
+      productionTestimonialPara2Role2
+      productionTestimonialPara2Name2
+     
+      productionTestimonialMarqueeHeading
+      productionTestimonialMarqueeParagraph
+      productionTestimonialMarqueeContact
+
+      productionCtaBgImage{
+        sourceUrl
+      }
+
+    }
+  }
+}
+`;
+
 // productionCtaMarqueeTopLineImage {
 //   sourceUrl
 // }

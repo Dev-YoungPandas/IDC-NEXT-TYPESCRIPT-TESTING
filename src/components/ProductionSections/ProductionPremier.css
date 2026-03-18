@@ -17,7 +17,6 @@
 
 
 .prod-premier-left {
-    /* background-color: lightgray; */
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -33,6 +32,7 @@
     width: 100%;
     z-index: 2;
     mix-blend-mode: exclusion;
+
 }
 
 .prod-premier__name {
@@ -41,10 +41,12 @@
     font-weight: 900;
     text-transform: uppercase;
     margin: 0;
+    margin-left: -3vw;
     position: relative;
-    width: 100%;
+    width: 120%;
     color: black;
     line-height: 1.05;
+    /* background-color: red; */
 }
 
 .prod-premier__video-wrap {

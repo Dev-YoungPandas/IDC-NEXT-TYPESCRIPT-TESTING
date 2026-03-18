@@ -139,8 +139,6 @@ export default function ProductionSections() {
 
   return (
 
-
-
     <>
 
       <div className='production-wrapper'>

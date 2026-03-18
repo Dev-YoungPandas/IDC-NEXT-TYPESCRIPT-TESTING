@@ -1,0 +1,476 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   PHOTOGRAPHY SERVICE PAGE
+   Section 1: Hero
+   Section 2: Content heading + paragraphs + Accordion
+   Accordion uses `ps-accordion` prefix for isolation from production styles.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Wrapper ────────────────────────────────────────────────────────────── */
+.photography-service-wrapper {
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 1 — HERO
+   ═══════════════════════════════════════════════════════════════════════════ */
+.photography-service-hero {
+  width: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  padding-top: 16vw;
+  padding-bottom: 1vw;
+  background-image: url('https://idc.yp-studio.com/media/2025/02/09183950/Personal_5529_optimized-1.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.photography-service-hero-heading {
+  max-width: 70%;
+  align-self: flex-start;
+  text-align: start;
+  z-index: 1;
+  mix-blend-mode: exclusion;
+}
+
+.photography-service-hero-heading h1 {
+  font-family: 'RemixaTest-regular';
+  font-size: 5.8vw;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: normal;
+  line-height: 1em;
+  word-spacing: 10px;
+  mix-blend-mode: exclusion;
+  color: #fff;
+}
+
+.photography-service-hero-bottom {
+  display: flex;
+  min-height: 8vh;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+}
+
+.photography-service-hero-bottom h5 {
+  font-family: 'RemixaTest-regular';
+  font-size: 1vw;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  mix-blend-mode: exclusion;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 2 — CONTENT + ACCORDION
+   ═══════════════════════════════════════════════════════════════════════════ */
+.photography-service-section2 {
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2vw;
+  overflow: hidden;
+  padding-top: 14vw;
+  padding-bottom: 13vw;
+  padding-left: 3vw;
+  padding-right: 10vw;
+}
+
+.photography-service-sec2-inner {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  flex-direction: column;
+  width: 100%;
+  /* background-color: lightsalmon; */
+}
+
+.photography-service-sec2-inner h1 {
+  font-family: 'RemixaTest-regular';
+  font-size: 3.3vw;
+  font-weight: 900;
+  text-transform: uppercase;
+  mix-blend-mode: exclusion;
+  color: #fff;
+  text-align: start;
+  width: 65%;
+  line-height: 1;
+  align-self: flex-start;
+  padding-left: 15vw;
+}
+
+.photography-service-sec2-paragraph {
+  padding-left: 15vw;
+}
+
+.photography-service-sec2-paragraph p {
+  text-align: start;
+  font-family: 'mo4';
+  font-size: 1.6vw;
+  font-weight: 400;
+  line-height: 1.1em;
+  color: #c7c7c7;
+  width: 75%;
+  margin-bottom: 1vw;
+  letter-spacing: -0.03px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ACCORDION — `ps-accordion` prefix (isolated from production accordion)
+   Matches the premier-accordion pattern from ProductionPremier exactly,
+   adapted for dark background.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.ps-accordion {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  margin-left: -4vw;
+  /* padding-left: 13vw; */
+  margin-top: 1vw;
+}
+
+/* ── Individual item ─────────────────────────────────────────────────────── */
+.ps-accordion__item {
+  border-bottom: 1px solid #515151;
+}
+
+/* .ps-accordion__item:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+} */
+
+/* ── Trigger button (title row) ──────────────────────────────────────────── */
+.ps-accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ps-accordion__trigger:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Title text ──────────────────────────────────────────────────────────── */
+.ps-accordion__title {
+  font-family: 'mo4';
+  font-size: 1.6vw;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #7a7a7a;
+  line-height: 1.2;
+  flex: 1;
+  transition: color 0.25s ease;
+}
+
+.ps-accordion__item--open .ps-accordion__title {
+  color: #7a7a7a;
+}
+
+.ps-accordion__title:hover {
+  color: white;
+}
+
+/* ── Chevron ─────────────────────────────────────────────────────────────── */
+.ps-accordion__chevron {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+}
+
+.ps-accordion__chevron-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Collapsible panel ───────────────────────────────────────────────────── */
+.ps-accordion__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Content inside panel ────────────────────────────────────────────────── */
+.ps-accordion__content {
+  padding: 8px 10px 24px 10px;
+
+}
+
+.ps-accordion__content p {
+  font-family: 'mo4', sans-serif;
+  font-size: 1.1vw;
+  font-weight: 400;
+  line-height: 1.1em;
+  color: white;
+  margin: 0 0 12px 10px;
+}
+
+.ps-accordion__content p:last-child {
+  margin-bottom: 2vw;
+}
+
+.ps-accordion__content h4 {
+  font-family: 'mo4', sans-serif;
+  font-size: 1.1vw;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 2vw 0 0.5vw 10px;
+  line-height: 1.2;
+}
+
+.ps-accordion__content h4:first-child {
+  margin-top: 0;
+}
+
+.ps-accordion__content ul {
+  list-style: disc;
+  padding-left: 2.5em;
+  margin-bottom: 1vw;
+  /* background-color: rgb(44, 46, 46); */
+  margin-top: 0.5vw;
+  margin-left: 10px;
+}
+
+.ps-accordion__content ul li {
+  font-family: 'mo4', sans-serif;
+  font-size: 1.1vw;
+  font-weight: 400;
+  line-height: 0.9;
+  color: white;
+  padding: 4px 0;
+}
+
+.ps-accordion__content ul li:last-child {
+  margin-bottom: 0;
+}
+
+.ps-accordion__content strong {
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE (≤ 740px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media screen and (max-width: 740px) {
+
+  /* Hero */
+  .photography-service-hero {
+    min-height: 720px;
+    padding-top: 140px;
+    padding-bottom: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .photography-service-hero-heading h1 {
+    font-size: 40px;
+  }
+
+  .photography-service-hero-heading {
+    max-width: 100%;
+  }
+
+  .photography-service-hero-bottom {
+    display: flex;
+    min-height: 0px;
+  }
+
+  .photography-service-hero-bottom h5 {
+    font-size: 11px;
+  }
+
+  .photography-service-hero-bottom h5:nth-child(2) {
+    display: none;
+  }
+
+  /* Section 2 */
+  .photography-service-section2 {
+    padding-top: 40%;
+    padding-bottom: 0%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .photography-service-sec2-inner {
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .photography-service-sec2-inner h1 {
+    font-size: 23px;
+    width: 100%;
+    padding-left: 0;
+    line-height: 1.2em;
+    letter-spacing: -0.5px;
+    width: 77%;
+
+  }
+
+  .photography-service-sec2-paragraph {
+    padding-left: 0;
+  }
+
+  .photography-service-sec2-paragraph p {
+    font-size: 15px;
+    line-height: 1em;
+    width: 100%;
+    letter-spacing: -0.5px;
+
+    margin-bottom: 12px;
+  }
+
+  /* Accordion */
+  .ps-accordion {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .ps-accordion__trigger {
+    padding: 14px 0;
+  }
+
+  .ps-accordion__title {
+    font-size: 14px;
+  }
+
+  .ps-accordion__chevron {
+    width: 12px;
+    height: 12px;
+  }
+
+  .ps-accordion__content {
+    padding: 4px 0 20px 0;
+  }
+
+  .ps-accordion__content p {
+    font-size: 13px;
+    line-height: 1.2em;
+    margin-left: 0;
+  }
+
+  .ps-accordion__content h4 {
+    font-size: 13px;
+    margin-left: 0;
+  }
+
+  .ps-accordion__content ul {
+    margin-left: 0;
+  }
+
+  .ps-accordion__content ul li {
+    font-size: 13px;
+    line-height: 1;
+  }
+
+
+  .ps-accordion__content ul {
+    margin-top: 0vw;
+  }
+
+  .ps-accordion__content ul li {
+    padding: 2px 0;
+  }
+
+  .ps-accordion__content ul li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SMALL MOBILE (≤ 480px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media screen and (max-width: 480px) {
+  .photography-service-hero {
+    min-height: 600px;
+    padding-top: 120px;
+  }
+
+  .photography-service-hero-heading h1 {
+    font-size: 32px;
+  }
+
+  .photography-service-hero-bottom h5 {
+    font-size: 10px;
+  }
+
+  .photography-service-sec2-inner h1 {
+    font-size: 23px;
+  }
+
+  .photography-service-sec2-paragraph p {
+    font-size: 15px;
+  }
+
+  .ps-accordion__title {
+    font-size: 15.5px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TABLET (741px — 1024px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media screen and (min-width: 741px) and (max-width: 1024px) {
+  .photography-service-hero-heading h1 {
+    font-size: 5vw;
+  }
+
+  .photography-service-hero-bottom h5 {
+    font-size: 1.4vw;
+  }
+
+  .photography-service-sec2-inner h1 {
+    font-size: 3.8vw;
+    padding-left: 10vw;
+  }
+
+  .photography-service-sec2-paragraph {
+    padding-left: 10vw;
+  }
+
+  .photography-service-sec2-paragraph p {
+    font-size: 1.8vw;
+    width: 85%;
+  }
+
+  .ps-accordion {
+    width: 85%;
+    margin-left: 10vw;
+  }
+
+  .ps-accordion__title {
+    font-size: 15.5px;
+  }
+
+  .ps-accordion__content p,
+  .ps-accordion__content ul li {
+    font-size: 1.5vw;
+  }
+
+  .ps-accordion__content h4 {
+    font-size: 1.5vw;
+  }
+}

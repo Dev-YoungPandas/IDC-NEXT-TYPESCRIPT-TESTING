@@ -117,7 +117,6 @@ export default function ProductionPremier() {
                         end: '+=430vh',
                         pin: stickyRef.current,
                         pinSpacing: false,
-                        markers: true
                     });
                 }
 

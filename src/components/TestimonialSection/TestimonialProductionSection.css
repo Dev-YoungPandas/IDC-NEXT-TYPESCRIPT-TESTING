@@ -53,6 +53,7 @@
 .pt-slider {
   width: 100%;
   display: flex;
+  
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -72,7 +73,7 @@
   overflow: hidden;
   padding-left: 15vw;
   /* background-color: lightcoral; */
-  height: 16vw;
+  min-height: 27vmax;
 }
 
 /* ── Slide base ────────────────────────────────────────────────────────── */
@@ -157,6 +158,7 @@
   font-size: 1.6vw;
   width: 70%;
   font-weight: 400;
+  background-color: lightgreen;
   line-height: 1.1em;
   letter-spacing: -0.03px;
 }
@@ -187,8 +189,10 @@
   display: flex;
   width: 100%;
   margin-top: 2vmax;
+  margin-top: 0vmax;
   align-items: center;
   padding: 0.5vmax 6vmax;
+  /* background-color: rgb(46, 46, 43); */
   justify-content: space-between;
 }
 
@@ -234,6 +238,79 @@
   font-family: 'NyghtSerif-Regular';
 }
 
+
+
+/* add spacing below the paragraph */
+/* ═══════════════════════════════════════════════════════════════════════════
+   ADD THIS to the END of your existing TestimonialProductionSection.css
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Paragraph4 block — below slider ───────────────────────────────────── */
+.pt-paragraph4 {
+  padding-left: 24vw;
+  margin-top: 2vw;
+}
+
+.pt-paragraph4 p {
+  font-family: 'mo4', sans-serif;
+  font-size: 1.6vw;
+  font-weight: 400;
+  line-height: 1.1em;
+  color: #c7c7c7;
+  letter-spacing: -0.03px;
+  margin: 0;
+}
+
+/* Gap between consecutive paragraphs */
+.pt-paragraph4 p + p {
+  margin-top: 1em;
+}
+
+/* ── Slide quote — replaces h6, paragraph spacing inside slides ────────── */
+.pt-slide-quote {
+  color: #d1d1d1;
+}
+
+.pt-slide-quote p {
+  font-family: 'mo4';
+  color: white;
+  margin-bottom: 0;
+  font-size: 1.6vw;
+  width: 70%;
+  font-weight: 400;
+  line-height: 1.1em;
+  letter-spacing: -0.03px;
+}
+
+.pt-slide-quote p:first-child {
+  margin-top: 1vmax;
+}
+
+.pt-slide-quote p + p {
+  margin-top: 1em;
+}
+
+/* ── Mobile ────────────────────────────────────────────────────────────── */
+@media screen and (max-width: 740px) {
+  .pt-paragraph4 {
+    padding-left: 0;
+    margin-top: 4vw;
+  }
+
+  .pt-paragraph4 p {
+    font-size: 15px;
+    line-height: 1.2em;
+  }
+
+  .pt-slide-quote p {
+    font-size: 15px;
+    width: 80%;
+    line-height: 1em;
+  }
+} 
+
+
+
 /* ═══════════════════════════════════════════════════════════════════════════
    Responsive — Mobile (≤ 740px)
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -246,6 +323,7 @@
     padding-bottom: 40vw;
     padding-left: 6vw;
     padding-right: 6vw;
+    margin-top: -1px;
 
   }
 

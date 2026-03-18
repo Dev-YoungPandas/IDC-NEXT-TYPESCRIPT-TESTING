@@ -1,13 +1,56 @@
+// ============================================
+// FILE: src/components/TestimonialSection/TestimonialProductionSection.tsx
+// ============================================
+// Reusable testimonial slider for both Production and Photography Service pages.
+// Pass pageUri="/photography-service/" to fetch photography-service data.
+// Defaults to "/production/" so existing production page needs zero changes.
+// ============================================
+
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useLazyLoad } from '@/hooks/useLazyLoad';
 import './TestimonialProductionSection.css';
 
-// ─── GraphQL Query ────────────────────────────────────────────────────────────
-const GET_PRODUCTION_TESTIMONIAL_QUERY = `
-  query GetProductionTestimonial {
-    pageBy(uri: "/production/") {
+// ─── WordPress text → proper <p> tags ────────────────────────────────────────
+// ACF text fields return raw text with \n for line breaks.
+// This mirrors WordPress's wpautop() — converts line breaks into <p> tags.
+// Handles: already has <p> tags, \n\n double breaks, single \n, <br> tags.
+function wpAutoP(text: string): string {
+  if (!text) return '';
+
+  // If already wrapped in <p> tags, return as-is (WYSIWYG field)
+  if (text.trim().startsWith('<p')) return text;
+
+  // Replace \r\n with \n for consistency
+  let cleaned = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
+  // Split on double newlines (paragraph breaks in WordPress editor)
+  let paragraphs = cleaned.split(/\n\s*\n/);
+
+  // If no double breaks found, try single \n as paragraph separator
+  if (paragraphs.length <= 1) {
+    paragraphs = cleaned.split(/\n/);
+  }
+
+  // If still one block, try <br> tags
+  if (paragraphs.length <= 1) {
+    paragraphs = cleaned.split(/<br\s*\/?>/i);
+  }
+
+  return paragraphs
+    .map((p) => p.trim())
+    .filter(Boolean)
+    .map((p) => `<p>${p}</p>`)
+    .join('');
+}
+
+// ─── Dynamic GraphQL Query builder ───────────────────────────────────────────
+// Both pages use the same ACF field group `productionPageData` —
+// only the page URI differs.
+const buildQuery = (uri: string) => `
+  query GetTestimonialByPage {
+    pageBy(uri: "${uri}") {
       id
       title
       slug
@@ -49,35 +92,42 @@ interface ProductionTestimonialData {
   productionTestimonialParagraph4?: string;
 }
 
+// ─── Props ────────────────────────────────────────────────────────────────────
+interface TestimonialProductionSectionProps {
+  /** WordPress page URI to fetch testimonial data from.
+   *  Defaults to "/production/" — pass "/photography-service/" for that page. */
+  pageUri?: string;
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
-export default function TestimonialProductionSection() {
+export default function TestimonialProductionSection({
+  pageUri = '/production/',
+}: TestimonialProductionSectionProps) {
   const { ref, isVisible } = useLazyLoad({ threshold: 0.2 });
 
-  // const [data, setData] = useState<ProductionTestimonialData | null>(null);
   const [data, setData] = useState<ProductionTestimonialData | null>(null);
-
   const [loading, setLoading] = useState(true);
 
-  // ─── Fetch data ─────────────────────────────────────────────────────────
+  // ─── Fetch data (re-fetches if pageUri changes) ─────────────────────────
   useEffect(() => {
+    setLoading(true);
+    setData(null);
+
     fetch('https://idc.co.nz/headless/graphql', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: GET_PRODUCTION_TESTIMONIAL_QUERY }),
+      body: JSON.stringify({ query: buildQuery(pageUri) }),
     })
       .then((res) => res.json())
       .then((result) => {
-
         const pageData = result?.data?.pageBy?.productionPageData;
-        console.log('pageData:', pageData); // ADD THIS
         if (pageData) {
           setData(pageData);
-          console.log('setData called with:', pageData); // ADD THIS
         }
       })
-      .catch((err) => console.error('Production testimonial fetch error:', err))
+      .catch((err) => console.error('Testimonial fetch error:', err))
       .finally(() => setLoading(false));
-  }, []);
+  }, [pageUri]);
 
   // ─── Build slides from fields ────────────────────────────────────────────
   const allSlides: ProdTestimonialSlide[] = data
@@ -189,10 +239,12 @@ export default function TestimonialProductionSection() {
   // ─── Render single slide content ─────────────────────────────────────────
   const renderSlide = (index: number) => (
     <>
-      <h6 className="pt-color-text">{slides[index]?.quote}</h6>
+      <div
+        className="pt-slide-quote pt-color-text"
+        dangerouslySetInnerHTML={{ __html: wpAutoP(slides[index]?.quote || '') }}
+      />
       <div className="pt-slide-bottom">
-                <h4 className="pt-color-text">{slides[index]?.role}</h4>
-
+        <h4 className="pt-color-text">{slides[index]?.role}</h4>
         <h5>{slides[index]?.name}</h5>
       </div>
     </>
@@ -204,9 +256,7 @@ export default function TestimonialProductionSection() {
     <div ref={ref} className="pt-section">
       {(
         <>
-
           <div>
-
             {/* ── Heading ─────────────────────────────────────────────── */}
             {data.productionTestimonialHeading && (
               <div className="pt-heading-wrap">
@@ -216,13 +266,10 @@ export default function TestimonialProductionSection() {
               </div>
             )}
 
-
-
             {/* ── Slider ──────────────────────────────────────────────── */}
             <div className="pt-slider">
               <div className="pt-carousel">
                 <div className="pt-carousel-container">
-
                   {/* Current slide */}
                   <div
                     className={`pt-slide ${isSlider ? currentClass : 'pt-slide-active'}`}
@@ -240,15 +287,23 @@ export default function TestimonialProductionSection() {
                       {renderSlide(incomingIndex)}
                     </div>
                   )}
-
                 </div>
               </div>
+
+              {/* ── Paragraph4 — extra content below slider ──────────── */}
+              {/* {data.productionTestimonialParagraph4 && (
+                <div
+                  className="pt-paragraph4"
+                  dangerouslySetInnerHTML={{
+                    __html: wpAutoP(data.productionTestimonialParagraph4),
+                  }}
+                />
+              )} */}
 
               {/* ── Arrows + counter (only if more than 1 slide) ──────── */}
               {isSlider && (
                 <div className="pt-arrow-parent">
                   <div className="pt-arrow">
-
                     <button
                       onClick={handlePrev}
                       className="pt-arrow-btn"
@@ -272,7 +327,6 @@ export default function TestimonialProductionSection() {
                         <path fill="white" d="M46.16.46c-.3.46-.16,1.08.31,1.38l12.91,8.22-12.91,8.22c-.47.3-.6.92-.31,1.38.3.46.92.6,1.38.31l14.23-9.06c.29-.18.46-.5.46-.84s-.17-.66-.46-.84L47.54.16c-.17-.11-.35-.16-.54-.16-.33,0-.65.16-.84.46Z" />
                       </svg>
                     </button>
-
                   </div>
 
                   <div className="pt-slider-number">
@@ -283,9 +337,7 @@ export default function TestimonialProductionSection() {
                 </div>
               )}
             </div>
-
           </div>
-
         </>
       )}
     </div>

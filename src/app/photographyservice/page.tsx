@@ -1,35 +1,39 @@
-// src/app/production/page.tsx
+// src/app/photography-service/page.tsx
 import { Metadata } from 'next';
 import MenuOverlay from '@/components/home/Menuoverlay';
-import ProductionSections from '@/components/ProductionSections/ProductionSections';
 import CTASection from '@/components/dan-max/CTASection';
 import Footer from '@/components/dan-max/Footer';
 import { fetchGraphQL } from '@/lib/graphql/client';
-import { GET_PRODUCTION_QUERY } from '@/lib/graphql/queries';
+import { GET_PHOTOGRAPHY_SERVICE_QUERY } from '@/lib/graphql/queries';
 import { mapCTAData } from '@/lib/mapCTAData';
+import PhotographyServiceSections from '@/components/PhotographyServiceSections/PhotographyServiceSections';
 
 export const metadata: Metadata = {
-  title: 'Production',
-  description: 'IDC Production — World-class photography production in New Zealand.',
+  title: 'Photography Service',
+  description: 'IDC Photography Service — Premium photography production services across New Zealand.',
 };
 
-export default async function Production() {
+export default async function PhotographyService() {
   let ctaData: Record<string, any> | null = null;
 
   try {
-    const raw = await fetchGraphQL(GET_PRODUCTION_QUERY);
+    const raw = await fetchGraphQL(GET_PHOTOGRAPHY_SERVICE_QUERY);
+    console.log(raw, "raw")
+    // ⚠️ Change 'photographyServicePageData' to match your actual ACF group name
     ctaData = raw?.pageBy?.productionPageData ?? null;
+    console.log(ctaData,"ctadata")
   } catch (err) {
-    console.error('Production page fetch error:', err);
+    console.error('Photography service page fetch error:', err);
   }
 
-  // mapCTAData reads the ACF field names and outputs { heading, paragraph, contactLabel, bgImage, ... }
   const ctaSectionData = mapCTAData(ctaData);
+
+  console.log(ctaSectionData, "ctasection")
 
   return (
     <>
       <MenuOverlay />
-      <ProductionSections />
+      <PhotographyServiceSections />
 
       <div className="w-full h-[131vh] xl:h-[177vh]">
         <div className="mt-[-3.5vw] xl:bg-white">
