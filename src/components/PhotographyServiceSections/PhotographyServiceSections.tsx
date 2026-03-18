@@ -113,7 +113,7 @@ export default function PhotographyServiceSections({ data }: { data?: Record<str
                         <h1>{sec2Heading}</h1>
 
                         <div className="photography-service-sec2-paragraph">
-                            {sec2Paragraph.split('\n\n').map((para, i) => (
+                            {sec2Paragraph.split('\n\n').map((para:string, i:number) => (
                                 <p key={i}>{para}</p>
                             ))}
                         </div>
