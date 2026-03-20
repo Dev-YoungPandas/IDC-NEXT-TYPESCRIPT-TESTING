@@ -68,7 +68,6 @@ export default function DanMaxPage({ data, photographer }: { data: any; photogra
   return (
     <div className="danmax-section full-body-container">
 
-
       <div className='z-50'>
 
         <HeroSection data={data} />

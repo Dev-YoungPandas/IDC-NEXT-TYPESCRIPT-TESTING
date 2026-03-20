@@ -1,13 +1,15 @@
+// src/components/dan-max/DanMaxPage.tsx
 'use client';
 
 import dynamic from 'next/dynamic';
+import { useMemo } from 'react';
 import HeroSection from './HeroSection';
 import TextReveal from '../animations/TextReveal';
 import Footer from './Footer';
+import type { CTASectionData } from './CTASection';
 
 import "../../styles/danmaxpage.css";
 import CamillaMotionPage from './CamillaMotionPage';
-import { useMemo } from 'react';
 
 const PortfolioGrid = dynamic(() => import('./PortfolioGrid'), {
   ssr: false,
@@ -29,9 +31,13 @@ const CTASection = dynamic(() => import('./CTASection'), {
 const AwardSection = dynamic(() => import('./AwardSection'), {
   ssr: false,
   loading: () => null
-})
+});
 
-
+/**
+ * Maps raw photographer WordPress ACF data into the CTASectionData shape.
+ * Photographer pages store marquee text in `danMarquee` and background
+ * image in `marqueeImage`, while CTASection expects `marqueeText` and `bgImage`.
+ */
 function mapPhotographerCTAData(raw: Record<string, any> | null | undefined): CTASectionData | null {
   if (!raw) return null;
 
@@ -47,7 +53,6 @@ function mapPhotographerCTAData(raw: Record<string, any> | null | undefined): CT
   };
 }
 
-
 export default function DanMaxPage({ data, photographer }: { data: any; photographer: string }) {
   if (!data) {
     return (
@@ -57,12 +62,11 @@ export default function DanMaxPage({ data, photographer }: { data: any; photogra
     );
   }
 
+  /* ── Map raw photographer data → CTASectionData (memoised to avoid re-creation) */
   const ctaSectionData = useMemo(() => mapPhotographerCTAData(data), [data]);
-
 
   return (
     <div className="danmax-section full-body-container">
-
 
       <div className='z-50'>
 
@@ -107,6 +111,7 @@ export default function DanMaxPage({ data, photographer }: { data: any; photogra
       </div>
 
       <div className='w-full h-[131vh] xl:h-[177vh]'>
+        {/* Pass mapped CTA data instead of raw data */}
         <CTASection data={ctaSectionData} />
 
 
