@@ -2,9 +2,9 @@
 
 import { useEffect, useRef } from 'react';
 import './productionapproach.css';
-import TextReveal from '../animations/TextReveal';
 
-// ─── Section Data ────────────────────────────────────────────────────────────
+// NOTE: TextReveal NOT used here — its overflow:hidden + transform breaks blend mode
+
 const APPROACH_DATA = {
     subtitle: 'Behind the passion',
     name: 'Michele Richards-Berry',
@@ -17,8 +17,6 @@ const APPROACH_DATA = {
     attribution: '— Michele, Production Director',
 };
 
-
-// ─── Component ───────────────────────────────────────────────────────────────
 export default function ProductionApproach() {
     const sectionRef = useRef<HTMLDivElement>(null);
     const stickyRef = useRef<HTMLDivElement>(null);
@@ -29,7 +27,6 @@ export default function ProductionApproach() {
     const attrRef = useRef<HTMLParagraphElement>(null);
     const mobileImgRef = useRef<HTMLImageElement>(null);
 
-
     useEffect(() => {
         let cancelled = false;
 
@@ -38,7 +35,12 @@ export default function ProductionApproach() {
                 if (cancelled) return;
                 gsap.registerPlugin(ScrollTrigger);
 
-                /* ── Sticky left heading (desktop only) ─────────────────────── */
+                /* ── Sticky left heading (desktop) ──────────────────────────
+                   Original pin settings restored exactly.
+                   After pin creation, we apply mix-blend-mode:exclusion on
+                   the GSAP-generated pin-spacer wrapper so the blend mode
+                   passes through the transform stacking context.
+                   ──────────────────────────────────────────────────────────── */
                 if (window.innerWidth > 740 && stickyRef.current && sectionRef.current) {
                     ScrollTrigger.create({
                         trigger: sectionRef.current,
@@ -47,9 +49,18 @@ export default function ProductionApproach() {
                         pin: stickyRef.current,
                         pinSpacing: false,
                     });
+
+                    // FIX: GSAP wraps the pinned element in a div with
+                    // transform — that creates isolation for mix-blend-mode.
+                    // Apply exclusion on both the wrapper AND the element itself
+                    // so the blend passes through every layer.
+                    const pinWrapper = stickyRef.current.parentElement;
+                    if (pinWrapper && pinWrapper !== sectionRef.current) {
+                        pinWrapper.style.mixBlendMode = 'exclusion';
+                    }
                 }
 
-                if (window.innerWidth < 740 && stickyRef.current && sectionRef.current) {
+                if (window.innerWidth <= 740 && stickyRef.current && sectionRef.current) {
                     ScrollTrigger.create({
                         trigger: sectionRef.current,
                         start: '200px 100px',
@@ -57,15 +68,17 @@ export default function ProductionApproach() {
                         pin: stickyRef.current,
                         pinSpacing: false,
                     });
+
+                    // Same fix for mobile
+                    const pinWrapper = stickyRef.current.parentElement;
+                    if (pinWrapper && pinWrapper !== sectionRef.current) {
+                        pinWrapper.style.mixBlendMode = 'exclusion';
+                    }
                 }
-
-
 
                 if (window.innerWidth > 740 && videoWrapRef.current) {
-
                     const parallaxAmount = -15;
-
-                    const tl1 = gsap.fromTo(
+                    gsap.fromTo(
                         videoWrapRef.current,
                         { yPercent: 0 },
                         {
@@ -82,13 +95,9 @@ export default function ProductionApproach() {
                     );
                 }
 
-
-                /* ── Video parallax ─────────────────────────────────────────── */
                 if (window.innerWidth < 740 && videoWrapRef.current) {
-
                     const parallaxAmount = -20;
-
-                    const tl1 = gsap.fromTo(
+                    gsap.fromTo(
                         videoWrapRef.current,
                         { yPercent: 0 },
                         {
@@ -105,7 +114,6 @@ export default function ProductionApproach() {
                     );
                 }
 
-                /* ── Right column parallax (desktop) ────────────────────────── */
                 if (rightColRef.current && window.innerWidth > 740) {
                     gsap.to(rightColRef.current, {
                         y: -50,
@@ -119,7 +127,6 @@ export default function ProductionApproach() {
                     });
                 }
 
-                /* ── Text entrance animations ───────────────────────────────── */
                 const textEls = [headingRef.current, paraRef.current, attrRef.current].filter(Boolean);
                 textEls.forEach((el, i) => {
                     gsap.fromTo(
@@ -147,26 +154,19 @@ export default function ProductionApproach() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="prod-approach ">
-            {/* ── Left Column ──────────────────────────────────────────────── */}
-            
+        <section ref={sectionRef} className="prod-approach">
             <div className="prod-approach__left">
-                
 
-                {/* Sticky heading block */}
-                <TextReveal>
-                    <div ref={stickyRef} className="prod-approach__sticky">
-                        <h2 className="prod-approach__sticky-text prod-approach__subtitle blend-text">
-                            {APPROACH_DATA.subtitle}
-                        </h2>
-                        <h2 className="prod-approach__sticky-text prod-approach__name blend-text">
-                            {APPROACH_DATA.name}
-                        </h2>
-                    </div>
+                {/* No TextReveal — its overflow:hidden + transform breaks blend mode */}
+                <div ref={stickyRef} className="prod-approach__sticky">
+                    <h2 className="prod-approach__subtitle">
+                        {APPROACH_DATA.subtitle}
+                    </h2>
+                    <h2 className="prod-approach__name">
+                        {APPROACH_DATA.name}
+                    </h2>
+                </div>
 
-                </TextReveal>
-
-                {/* Video block with parallax */}
                 <div ref={videoWrapRef} className="prod-approach__video-wrap">
                     <video
                         className="prod-approach__video"
@@ -178,7 +178,6 @@ export default function ProductionApproach() {
                     />
                 </div>
 
-                {/* Mobile-only portrait image */}
                 <div className="prod-approach__mobile-portrait">
                     <img
                         ref={mobileImgRef}
@@ -189,9 +188,7 @@ export default function ProductionApproach() {
                 </div>
             </div>
 
-            {/* ── Right Column ─────────────────────────────────────────────── */}
             <div ref={rightColRef} className="prod-approach__right">
-                {/* Images row (desktop only) */}
                 <div className="prod-approach__images">
                     <div className="prod-approach__img-studio">
                         <img
@@ -209,7 +206,6 @@ export default function ProductionApproach() {
                     </div>
                 </div>
 
-                {/* Text content */}
                 <h3 ref={headingRef} className="prod-approach__heading">
                     {APPROACH_DATA.heading}
                 </h3>

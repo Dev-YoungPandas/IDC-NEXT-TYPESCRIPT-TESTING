@@ -12,31 +12,29 @@
   color: #000;
   gap: 5vw;
   position: relative;
-  /* overflow: visible; */
-
 }
 
 /* ── Left Column (50%) ─────────────────────────────────────────────────── */
 .prod-approach__left {
   width: 50%;
-  /* background-color: lightgrey; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-right: 10vw;
   gap: 0;
+}
 
-  /* position: relative; */
-  /* isolation: isolate; */
-
+/* ── Placeholder: invisible spacer when sticky element goes fixed ─────── */
+.prod-approach__placeholder {
+  display: none;
 }
 
 /* ── Sticky heading block ──────────────────────────────────────────────── */
 .prod-approach__sticky {
   width: 100%;
   z-index: 2;
-
+  mix-blend-mode: exclusion;
 }
 
 .prod-approach__subtitle {
@@ -50,14 +48,12 @@
   justify-items: start;
 }
 
-
 .prod-approach__name {
   font-family: 'RemixaTest-regular', sans-serif;
   font-size: 4.2vw;
   font-weight: 900;
   text-transform: uppercase;
   margin: 0;
-  mix-blend-mode: exclusion;
   color: #fff;
   line-height: 1.05;
 }
@@ -100,7 +96,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* gap: 3vw; */
 }
 
 .prod-approach__img-studio {
@@ -108,7 +103,6 @@
   flex-shrink: 0;
   object-fit: cover;
   object-position: center center;
-
 }
 
 .prod-approach__img-studio img {
@@ -120,7 +114,6 @@
 
 .prod-approach__img-portrait {
   width: 57%;
-  /* height: 57vh; */
   flex-shrink: 0;
 }
 
@@ -130,7 +123,6 @@
   display: block;
   object-fit: cover;
   object-position: center center;
-
 }
 
 /* ── Heading ───────────────────────────────────────────────────────────── */
@@ -175,12 +167,11 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Responsive — Mobile (≤ 740px)
+   Responsive — Mobile (max-width 740px)
    ═══════════════════════════════════════════════════════════════════════════ */
 @media screen and (max-width: 740px) {
   .prod-approach {
     flex-direction: column;
-    /* padding: 20vw 5vw 10vw 5vw; */
     padding-top: 200px;
     padding-left: 5%;
     padding-right: 5%;
@@ -188,7 +179,6 @@
     align-items: flex-start;
   }
 
-  /* ── Left column — full width ──────────────────────────────────── */
   .prod-approach__left {
     width: 100%;
     padding-right: 0;
@@ -196,7 +186,6 @@
   }
 
   .prod-approach__sticky {
-    position: static;
     margin-bottom: 6vw;
   }
 
@@ -204,7 +193,6 @@
     font-size: 15.5px;
     line-height: 1.2em;
     letter-spacing: -0.08em;
-
   }
 
   .prod-approach__name {
@@ -213,7 +201,6 @@
     width: 60%;
   }
 
-  /* ── Video ──────────────────────────────────────────────────────── */
   .prod-approach__video-wrap {
     height: 400px;
     min-height: 400px;
@@ -221,12 +208,10 @@
     width: 60%;
   }
 
-  /* ── Mobile portrait — visible ─────────────────────────────────── */
   .prod-approach__mobile-portrait {
     display: block;
     width: 140px;
     height: 160px;
-
     margin-top: -40vw;
     align-self: flex-end;
     z-index: 1;
@@ -241,7 +226,6 @@
     object-fit: cover;
   }
 
-  /* ── Right column — full width ─────────────────────────────────── */
   .prod-approach__right {
     width: 100%;
     margin-top: 8vw;
@@ -249,7 +233,6 @@
     gap: 5vw;
   }
 
-  /* ── Hide desktop images on mobile ─────────────────────────────── */
   .prod-approach__images {
     display: none;
   }
@@ -267,9 +250,7 @@
     letter-spacing: 0.6px;
     mix-blend-mode: exclusion;
     width: 70%;
-    /* opacity: ; */
     color: #5a5a5a;
-
   }
 
   .prod-approach__attribution {
