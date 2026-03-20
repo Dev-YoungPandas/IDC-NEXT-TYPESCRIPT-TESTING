@@ -7,18 +7,23 @@ import Footer from '@/components/dan-max/Footer';
 import { fetchGraphQL } from '@/lib/graphql/client';
 import { GET_PRODUCTION_QUERY } from '@/lib/graphql/queries';
 import { mapCTAData } from '@/lib/mapCTAData';
+import { mapFaqData } from '@/lib/mapFaqData';
 
 export const metadata: Metadata = {
-  title: 'Production',
+  title: 'IDC Production',
   description: 'IDC Production — World-class photography production in New Zealand.',
 };
 
 export default async function Production() {
   let ctaData: Record<string, any> | null = null;
+  let faqSectionData: { title: string; content: string }[] | null = null;
+
 
   try {
     const raw = await fetchGraphQL(GET_PRODUCTION_QUERY);
     ctaData = raw?.pageBy?.productionPageData ?? null;
+     faqSectionData = mapFaqData(ctaData);
+
   } catch (err) {
     console.error('Production page fetch error:', err);
   }
@@ -29,7 +34,7 @@ export default async function Production() {
   return (
     <>
       <MenuOverlay />
-      <ProductionSections />
+      <ProductionSections faqData={faqSectionData} />
 
       <div className="w-full h-[131vh] xl:h-[177vh]">
         <div className="mt-[-3.5vw] xl:bg-white">

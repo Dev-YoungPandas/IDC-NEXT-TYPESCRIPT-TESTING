@@ -30,7 +30,7 @@ const CONTENT_DATA = {
   ctaHref: '/testimonials',
 };
 
-export default function ProductionSections() {
+export default function ProductionSections({ faqData }: { faqData?: { title: string; content: string }[] | null }) {
   const heroRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subHeadingsRef = useRef<HTMLHeadingElement[]>([]);
@@ -268,7 +268,7 @@ export default function ProductionSections() {
 
 
         <div>
-          <AccordianSection />
+          <AccordianSection faqData={faqData} />
         </div>
 
       </div>

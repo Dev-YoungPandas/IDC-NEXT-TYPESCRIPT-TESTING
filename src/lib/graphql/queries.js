@@ -1860,6 +1860,18 @@ export const GET_PRODUCTION_QUERY = `
         productionCtaBgImage {
            sourceUrl
         }
+
+      faqsTitle1
+      faqsTitle2
+      faqsTitle3
+      faqsTitle4
+      faqsTitle5
+
+      faqsParagraph1
+      faqsParagraph2
+      faqsParagraph3
+      faqsParagraph4
+      faqsParagraph5
         
       }
     }
@@ -1888,6 +1900,18 @@ export const GET_PHOTOGRAPHY_SERVICE_QUERY = `
       photographyServiceSec2AccordionTitle1
       photographyServiceSec2AccordionTitle2
       photographyServiceSec2AccordionTitle3
+
+      faqsTitle1
+      faqsTitle2
+      faqsTitle3
+      faqsTitle4
+      faqsTitle5
+
+      faqsParagraph1
+      faqsParagraph2
+      faqsParagraph3
+      faqsParagraph4
+      faqsParagraph5
       
     }
     productionPageData {

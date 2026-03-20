@@ -58,7 +58,7 @@ const ChevronUp = () => (
 );
 
 // ─── Component ───────────────────────────────────────────────────────────────
-export default function PhotographyServiceSections({ data }: { data?: Record<string, any> | null }) {
+export default function PhotographyServiceSections({ data, faqData }: { data?: Record<string, any> | null; faqData?: { title: string; content: string }[] | null }) {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
     const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -74,6 +74,7 @@ export default function PhotographyServiceSections({ data }: { data?: Record<str
             panel.style.maxHeight = openIndex === i ? panel.scrollHeight + 'px' : '0px';
         });
     }, [openIndex]);
+
 
     /* ── API data with fallbacks ──────────────────────────────────────────── */
     const heroHeading = data?.photographyServiceHerosectionHeading || 'PHOTOGRAPHY SERVICES';
@@ -113,7 +114,7 @@ export default function PhotographyServiceSections({ data }: { data?: Record<str
                         <h1>{sec2Heading}</h1>
 
                         <div className="photography-service-sec2-paragraph">
-                            {sec2Paragraph.split('\n\n').map((para:string, i:number) => (
+                            {sec2Paragraph.split('\n\n').map((para: string, i: number) => (
                                 <p key={i}>{para}</p>
                             ))}
                         </div>
@@ -163,7 +164,7 @@ export default function PhotographyServiceSections({ data }: { data?: Record<str
                 </div>
 
                 <div>
-                    <AccordianSection />
+                    <AccordianSection faqData={faqData} />
                 </div>
             </div>
         </>

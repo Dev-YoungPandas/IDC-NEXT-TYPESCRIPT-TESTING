@@ -13,13 +13,10 @@
   justify-content: center;
   /* padding: 8vw 3vw; */
   padding-top: 13vw;
-  padding-bottom:17vw;
-  padding-left:8vw;
+  padding-bottom: 17vw;
+  padding-left: 8vw;
 
   padding-right: 8vw;
-
-
-
   overflow: hidden;
 }
 
@@ -61,7 +58,7 @@
   /* background-color: lightgreen; */
   position: sticky;
   top: 12vw;
-padding-top: 3vw;
+  padding-top: 3vw;
 
 }
 
@@ -157,7 +154,7 @@ padding-top: 3vw;
   font-size: 1vw;
   font-weight: 400;
   line-height: 1.6;
-  color: #333;
+  color: #000;
   margin: 0 0 1vw 0;
 }
 
@@ -175,8 +172,8 @@ padding-top: 3vw;
   font-family: 'mo4', sans-serif;
   font-size: 1vw;
   font-weight: 400;
-  line-height: 1.6;
-  color: #333;
+  line-height: 1;
+  color: #000;
   margin-bottom: 0.3vw;
 }
 
@@ -212,7 +209,7 @@ padding-top: 3vw;
   }
 
   .prod-faq__heading {
-    font-size:32px;
+    font-size: 32px;
   }
 
   .prod-faq__right {
@@ -227,7 +224,7 @@ padding-top: 3vw;
   }
 
   .prod-faq__question {
-    font-size:12px;
+    font-size: 12px;
   }
 
   .prod-faq__chevron {
@@ -240,7 +237,7 @@ padding-top: 3vw;
   }
 
   .prod-faq__answer p {
-    font-size:13px;
+    font-size: 13px;
     line-height: 1.2;
     color: #000;
     margin-bottom: 3vw;

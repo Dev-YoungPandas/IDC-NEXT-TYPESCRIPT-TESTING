@@ -3,12 +3,10 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import './accordiansection.css';
 
-
-
-// ─── FAQ Data ────────────────────────────────────────────────────────────────
+// ─── Fallback FAQ Data ───────────────────────────────────────────────────────
 const FAQ_DATA = [
   {
-    question: "What's the best time of year for photography in New Zealand?",
+    question: "Raj Raj",
     answer: `<p>New Zealand's diverse climate allows for photography all year round, with each season offering unique advantages:</p>
 <ul>
 <li><strong>Summer (December–February):</strong> Long daylight hours, clear skies, and bright coastal settings.</li>
@@ -64,13 +62,19 @@ const ChevronUp = () => (
 );
 
 // ─── Component ───────────────────────────────────────────────────────────────
-export default function AccordianSection() {
+export default function AccordianSection({ faqData }: { faqData?: { title: string; content: string }[] | null }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const accordionRef = useRef<HTMLDivElement>(null);
   const bgTextRef = useRef<HTMLHeadingElement>(null);
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Use API data if provided, otherwise fall back to hardcoded FAQ_DATA
+  const faqs = faqData && faqData.length > 0
+    ? faqData
+    : FAQ_DATA.map(f => ({ title: f.question, content: f.answer }));
+
 
   /* Toggle — only one open at a time */
   const handleToggle = useCallback((index: number) => {
@@ -139,11 +143,6 @@ export default function AccordianSection() {
 
   return (
     <section ref={sectionRef} className="prod-faq">
-      {/* Background watermark text */}
-      {/* <h2 ref={bgTextRef} className="prod-faq__bg-text">
-        Frequently Asked Questions About New Zealand Photography &amp; Production
-      </h2> */}
-
       <div className="prod-faq__layout">
         {/* Left — FAQ'S heading */}
         <div className="prod-faq__left">
@@ -154,24 +153,25 @@ export default function AccordianSection() {
 
         {/* Right — Accordion */}
         <div ref={accordionRef} className="prod-faq__right">
-          {FAQ_DATA.map((item, i) => {
+          {faqs.map((item, i) => {
             const isOpen = openIndex === i;
             return (
-              <div
-                key={i}
-                className={`prod-faq__item${isOpen ? ' prod-faq__item--open' : ''}`}
-              >
-                <button
-                  className="prod-faq__trigger"
-                  onClick={() => handleToggle(i)}
-                  aria-expanded={isOpen}
-                  aria-controls={`prod-faq-panel-${i}`}
+              <div key={i}>
+                <div
+                  className={`prod-faq__item${isOpen ? ' prod-faq__item--open' : ''}`}
                 >
-                  <span className="prod-faq__question">{item.question}</span>
-                  <span className="prod-faq__chevron">
-                    {isOpen ? <ChevronUp /> : <ChevronDown />}
-                  </span>
-                </button>
+                  <button
+                    className="prod-faq__trigger"
+                    onClick={() => handleToggle(i)}
+                    aria-expanded={isOpen}
+                    aria-controls={`prod-faq-panel-${i}`}
+                  >
+                    <span className="prod-faq__question">{item.title}</span>
+                    <span className="prod-faq__chevron">
+                      {isOpen ? <ChevronUp /> : <ChevronDown />}
+                    </span>
+                  </button>
+                </div>
 
                 <div
                   id={`prod-faq-panel-${i}`}
@@ -181,7 +181,7 @@ export default function AccordianSection() {
                 >
                   <div
                     className="prod-faq__answer"
-                    dangerouslySetInnerHTML={{ __html: item.answer }}
+                    dangerouslySetInnerHTML={{ __html: item.content }}
                   />
                 </div>
               </div>

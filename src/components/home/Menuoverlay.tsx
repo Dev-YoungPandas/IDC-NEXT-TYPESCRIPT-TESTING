@@ -28,6 +28,7 @@ const PAGE_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Categories', href: '/categories' },
   { label: 'Production', href: '/production' },
+  { label: 'Photography service', href: '/photographyservice' },
   { label: 'What our clients say', href: '/testimonials' },
   { label: 'Contact', href: '/contact' },
 ];

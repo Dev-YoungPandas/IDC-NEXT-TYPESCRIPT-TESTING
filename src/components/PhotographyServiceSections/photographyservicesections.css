@@ -405,16 +405,16 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 @media screen and (max-width: 480px) {
   .photography-service-hero {
-    min-height: 600px;
+    min-height: 720px;
     padding-top: 120px;
   }
 
   .photography-service-hero-heading h1 {
-    font-size: 32px;
+    font-size: 40px;
   }
 
   .photography-service-hero-bottom h5 {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .photography-service-sec2-inner h1 {

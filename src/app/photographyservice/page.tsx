@@ -7,6 +7,7 @@ import { fetchGraphQL } from '@/lib/graphql/client';
 import { GET_PHOTOGRAPHY_SERVICE_QUERY } from '@/lib/graphql/queries';
 import { mapCTAData } from '@/lib/mapCTAData';
 import PhotographyServiceSections from '@/components/PhotographyServiceSections/PhotographyServiceSections';
+import { mapFaqData } from '@/lib/mapFaqData';
 
 export const metadata: Metadata = {
   title: 'Photography Service',
@@ -15,28 +16,34 @@ export const metadata: Metadata = {
 
 export default async function PhotographyService() {
   let ctaData: Record<string, any> | null = null;
+  let photographyData: Record<string, any> | null = null;
+  let faqSectionData: { title: string; content: string }[] | null = null;
+
 
   try {
     const raw = await fetchGraphQL(GET_PHOTOGRAPHY_SERVICE_QUERY);
-    console.log(raw, "raw")
+
     // ⚠️ Change 'photographyServicePageData' to match your actual ACF group name
     ctaData = raw?.pageBy?.productionPageData ?? null;
-    console.log(ctaData,"ctadata")
+    photographyData = raw?.pageBy?.photographyService ?? null; 
+    faqSectionData = mapFaqData(photographyData);
+
+
   } catch (err) {
     console.error('Photography service page fetch error:', err);
   }
 
-  const ctaSectionData = mapCTAData(ctaData);
+  // In production/page.tsx or photography-service/page.tsx, after fetching:
 
-  console.log(ctaSectionData, "ctasection")
+  const ctaSectionData = mapCTAData(ctaData);
 
   return (
     <>
       <MenuOverlay />
-      <PhotographyServiceSections />
+      <PhotographyServiceSections data={photographyData} faqData={faqSectionData} />
 
-      <div className="w-full h-[131vh] xl:h-[177vh]">
-        <div className="mt-[-3.5vw] xl:bg-white">
+      <div className="w-full h-[131vh]  xl:h-[177vh]">
+        <div className="mt-[-3.5vw]  xl:bg-white">
           <CTASection data={ctaSectionData} />
         </div>
         <div className="fixed w-full bottom-0 z-[-1]">
