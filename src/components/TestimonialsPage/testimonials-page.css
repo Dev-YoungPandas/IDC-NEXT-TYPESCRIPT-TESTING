@@ -1,0 +1,441 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   TESTIMONIALS PAGE — "What Our Clients Say"
+   Matches the Elementor reference layout pixel-for-pixel.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Section wrapper ── */
+.tp-section {
+  width: 100%;
+  padding: 11vw 0 0;
+  position: relative;
+  
+}
+
+/* ── Hero heading ── */
+.tp-hero {
+  padding: 0 3vw;
+  margin-bottom: 7vw;
+  max-width: 60%;
+}
+
+.tp-hero-heading {
+  font-family: 'RemixaTest-regular', sans-serif;
+  font-size: 7vw;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #000;
+  opacity: 0;
+  /* GSAP will animate this in */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TESTIMONIAL TABLE — Desktop
+   ═══════════════════════════════════════════════════════════════════════════ */
+.tp-table {
+  width: 100%;
+  padding: 0 3vw;
+  margin-top: 1vw;
+}
+
+/* ── Header row ── */
+.tp-table-header {
+  display: grid;
+  grid-template-columns: 30% 40% 18% 24%;
+  align-items: end;
+  padding-bottom: 1.5vw;
+  border-bottom: 1px solid #000;
+}
+
+
+
+.tp-table-header-cell {
+  font-family: 'mo4', sans-serif;
+  font-size: 0.9vw;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #919191;
+  line-height:32px;
+  mix-blend-mode: normal;
+
+}
+
+/* ── Testimonial row ── */
+.tp-row {
+  display: grid;
+  grid-template-columns: 30% 40% 18% 24%;
+  align-items: center;
+  padding: 2.5vw 0;
+  border-bottom: 1px solid #000;
+  transition: background-color 0.3s ease;
+}
+
+.tp-row:last-child {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* ── Name + Logo cell ── */
+.tp-cell-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:4vw
+}
+
+.tp-cell-name-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.tp-person-name {
+  font-family: 'RemixaTest-regular', sans-serif;
+  font-size: 0.9vw;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.5em;
+  color: #000;
+  mix-blend-mode: normal;
+  white-space: nowrap;
+
+
+}
+
+.tp-company-logo {
+  max-height: 3.5vw;
+  max-width: 180px;
+  /* width: auto; */
+  object-fit: contain;
+  margin-left: 1.5vw;
+  
+}
+
+/* ── Quote cell ── */
+.tp-cell-quote {
+  padding-right: 3vw;
+}
+
+.tp-quote-text {
+  font-family: 'mo4', sans-serif;
+  font-size: 1.5vw;
+  font-weight: 400;
+  line-height: 1.1em;
+  letter-spacing: -0.03px;
+  color: #2e2e2e;
+
+  mix-blend-mode: normal;
+
+}
+
+/* ── Designation cell ── */
+.tp-cell-designation {
+  /* leave empty for alignment */
+}
+
+.tp-designation-text {
+  font-family: 'mo4', sans-serif;
+  font-size: 0.9vw;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.5em;
+  color: #000;
+  mix-blend-mode: normal;
+
+}
+
+/* ── Company cell ── */
+.tp-cell-company {
+  /* leave empty */
+}
+
+.tp-company-text {
+  font-family: 'mo4', sans-serif;
+  font-size: 0.9vw;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.2em;
+  color: #000;
+  /* mix-blend-mode: exclusion; */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AGENCY CLIENTS SECTION — "Top companies"
+   ═══════════════════════════════════════════════════════════════════════════ */
+.tp-agencies {
+  width: 100%;
+  display: flex;
+  margin-top: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* ── Left sticky column ── */
+.tp-agencies-sticky-col {
+  width: 30%;
+  position: sticky;
+  top: 167px;
+  align-self: flex-start;
+  padding: 3vw;
+  padding-top: 4vw;
+}
+
+.tp-agencies-heading {
+  font-family: 'RemixaTest-regular', sans-serif;
+  font-size: 3.3vw;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #000;
+}
+
+.tp-agencies-subheading {
+  font-family: 'RemixaTest-regular', sans-serif;
+  font-size: 1.3vw;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #000;
+  margin-top: 1vw;
+  text-decoration: none;
+}
+
+.tp-agencies-subheading a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Right scrolling list ── */
+.tp-agencies-list {
+  width: 70%;
+  padding: 3vw;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Individual agency row ── */
+.tp-agency-row {
+  display: flex;
+  align-items: center;
+  padding: 1.2vw 0;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: default;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+}
+
+.tp-agency-row:last-child {
+  border-bottom: none;
+}
+
+/* Logo (hidden by default, expands on hover) */
+.tp-agency-logo-wrap {
+  width: 0;
+  height: 80%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transition: all ease 0.6s;
+}
+
+.tp-agency-logo {
+  max-height: 2.5vw;
+  max-width: 100%;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+/* Agency name */
+.tp-agency-name {
+  font-family: 'mo4', sans-serif;
+  font-size: 1vw;
+  font-weight: 400;
+  line-height: 1.1em;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* ── Desktop hover: reveal logo ── */
+@media (min-width: 1025px) {
+  .tp-agency-row:hover .tp-agency-logo-wrap {
+    width: 25%;
+    margin-right: 2vw;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE LAYOUT — Stacked cards
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Hide desktop table on mobile, show mobile cards */
+.tp-mobile-cards {
+  display: none;
+}
+
+.tp-table {
+  display: block;
+}
+
+.tp-agencies {
+  display: flex;
+}
+
+/* ── Hide on tablet ── */
+@media (max-width: 1024px) {
+  .tp-hero-heading {
+    font-size: 8vw;
+  }
+
+  .tp-table {
+    display: none;
+  }
+
+  .tp-mobile-cards {
+    display: block;
+    padding: 0 5vw;
+  }
+
+  /* Mobile testimonial card */
+  .tp-mobile-card {
+    padding: 6vw 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .tp-mobile-card:last-child {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .tp-mobile-card-logo {
+    max-height: 6vw;
+    max-width: 200px;
+    object-fit: contain;
+    margin-bottom: 3vw;
+  }
+
+  .tp-mobile-card-name {
+    font-family: 'mo4', sans-serif;
+    font-size: 3vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 2vw;
+  }
+
+  .tp-mobile-card-quote {
+    font-family: 'mo4', sans-serif;
+    font-size: 3.8vw;
+    font-weight: 400;
+    line-height: 1.2em;
+    color: #000;
+    margin-bottom: 3vw;
+  }
+
+  .tp-mobile-card-role {
+    font-family: 'mo4', sans-serif;
+    font-size: 2.8vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .tp-mobile-card-company {
+    font-family: 'mo4', sans-serif;
+    font-size: 2.8vw;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  /* ── Agencies: stack ── */
+  .tp-agencies {
+    flex-direction: column;
+  }
+
+  .tp-agencies-sticky-col {
+    width: 100%;
+    position: relative;
+    top: auto;
+    padding: 6vw 5vw 2vw;
+  }
+
+  .tp-agencies-heading {
+    font-size: 8vw;
+  }
+
+  .tp-agencies-subheading {
+    font-size: 3.5vw;
+  }
+
+  .tp-agencies-list {
+    width: 100%;
+    padding: 2vw 5vw;
+  }
+
+  .tp-agency-row {
+    padding: 3vw 0;
+  }
+
+  .tp-agency-name {
+    font-size: 3.2vw;
+  }
+
+  /* Tap to expand on mobile */
+  .tp-agency-row.tp-active .tp-agency-logo-wrap {
+    width: 15%;
+    margin-right: 3vw;
+  }
+}
+
+/* ── Small mobile ── */
+@media (max-width: 480px) {
+  .tp-hero {
+    padding: 0 5vw;
+    margin-bottom: 10vw;
+  }
+
+  .tp-hero-heading {
+    font-size: 10vw;
+  }
+
+  .tp-section {
+    padding-top: 20vw;
+  }
+
+  .tp-mobile-card-name {
+    font-size: 3.5vw;
+  }
+
+  .tp-mobile-card-quote {
+    font-size: 4.2vw;
+  }
+
+  .tp-mobile-card-role,
+  .tp-mobile-card-company {
+    font-size: 3vw;
+  }
+
+  .tp-agency-name {
+    font-size: 3.8vw;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GSAP ANIMATION HELPERS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* slideInUp entrance for the table container */
+.tp-table-container {
+  opacity: 0;
+  /* GSAP will animate */
+}
+
+/* Row stagger entrance */
+.tp-row-anim {
+  opacity: 0;
+  transform: translateY(30px);
+  /* GSAP will animate */
+}
+
+/* Agency row entrance */
+.tp-agency-anim {
+  opacity: 0;
+  transform: translateY(20px);
+  /* GSAP will animate */
+}
