@@ -34,14 +34,15 @@ export default async function Testimonials() {
             <MenuOverlay />
             <TestimonialsPage />
 
-            {/* <div className="w-full h-[131vh] xl:h-[177vh]">
+            <div className="w-full h-[131vh] xl:h-[177vh]">
                 <div className="mt-[-3.5vw] xl:bg-white">
                     <CTASection data={ctaSectionData} />
                 </div>
                 <div className="fixed w-full bottom-0 z-[-1]">
                     <Footer />
                 </div>
-            </div> */}
+            </div>
+
         </>
     );
 }

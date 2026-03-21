@@ -172,8 +172,8 @@ export default function TestimonialsPage() {
           if (agencyStickyRef.current && window.innerWidth > 1024) {
             ScrollTrigger.create({
               trigger: agencyStickyRef.current.parentElement,
-              start: 'top 167px',
-              end: 'bottom bottom',
+              start: 'top -100px',
+              end: '+=1700',
               pin: agencyStickyRef.current,
               pinSpacing: false,
             });
