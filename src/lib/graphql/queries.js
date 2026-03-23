@@ -1775,18 +1775,18 @@ query GetHomePage {
       title
       slug
       seo {
-      title
-      metaDesc
-      opengraphTitle
-      opengraphDescription
-      opengraphImage {
-        sourceUrl
-        mediaDetails { width height }
+        title
+        metaDesc
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          sourceUrl
+          mediaDetails { width height }
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage { sourceUrl }
       }
-      twitterTitle
-      twitterDescription
-      twitterImage { sourceUrl }
-    }
       homepageidc {
         photographerName1
         photographerName2
@@ -1936,10 +1936,110 @@ export const GET_PHOTOGRAPHY_SERVICE_QUERY = `
 }
 `;
 
-// productionCtaMarqueeTopLineImage {
-//   sourceUrl
-// }
-        
-// productionCtaBgImage {
-//   sourceUrl
-// }
+// ═══════════════════════════════════════════════════════════════════════════
+// ADD this query export to: src/lib/graphql/queries.ts
+// ═══════════════════════════════════════════════════════════════════════════
+
+export const GET_TESTIMONIALS_PAGE_QUERY = `
+  query GetTestimonialsPage {
+    pageBy(uri: "/testimonials/") {
+      id
+      title
+      slug
+      date
+      testimonials {
+        tpHeroHeading
+
+        tpPersonName1
+        tpPersonName2
+        tpPersonName3
+        tpPersonName4
+        tpPersonName5
+        tpPersonName6
+
+        tpCompanyLogo1 { sourceUrl }
+        tpCompanyLogo2 { sourceUrl }
+        tpCompanyLogo3 { sourceUrl }
+        tpCompanyLogo4 { sourceUrl }
+        tpCompanyLogo5 { sourceUrl }
+        tpCompanyLogo6 { sourceUrl }
+
+        tpQuoteText1
+        tpQuoteText2
+        tpQuoteText3
+        tpQuoteText4
+        tpQuoteText5
+        tpQuoteText6
+
+        tpDesignationText1
+        tpDesignationText2
+        tpDesignationText3
+        tpDesignationText4
+        tpDesignationText5
+        tpDesignationText6
+
+        tpCompanyText1
+        tpCompanyText2
+        tpCompanyText3
+        tpCompanyText4
+        tpCompanyText5
+        tpCompanyText6
+
+        tpAgencyLogo1 { sourceUrl }
+        tpAgencyLogo2 { sourceUrl }
+        tpAgencyLogo3 { sourceUrl }
+        tpAgencyLogo4 { sourceUrl }
+        tpAgencyLogo5 { sourceUrl }
+        tpAgencyLogo6 { sourceUrl }
+        tpAgencyLogo7 { sourceUrl }
+        tpAgencyLogo8 { sourceUrl }
+        tpAgencyLogo9 { sourceUrl }
+        tpAgencyLogo10 { sourceUrl }
+        tpAgencyLogo11 { sourceUrl }
+        tpAgencyLogo12 { sourceUrl }
+        tpAgencyLogo13 { sourceUrl }
+        tpAgencyLogo14 { sourceUrl }
+        tpAgencyLogo15 { sourceUrl }
+        tpAgencyLogo16 { sourceUrl }
+
+        tpAgencyName1
+        tpAgencyName2
+        tpAgencyName3
+        tpAgencyName4
+        tpAgencyName5
+        tpAgencyName6
+        tpAgencyName7
+        tpAgencyName8
+        tpAgencyName9
+        tpAgencyName10
+        tpAgencyName11
+        tpAgencyName12
+        tpAgencyName13
+        tpAgencyName14
+        tpAgencyName15
+        tpAgencyName16
+
+
+      sctaHeading
+      sctaSubheading
+      
+      sctaInputFullName
+      sctaInputEmail
+      sctaInputCompany
+      
+      sctaBg{
+        sourceUrl
+      }
+      
+      sctaFilmStripTop{
+        sourceUrl
+      }
+      
+      sctaFilmStripBottom {
+        sourceUrl
+      }
+      }
+    }
+  }
+`;
+

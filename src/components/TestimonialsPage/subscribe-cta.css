@@ -1,0 +1,406 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   SUBSCRIBE CTA — Testimonials page
+   Pixel-match of the Elementor reference section.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Section wrapper ── */
+.scta {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Film strip borders (top & bottom) ── */
+.scta__film-strip {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.scta__film-strip img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.scta__film-strip--top {
+  margin-bottom: -1px;
+  /* prevent sub-pixel gap */
+}
+
+.scta__film-strip--top img{
+  filter: brightness(53%) contrast(58%) saturate(113%) blur(0px) hue-rotate(0deg);
+
+
+}
+
+
+.scta__film-strip--bottom {
+  margin-top: -1px;
+}
+
+/* ── Background container ── */
+.scta__bg {
+  width: 100%;
+  min-height: 68vh;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  filter: brightness(1.3);
+}
+
+/* ── Dark overlay (82% opacity — matches Elementor) ── */
+.scta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(0, 0, 0, 0.15) 55%,
+      transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Content row (absolute bottom, full width) ── */
+.scta__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  padding: 0 5vw 3vw 5vw;
+  z-index: 2;
+  gap: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LEFT COLUMN — Headings
+   ═══════════════════════════════════════════════════════════════════════════ */
+.scta__text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  max-width: 42%;
+}
+
+.scta__heading {
+  font-family: 'RemixaTest-regular', sans-serif;
+  font-size: 3.7vw;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 0.7vw 0;
+  /* background-color: lightgrey; */
+  mix-blend-mode: exclusion;
+}
+
+.scta__subheading {
+  font-family: 'mo4', sans-serif;
+  font-size: 1vw;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RIGHT COLUMN — Form
+   ═══════════════════════════════════════════════════════════════════════════ */
+.scta__form-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex: 1;
+  max-width: 55%;
+}
+
+/* ── Input row (3 fields side-by-side) ── */
+.scta__fields {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1vw;
+}
+
+.scta__field {
+  flex: 1;
+}
+
+.scta__input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 0.8vw 0.5vw;
+  font-family: 'me2', serif;
+  font-size: 1.4vw;
+  font-style: italic;
+  font-weight: 400;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.3s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+.scta__input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+  font-family: 'me2', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.scta__input:focus {
+  border-bottom-color: #fff;
+}
+
+.scta__input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Submit button ── */
+.scta__btn-wrap {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 0vw;
+}
+
+.scta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5vw 0;
+  color: #fff;
+  transition: opacity 0.25s ease;
+}
+
+.scta__btn:hover {
+  opacity: 0.75;
+}
+
+.scta__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.scta__btn-text {
+  font-family: 'RemixaTest-regular';
+  font-size: 1.2vw;
+  font-style: italic;
+  font-weight: 500;
+  color: #fff;
+}
+
+.scta__btn-icon {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.scta__btn-icon svg {
+  width: 0.9vw;
+  height: 0.9vw;
+}
+
+/* ── Success message ── */
+.scta__success-msg {
+  font-family: 'me2', serif;
+  font-size: 1.2vw;
+  font-style: italic;
+  color: #fff;
+  padding: 0.5vw 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE — Tablet (max-width: 1024px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .scta__bg {
+    min-height: 450px;
+    justify-content: flex-end;
+  }
+
+  .scta__content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 6vw 5vw 6vw;
+    gap: 3vw;
+  }
+
+  .scta__text-col {
+    max-width: 100%;
+  }
+
+  .scta__heading {
+    font-size: 7vw;
+  }
+
+  .scta__subheading {
+    font-size: 1.8vw;
+  }
+
+  .scta__form-col {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .scta__input {
+    font-size: 2.2vw;
+    padding: 1.5vw 0.5vw;
+  }
+
+  .scta__btn-text {
+    font-size: 2vw;
+  }
+
+  .scta__btn-icon svg {
+    width: 1.5vw;
+    height: 1.5vw;
+  }
+
+  .scta__success-msg {
+    font-size: 2vw;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile (max-width: 767px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .scta__bg {
+    min-height: 450px;
+    background-position: center center;
+  }
+
+  .scta__overlay {
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.3) 60%,
+        transparent 100%);
+  }
+
+  .scta__content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 7vw 4vw 7vw;
+    gap: 0vw;
+  }
+
+  .scta__text-col {
+    max-width: 100%;
+  }
+
+  .scta__heading {
+    font-size: 9vw;
+    line-height: 1.3;
+    margin-bottom: 1.5vw;
+  }
+
+  .scta__subheading {
+    font-size: 3vw;
+  }
+
+  .scta__form-col {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* 2-col grid: name + email on row 1, company full-width row 2 */
+  .scta__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 3vw;
+  }
+
+  .scta__field:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .scta__input {
+    font-size: 14px;
+    padding: 3vw 1vw;
+  }
+
+  .scta__input::placeholder {
+    font-size: 14px;
+  }
+
+  .scta__btn-wrap {
+    margin-top: 4vw;
+    justify-content: end;
+  }
+
+  .scta__btn-text {
+    font-size: 23px;
+  }
+
+  .scta__btn-icon svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .scta__success-msg {
+    font-size: 4.5vw;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE — Small mobile (max-width: 480px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .scta__bg {
+    min-height: 450px;
+    filter: brightness(1.3);
+
+  }
+
+  .scta__heading {
+    font-size: 28px;
+  }
+
+  .scta__subheading {
+    font-size: 3.3vw;
+  }
+
+  .scta__input {
+    font-size: 14px;
+    padding: 3vw 1vw;
+  }
+
+  .scta__film-strip--top {
+    scale: 2.5;
+    height: 1.2vh;
+        width: 100%;
+        margin-top: 1vw;
+
+
+  }
+  .scta__film-strip--bottom {
+    scale: 2.5;
+    height: 1.2vh;
+        width: 100%;
+        margin-top: 1vw;
+  }
+}

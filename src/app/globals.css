@@ -25,6 +25,10 @@
   font-family: 'NyghtSerif-Regular';
   src: url('/fonts/NyghtSerif-Regular.otf');
 }
+@font-face {
+  font-family: 'NyghtSerif-light';
+  src: url('/fonts/NyghtSerif-LightItalic-1.ttf');
+}
 
 @font-face {
   font-family: 'RemixaTest-regular';
