@@ -1,0 +1,604 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BLOG POST PAGE — Photography Production
+   Pixel-match of the Elementor reference layout.
+   Section 1: Centered hero (date + title)
+   Section 2: Full-width background image (80vh)
+   Section 3: Two-column — sticky sidebar (details/share) + post content
+   
+   NOTE: Sidebar pinning is handled by GSAP ScrollTrigger (not CSS sticky).
+   GSAP pins .bp-sidebar-sticky at top:100px within .bp-body bounds.
+   On mobile (≤767px) the sidebar is static/stacked — no pinning.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Section wrapper ── */
+.bp-section {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO — Centered date badge + large title
+   ═══════════════════════════════════════════════════════════════════════════ */
+.bp-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10vmax 10vmax 0;
+    gap: 2vmax;
+}
+
+/* Date badge — bordered pill */
+.bp-date-badge {
+    font-family: 'mo4', sans-serif;
+    font-size: 1vmax;
+    font-weight: 400;
+    line-height: 1.1em;
+    color: #000;
+    background-color: #e8e8e8;
+    padding: 0.4em 1em;
+    display: inline-block;
+}
+
+/* Title */
+.bp-title {
+    font-family: 'RemixaTest-regular', sans-serif;
+    font-size: 3.3vmax;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #000;
+    max-width: 80%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FEATURED IMAGE — Full-width background cover
+   ═══════════════════════════════════════════════════════════════════════════ */
+.bp-featured-image {
+    width: 100%;
+    min-height: 42vmax;
+    margin-top: 3vmax;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BODY — Two-column layout (sidebar + content)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.bp-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 4vmax;
+    padding: 3vmax 19vmax 15vmax 3vmax;
+    width: 100%;
+}
+
+/* ── Left sidebar column ── */
+.bp-sidebar {
+    width: 25%;
+    flex-shrink: 0;
+}
+
+/* Sidebar sticky element — GSAP ScrollTrigger handles pinning on desktop.
+   No CSS position:sticky here; GSAP applies transform-based pinning
+   which is hardware-accelerated and confined to the bp-body bounds. */
+.bp-sidebar-sticky {
+    align-self: flex-start;
+}
+
+/* Details block — gray background */
+.bp-details-block {
+    background-color: #f0f0f0;
+    padding: 2vmax 2vmax;
+}
+
+.bp-details-title {
+    font-family: 'mo4', sans-serif;
+    font-size: 0.9vmax;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom:2vmax;
+    line-height: 1.2em;
+}
+
+.bp-details-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vmax;
+}
+
+.bp-details-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.bp-details-label {
+    font-family: 'mo4', sans-serif;
+    font-size: 0.9vmax;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 1.5em;
+}
+
+.bp-details-value {
+    font-family: 'mo4', sans-serif;
+    font-size: 0.9vmax;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 1.5em;
+}
+
+/* Share block */
+.bp-share-block {
+    margin-top: 2vmax;
+}
+
+.bp-share-title {
+    font-family: 'mo4', sans-serif;
+    font-size: 0.9vmax;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    padding-bottom: 0.8vmax;
+    border-bottom: 1px solid #000;
+    line-height: 1.2em;
+}
+
+.bp-share-links {
+    list-style: none;
+    padding: 0;
+    margin: 1vmax 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6vmax;
+}
+
+.bp-share-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8vmax;
+    text-decoration: none;
+    color: #000;
+}
+
+.bp-share-icon {
+    width: 1.2vmax;
+    height: 1.2vmax;
+    fill: currentColor;
+}
+
+.bp-share-text {
+    font-family: 'mo4', sans-serif;
+    font-size: 0.9vmax;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 1.5em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RIGHT CONTENT COLUMN — WordPress post content styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+.bp-content {
+    flex: 1;
+    min-width: 0;
+    font-family: 'mo4', sans-serif;
+    font-size: 1vmax;
+    font-weight: 400;
+    line-height: 1.1em;
+    color: #7a7a7a;
+}
+
+/* ── Headings ── */
+.bp-content h1.wp-block-heading {
+    font-family: 'RemixaTest-regular', sans-serif;
+    font-size: 3vmax;
+    font-weight: 900;
+    line-height: 1.05;
+    color: #000;
+    margin: 0 0 1vmax 0;
+    text-transform: none;
+}
+
+.bp-content h2.wp-block-heading {
+    font-family: 'mo4', sans-serif;
+    font-size: 2.5vmax;
+    font-weight: 900;
+    line-height: 1.05;
+    color: #000;
+    margin: 0 0 1vmax 0;
+    text-transform: none;
+}
+
+.bp-content h3.wp-block-heading {
+    font-family: 'mo4', sans-serif;
+    font-size: 1.5vmax;
+    font-weight: 900;
+    line-height: 1.1em;
+    color: #000;
+    text-transform: uppercase;
+    margin: 1.5vmax 0 0.5vmax 0;
+}
+
+/* ── Paragraphs ── */
+.bp-content p {
+    font-family: 'mo4', sans-serif;
+    font-size: 1vmax;
+    font-weight: 400;
+    line-height: 1.1em;
+    color: #000;
+    margin: 0 0 0.8vmax 0;
+}
+
+.bp-content p strong {
+    font-weight: 700;
+    color: #000;
+}
+
+/* ── Lists ── */
+.bp-content ul.wp-block-list,
+.bp-content ol.wp-block-list,
+.bp-content ul,
+.bp-content ol {
+    font-family: 'mo4', sans-serif;
+    font-size: 1vmax;
+    font-weight: 400;
+    line-height: 1.1em;
+    color: #000;
+    margin: 0.5vmax 0 0.8vmax 0;
+    padding-left: 1.5vmax;
+}
+
+.bp-content li {
+    margin-bottom: 0.3vmax;
+}
+
+.bp-content li strong {
+    font-weight: 700;
+    color: #000;
+}
+
+/* ── Spacer ── */
+.bp-content .wp-block-spacer {
+    display: block;
+}
+
+/* ── Links ── */
+.bp-content a {
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* ── Contact button ── */
+.bp-content .wp-block-buttons {
+    display: flex;
+    margin: 1vmax 0;
+}
+
+.bp-content .wp-block-button__link {
+    font-family: 'mo4', sans-serif;
+    font-size: 1vmax;
+    font-weight: 500;
+    color: #fff;
+    background-color: #000;
+    padding: 0.8em 2em;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+    text-transform: none;
+    transition: opacity 0.3s ease;
+}
+
+.bp-content .wp-block-button__link:hover {
+    opacity: 0.8;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ACCORDION — FAQ section
+   ═══════════════════════════════════════════════════════════════════════════ */
+.bp-accordion {
+    margin-top: 1vmax;
+}
+
+.bp-accordion-item {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.bp-accordion-item:first-child {
+    border-top: 1px solid #e0e0e0;
+}
+
+.bp-accordion-heading {
+    margin: 0;
+}
+
+.bp-accordion-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.2vmax 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    gap: 1vmax;
+}
+
+.bp-accordion-toggle-title {
+    font-family: 'mo4', sans-serif;
+    font-size: 1vmax;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.3em;
+}
+
+.bp-accordion-toggle-icon {
+    font-family: 'mo4', sans-serif;
+    font-size: 1.5vmax;
+    font-weight: 300;
+    color: #000;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.bp-accordion-toggle[aria-expanded="true"] .bp-accordion-toggle-icon {
+    transform: rotate(45deg);
+}
+
+.bp-accordion-panel {
+    padding: 0 0 1.2vmax 0;
+}
+
+.bp-accordion-panel p {
+    font-family: 'mo4', sans-serif;
+    font-size: 1vmax;
+    font-weight: 400;
+    line-height: 1.4em;
+    color: #7a7a7a;
+    margin: 0 0 0.5vmax 0;
+}
+
+.bp-accordion-panel ol {
+    font-family: 'mo4', sans-serif;
+    font-size: 1vmax;
+    font-weight: 400;
+    line-height: 1.4em;
+    color: #7a7a7a;
+    padding-left: 1.5vmax;
+    margin: 0.5vmax 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TABLET (≤ 1024px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .bp-body {
+        flex-direction: row;
+    }
+
+    .bp-hero {
+        padding: 10vmax 10vmax 0;
+    }
+
+    .bp-title {
+        font-size: 4.2vmax;
+    }
+
+    .bp-date-badge {
+        font-size: 12px;
+    }
+
+    .bp-details-title {
+        font-size: 12px;
+    }
+
+    .bp-details-label,
+    .bp-details-value {
+        font-size: 12px;
+    }
+
+    .bp-share-title {
+        font-size: 12px;
+    }
+
+    .bp-share-text {
+        font-size: 12px;
+    }
+
+    .bp-share-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .bp-content {
+        font-size: 14px;
+        line-height: 1.2em;
+    }
+
+    .bp-content h1.wp-block-heading,
+    .bp-content h2.wp-block-heading {
+        font-size: 3.3vmax;
+    }
+
+    .bp-content h3.wp-block-heading {
+        font-size: 16px;
+    }
+
+    .bp-content p,
+    .bp-content ul,
+    .bp-content ol,
+    .bp-content li {
+        font-size: 14px;
+        line-height: 1.2em;
+    }
+
+    .bp-accordion-toggle-title {
+        font-size: 14px;
+    }
+
+    .bp-accordion-toggle-icon {
+        font-size: 20px;
+    }
+
+    .bp-accordion-panel p,
+    .bp-accordion-panel ol {
+        font-size: 14px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE (≤ 767px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+    .bp-hero {
+        padding: 20% 5% 0;
+        gap: 20px;
+    }
+
+    .bp-date-badge {
+        font-size: 12px;
+    }
+
+    .bp-title {
+        font-size: 28px;
+        max-width: 100%;
+    }
+
+    .bp-featured-image {
+        min-height: 400px;
+        margin-top: 5%;
+        background-size: contain;
+        background-position: center center;
+    }
+
+    /* Stack to column on mobile — no GSAP pin active here */
+    .bp-body {
+        flex-direction: column;
+        gap: 25px;
+        padding: 5% 5% 10% 5%;
+    }
+
+    .bp-sidebar {
+        width: 100%;
+    }
+
+    .bp-sidebar-sticky {
+        position: relative;
+        top: auto;
+    }
+
+    .bp-details-block {
+        padding: 15px 20px;
+    }
+
+    .bp-details-title {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .bp-details-label,
+    .bp-details-value {
+        font-size: 12px;
+    }
+
+    .bp-details-rows {
+        gap: 4px;
+    }
+
+    .bp-share-block {
+        margin-top: 20px;
+    }
+
+    .bp-share-title {
+        font-size: 13px;
+        padding-bottom: 10px;
+    }
+
+    .bp-share-links {
+        margin-top: 10px;
+        gap: 8px;
+    }
+
+    .bp-share-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .bp-share-text {
+        font-size: 12px;
+    }
+
+    /* Content */
+    .bp-content {
+        font-size: 14px;
+        line-height: 1.3em;
+    }
+
+    .bp-content h1.wp-block-heading,
+    .bp-content h2.wp-block-heading {
+        font-size: 24px;
+        line-height: 1.1;
+    }
+
+    .bp-content h3.wp-block-heading {
+        font-size: 15px;
+    }
+
+    .bp-content p,
+    .bp-content ul,
+    .bp-content ol,
+    .bp-content li {
+        font-size: 14px;
+        line-height: 1.3em;
+    }
+
+    .bp-content ul,
+    .bp-content ol {
+        padding-left: 20px;
+    }
+
+    .bp-content .wp-block-button__link {
+        font-size: 14px;
+        padding: 10px 24px;
+    }
+
+    /* Accordion */
+    .bp-accordion-toggle {
+        padding: 14px 0;
+    }
+
+    .bp-accordion-toggle-title {
+        font-size: 14px;
+    }
+
+    .bp-accordion-toggle-icon {
+        font-size: 20px;
+    }
+
+    .bp-accordion-panel {
+        padding: 0 0 14px 0;
+    }
+
+    .bp-accordion-panel p,
+    .bp-accordion-panel ol {
+        font-size: 14px;
+        line-height: 1.4em;
+    }
+
+    .bp-accordion-panel ol {
+        padding-left: 20px;
+    }
+}

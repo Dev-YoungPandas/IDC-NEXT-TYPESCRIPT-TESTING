@@ -19,25 +19,36 @@
 @font-face {
   font-family: 'RemixaTest-semibold';
   src: url('/fonts/RemixaTest-Semibold-BF649a5c1233077.otf');
+   font-display: swap;
+
 }
 
 @font-face {
   font-family: 'NyghtSerif-Regular';
   src: url('/fonts/NyghtSerif-Regular.otf');
+  font-display: swap;
+
 }
+
 @font-face {
   font-family: 'NyghtSerif-light';
   src: url('/fonts/NyghtSerif-LightItalic-1.ttf');
+  font-display: swap;
+
 }
 
 @font-face {
   font-family: 'RemixaTest-regular';
   src: url('/fonts/RemixaTest-Regular-BF649a5c12202eb-2.ttf');
+  font-display: swap;
+
 }
 
 @font-face {
   font-family: 'Polysans';
   src: url('/fonts/PolySans-Neutral.ttf');
+  font-display: swap;
+
 }
 
 @font-face {

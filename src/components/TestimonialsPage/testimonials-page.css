@@ -13,6 +13,12 @@
 
 }
 
+.tp-hero-heading--visible {
+  opacity: 1;  /* Override the opacity:0 default — visible for LCP */
+}
+
+
+
 /* ── Hero heading ── */
 .tp-hero {
   padding: 0 3vw;
@@ -123,14 +129,17 @@
   line-height: 1.1em;
   letter-spacing: -0.03px;
   color: #2e2e2e;
-
   mix-blend-mode: normal;
+  
 
 }
 
 /* ── Designation cell ── */
 .tp-cell-designation {
   /* leave empty for alignment */
+  /* background-color: lightsalmon; */
+  width: 55%;
+
 }
 
 .tp-designation-text {
@@ -141,12 +150,15 @@
   line-height: 1.5em;
   color: #000;
   mix-blend-mode: normal;
+  /* background-color: lightgray; */
 
 }
 
 /* ── Company cell ── */
 .tp-cell-company {
   /* leave empty */
+  width: 50%;
+  /* background-color: lightskyblue; */
 }
 
 .tp-company-text {
