@@ -74,7 +74,7 @@
     flex-direction: row;
     justify-content: flex-start;
     gap: 4vmax;
-    padding: 3vmax 19vmax 15vmax 3vmax;
+    padding: 3vmax 19vmax 25vmax 3vmax;
     width: 100%;
 }
 
@@ -100,17 +100,17 @@
 .bp-details-title {
     font-family: 'mo4', sans-serif;
     font-size: 0.9vmax;
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
     color: #000;
-    margin-bottom:2vmax;
+    margin-bottom: 2vmax;
     line-height: 1.2em;
 }
 
 .bp-details-rows {
     display: flex;
     flex-direction: column;
-    gap: 0.3vmax;
+    gap: 0.5vmax;
 }
 
 .bp-details-row {
@@ -145,11 +145,11 @@
 .bp-share-title {
     font-family: 'mo4', sans-serif;
     font-size: 0.9vmax;
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
     color: #000;
     padding-bottom: 0.8vmax;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #cccccc;
     line-height: 1.2em;
 }
 
@@ -213,14 +213,14 @@
     font-family: 'mo4', sans-serif;
     font-size: 2.5vmax;
     font-weight: 900;
-    line-height: 1.05;
+    line-height: 1.2;
     color: #000;
     margin: 0 0 1vmax 0;
     text-transform: none;
 }
 
 .bp-content h3.wp-block-heading {
-    font-family: 'mo4', sans-serif;
+  font-family: 'RemixaTest-regular';
     font-size: 1.5vmax;
     font-weight: 900;
     line-height: 1.1em;
@@ -236,7 +236,8 @@
     font-weight: 400;
     line-height: 1.1em;
     color: #000;
-    margin: 0 0 0.8vmax 0;
+    /* background-color: red; */
+    margin: 0 0 0.5vmax 0;
 }
 
 .bp-content p strong {
@@ -313,11 +314,11 @@
 }
 
 .bp-accordion-item {
-    border-bottom: 1px solid #e0e0e0;
+    /* border-bottom: 1px solid #e0e0e0; */
 }
 
 .bp-accordion-item:first-child {
-    border-top: 1px solid #e0e0e0;
+    /* border-top: 1px solid #e0e0e0; */
 }
 
 .bp-accordion-heading {
@@ -329,7 +330,12 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 1.2vmax 0;
+    /* padding: 1.2vmax 0; */
+    padding-top: 1.2vmax;
+    padding-bottom: 1.2vmax;
+    padding-left: 4vmax;
+    padding-right: 7vmax;
+
     background: none;
     border: none;
     cursor: pointer;
@@ -337,18 +343,32 @@
     gap: 1vmax;
 }
 
-.bp-accordion-toggle-title {
-    font-family: 'mo4', sans-serif;
-    font-size: 1vmax;
-    font-weight: 700;
-    color: #000;
-    line-height: 1.3em;
+.bp-accordion-toggle {
+    text-decoration: none;
 }
+
+.bp-accordion-toggle:hover .bp-accordion-toggle-title {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+}
+
+.bp-accordion-toggle-title {
+    font-family: 'RemixaTest-regular';
+    font-size: 1.5vmax;
+    font-weight: 600;
+    color: #000;
+    width: 75%;
+    line-height: 1.3em;
+    text-transform: uppercase;
+}
+
+
 
 .bp-accordion-toggle-icon {
     font-family: 'mo4', sans-serif;
     font-size: 1.5vmax;
-    font-weight: 300;
+    font-weight: 500;
     color: #000;
     flex-shrink: 0;
     transition: transform 0.3s ease;
@@ -359,15 +379,19 @@
 }
 
 .bp-accordion-panel {
-    padding: 0 0 1.2vmax 0;
+    /* padding: 0 0 1.2vmax 0; */
+    padding-top: 0vmax;
+    padding-bottom: 0vmax;
+    padding-left: 4vmax;
+    padding-right: 6vmax;
 }
 
 .bp-accordion-panel p {
     font-family: 'mo4', sans-serif;
     font-size: 1vmax;
     font-weight: 400;
-    line-height: 1.4em;
-    color: #7a7a7a;
+    line-height: 1.1em;
+    color: #000;
     margin: 0 0 0.5vmax 0;
 }
 
@@ -379,7 +403,58 @@
     color: #7a7a7a;
     padding-left: 1.5vmax;
     margin: 0.5vmax 0;
+
+    list-style: decimal;
+
 }
+
+.bp-accordion-panel ol li {
+    font-family: 'mo4', sans-serif;
+    font-size: 1vmax;
+    font-weight: 400;
+    line-height: 0.9em;
+    color: #000;
+    margin-bottom: 0.3vmax;
+}
+
+
+
+/* making li tag */
+
+
+/* ── WordPress list styles inside content ─────────────────────────── */
+.bp-content ul.wp-block-list,
+.bp-content ul,
+.bp-content .wp-block-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0.75rem 0 1rem 0;
+
+    /* background-color:lightpink; */
+}
+
+.bp-content ul li,
+.bp-content .wp-block-list li {
+    display: list-item;
+    margin-bottom: 0.4rem;
+    padding-left: 0.25rem;
+}
+
+/* Also target WPHtml wrapper divs that contain lists */
+.bp-content>div ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0.75rem 0 1rem 0;
+}
+
+.bp-content>div ul li {
+    display: list-item;
+    margin-bottom: 0.2rem;
+    padding-left: 0.25rem;
+}
+
+
+
 
 /* ═══════════════════════════════════════════════════════════════════════════
    TABLET (≤ 1024px)
@@ -486,9 +561,9 @@
 
     /* Stack to column on mobile — no GSAP pin active here */
     .bp-body {
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 25px;
-        padding: 5% 5% 10% 5%;
+        padding: 10% 5% 70% 5%;
     }
 
     .bp-sidebar {
@@ -498,15 +573,17 @@
     .bp-sidebar-sticky {
         position: relative;
         top: auto;
+        margin-top: 4vmax;
     }
 
     .bp-details-block {
-        padding: 15px 20px;
+        padding: 20px 20px;
     }
 
     .bp-details-title {
-        font-size: 13px;
+        font-size: 11px;
         margin-bottom: 10px;
+        font-weight: 500;
     }
 
     .bp-details-label,
@@ -523,7 +600,8 @@
     }
 
     .bp-share-title {
-        font-size: 13px;
+        font-size: 11px;
+        font-weight: 500;
         padding-bottom: 10px;
     }
 
@@ -533,8 +611,8 @@
     }
 
     .bp-share-icon {
-        width: 18px;
-        height: 18px;
+        width: 14px;
+        height: 14px;
     }
 
     .bp-share-text {
@@ -549,20 +627,27 @@
 
     .bp-content h1.wp-block-heading,
     .bp-content h2.wp-block-heading {
-        font-size: 24px;
+        font-size: 23px;
         line-height: 1.1;
+        margin-block-end: 1rem;
+        margin-block-start: .5rem;
+        margin-top: 5vmax;
     }
 
     .bp-content h3.wp-block-heading {
-        font-size: 15px;
+        font-size: 16px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
     }
 
     .bp-content p,
     .bp-content ul,
     .bp-content ol,
     .bp-content li {
-        font-size: 14px;
-        line-height: 1.3em;
+        font-size: 13px;
+        line-height: 1.1em;
+        margin-block-end: .9rem;
+        margin-block-start: 0;
     }
 
     .bp-content ul,
@@ -571,8 +656,9 @@
     }
 
     .bp-content .wp-block-button__link {
-        font-size: 14px;
+        font-size: 20px;
         padding: 10px 24px;
+
     }
 
     /* Accordion */
@@ -581,7 +667,7 @@
     }
 
     .bp-accordion-toggle-title {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .bp-accordion-toggle-icon {

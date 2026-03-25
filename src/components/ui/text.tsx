@@ -1,183 +1,470 @@
-// // src/components/dan-max/CTASection.tsx
-// 'use client';
+'use client';
 
-// import Marquee from 'react-fast-marquee';
-// import { useLazyLoad } from '@/hooks/useLazyLoad';
-// import '../../styles/ctasection.css';
-// import { useEffect, useState } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
+import "./blog-post.css";
 
-// /* ── Page-agnostic data shape ─────────────────────────────────────────────── */
-// export interface CTASectionData {
-//   /** Marquee scrolling text (optional — photographer pages use danMarquee) */
-//   marqueeText?: string | null;
-//   /** Top decorative line SVG */
-//   marqueeTopLineImage?: { sourceUrl: string } | null;
-//   /** Bottom decorative line SVG */
-//   marqueeBottomLineImage?: { sourceUrl: string } | null;
-//   /** Background image object (has sourceUrl) */
-//   bgImage?: { sourceUrl: string } | null;
-//   /** Large heading inside the CTA block */
-//   heading?: string | null;
-//   /** Paragraph text beneath the heading */
-//   paragraph?: string | null;
-//   /** Contact label shown beside the arrow (production/photography pages) */
-//   contactLabel?: string | null;
-//   /** Photographer name — when present, renders the diagonal-arrow SVG instead of the right-arrow */
-//   photographerName?: string | null;
-// }
+// ─── Types ───────────────────────────────────────────────────────────────────
+interface BlogData {
+    bpDateBadge?: string;
+    bpTitle?: string;
+    bpFeaturedImage?: { sourceUrl: string };
 
-// /* ── Fallback assets ──────────────────────────────────────────────────────── */
-// const DEFAULT_TOP_LINE =
-//   'https://idc.co.nz/headless/wp-content/uploads/2025/03/IDC-top.svg';
-// const DEFAULT_BOTTOM_LINE =
-//   'https://idc.co.nz/headless/wp-content/uploads/2025/03/IDC-bottom.svg';
-// const DEFAULT_BG =
-//   'https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=1470&auto=format&fit=crop';
+    wpBlockHeading1?: string;
+    wpBlockHeading2?: string;
+    wpBlockHeading3?: string;
+    wpBlockHeading4?: string;
+    wpBlockHeading4Para?: string;
+    wpBlockHeading5?: string;
+    wpBlockHeading5Para?: string;
+    wpBlockHeading6?: string;
+    wpBlockHeading6Para?: string;
+    wpBlockHeading7?: string;
+    wpBlockHeading8?: string;
+    wpBlockHeading9?: string;
+    wpBlockHeading10?: string;
+    wpBlockHeading11?: string;
+    wpBlockHeading12?: string;
+    wpBlockHeading13?: string;
 
-// /* ── Component ────────────────────────────────────────────────────────────── */
-// export default function CTASection({ data }: { data?: CTASectionData | null }) {
-//   const { ref, isVisible } = useLazyLoad({ threshold: 0.1 });
-//   const [marqueeSpeed, setMarqueeSpeed] = useState(150);
+    wpBlockParagraph1?: string;
+    wpBlockParagraph2?: string;
+    wpBlockParagraph3?: string;
+    wpBlockParagraph4?: string;
+    wpBlockParagraph5?: string;
+    wpBlockParagraph6?: string;
+    wpBlockParagraph7?: string;
+    wpBlockParagraph8?: string;
+    wpBlockParagraph9?: string;
 
-//   useEffect(() => {
-//     let timeoutId: ReturnType<typeof setTimeout>;
+    wpBlockList1?: string;
+    wpBlockList1ParaTop?: string;
+    wpBlockList1ParaBottom?: string;
 
-//     const handleResize = () => {
-//       clearTimeout(timeoutId);
-//       timeoutId = setTimeout(() => {
-//         setMarqueeSpeed(window.innerWidth <= 740 ? 60 : 150);
-//       }, 200);
-//     };
+    wpBlockList2?: string;
+    wpBlockList2Para1?: string;
+    wpBlockList2Para2?: string;
 
-//     handleResize();
-//     window.addEventListener('resize', handleResize);
-//     return () => {
-//       clearTimeout(timeoutId);
-//       window.removeEventListener('resize', handleResize);
-//     };
-//   }, []);
+    wpBlockList3?: string;
+    wpBlockList3Para1?: string;
+    wpBlockList3Para2?: string;
 
-//   /* ── Derived values ─────────────────────────────────────────────────────── */
-//   const marqueeText = data?.marqueeText;
-//   const bgImage = data?.bgImage?.sourceUrl || DEFAULT_BG;
-//   const topLine = data?.marqueeTopLineImage?.sourceUrl || DEFAULT_TOP_LINE;
-//   const bottomLine = data?.marqueeBottomLineImage?.sourceUrl || DEFAULT_BOTTOM_LINE;
-//   const hasPhotographerName = Boolean(data?.photographerName);
+    wpBlockList4?: string;
+    wpBlockList4Para1?: string;
+    wpBlockList4Para2?: string;
 
-//   return (
-//     <div className="ctasection-parent">
-//       {/* ── Top decorative line ─────────────────────────────────────────── */}
-//       <div className="marqueeTopLine">
-//         <img
-//           className="marqueeTopLine-Image"
-//           src={topLine}
-//           alt="marqueeTopLineImage"
-//         />
-//       </div>
+    wpBlockList5?: string;
+    wpBlockList5Heading?: string;
+    wpBlockList6?: string;
+    wpBlockList6Heading?: string;
+    wpBlockList7?: string;
+    wpBlockList7Heading?: string;
+    wpBlockList8?: string;
+    wpBlockList8Heading?: string;
 
-//       {/* ── Main CTA block ─────────────────────────────────────────────── */}
-//       <div ref={ref} className="ctasection">
-//         {isVisible && (
-//           <>
-//             {/* Scrolling marquee (only if text exists) */}
-//             {marqueeText && (
-//               <Marquee
-//                 direction="right"
-//                 speed={marqueeSpeed}
-//                 className="marquee"
-//                 autoFill
-//               >
-//                 <span className="marquee-item uppercase">{marqueeText}</span>
-//               </Marquee>
-//             )}
+    wpBlockList9?: string;
+    wpBlockList9Heading?: string;
+    wpBlockList10?: string;
+    wpBlockList10Heading?: string;
+    wpBlockList11?: string;
+    wpBlockList11Heading?: string;
 
-//             {/* Heading */}
-//             {data?.heading && (
-//               <div className="productionpage-marquee-data1">
-//                 <div className="production-center-align production-testimonial-marqueeHeading">
-//                   <h1>{data.heading}</h1>
-//                 </div>
-//               </div>
-//             )}
+    bpAccordionToggleTitle1?: string;
+    bpAccordionToggleTitle2?: string;
+    bpAccordionToggleTitle3?: string;
+    bpAccordionToggleTitle4?: string;
+    bpAccordionToggleTitle5?: string;
+    bpAccordionPanel1?: string;
+    bpAccordionPanel2?: string;
+    bpAccordionPanel3?: string;
+    bpAccordionPanel4?: string;
+    bpAccordionPanel5?: string;
+}
 
-//             {/* Paragraph */}
-//             {data?.paragraph && (
-//               <div className="productionpage-marquee-data2">
-//                 <div className="production-center-align productionTestimonialMarqueeParagraph">
-//                   <p>{data.paragraph}</p>
-//                 </div>
-//               </div>
-//             )}
+interface BlogPostHeroProps {
+    data: BlogData | null;
+}
 
-//             {/* Arrow + label row */}
-//             <div
-//               className={`ctasection-photographer-name ${
-//                 data?.contactLabel
-//                   ? 'ctasection-photographer-name--production'
-//                   : ''
-//               }`}
-//             >
-//               <div className="ctasection-photographer-name-inner">
-//                 {/* Diagonal arrow for photographer pages, right arrow otherwise */}
-//                 {hasPhotographerName ? (
-//                   <svg
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     width="500"
-//                     viewBox="0 0 375 374.999991"
-//                     height="500"
-//                     preserveAspectRatio="xMidYMid meet"
-//                   >
-//                     <defs>
-//                       <clipPath id="430d2caef3">
-//                         <path
-//                           d="M 40.539062 40.539062 L 334.539062 40.539062 L 334.539062 334.539062 L 40.539062 334.539062 Z M 40.539062 40.539062"
-//                           clipRule="nonzero"
-//                         />
-//                       </clipPath>
-//                     </defs>
-//                     <g clipPath="url(#430d2caef3)">
-//                       <path
-//                         fill="#ffffff"
-//                         d="M 334.449219 40.539062 L 334.449219 334.160156 L 275.679688 334.160156 L 275.679688 140.859375 L 82.09375 334.445312 L 40.539062 292.890625 L 234.125 99.308594 L 40.828125 99.308594 L 40.828125 40.539062 Z M 334.449219 40.539062"
-//                         fillOpacity="1"
-//                         fillRule="nonzero"
-//                       />
-//                     </g>
-//                   </svg>
-//                 ) : (
-//                   <svg
-//                     aria-hidden="true"
-//                     fill="white"
-//                     className="e-font-icon-svg e-fas-arrow-right"
-//                     viewBox="0 0 448 512"
-//                     xmlns="http://www.w3.org/2000/svg"
-//                   >
-//                     <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
-//                   </svg>
-//                 )}
+// ─── Helper: renders raw HTML from WP (paragraphs, lists, etc.) ──────────────
+// All wpBlockParagraph* and wpBlockList* fields come back as raw HTML strings.
+// dangerouslySetInnerHTML is safe here because the content comes from your
+// own trusted WordPress CMS, not from user input.
+function WPHtml({ html, className }: { html?: string; className?: string }) {
+    if (!html) return null;
+    return (
+        <div
+            className={className}
+            dangerouslySetInnerHTML={{ __html: html }}
+        />
+    );
+}
 
-//                 <h1 className="marquee-photographer-name">
-//                   {hasPhotographerName
-//                     ? data.photographerName!.split(' ')[0] || 'OUR S WEBSITE'
-//                     : data?.contactLabel}
-//                 </h1>
-//               </div>
-//             </div>
+// ─── Helper: "Bold heading + optional sub-paragraph + HTML list" block ───────
+// Used for the challenge sections (Weather Variability, Remote Location, etc.)
+function ChallengeBlock({
+    heading,
+    subPara,
+    listHtml,
+}: {
+    heading?: string;
+    subPara?: string;
+    listHtml?: string;
+}) {
+    if (!heading && !listHtml) return null;
+    return (
+        <>
+            {heading && <p><strong>{heading}</strong></p>}
+            {subPara && <p>{subPara}</p>}
+            <WPHtml html={listHtml} />
+        </>
+    );
+}
 
-//             {/* Background image */}
-//             <img
-//               className="ctasection-bg-image"
-//               src={bgImage}
-//               alt="Portfolio request background"
-//             />
-//           </>
-//         )}
-//       </div>
+// ─── Helper: "Bold season heading + HTML list" block ────────────────────────
+function SeasonBlock({
+    heading,
+    listHtml,
+}: {
+    heading?: string;
+    listHtml?: string;
+}) {
+    if (!heading && !listHtml) return null;
+    return (
+        <>
+            {heading && <p><strong>{heading}</strong></p>}
+            <WPHtml html={listHtml} />
+        </>
+    );
+}
 
-//       {/* ── Bottom decorative line ─────────────────────────────────────── */}
-//       <div className="marqueeBottomLine">
-//         <img src={bottomLine} alt="marqueeBottomLineImage" />
-//       </div>
-//     </div>
-//   );
-// }
+// ─── Accordion item ───────────────────────────────────────────────────────────
+function AccordionItem({
+    title,
+    panel,
+    onToggle,
+}: {
+    title?: string;
+    panel?: string;
+    onToggle: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}) {
+    if (!title) return null;
+    return (
+        <div className="bp-accordion-item">
+            <h3 className="bp-accordion-heading">
+                <button
+                    className="bp-accordion-toggle"
+                    aria-expanded="false"
+                    onClick={onToggle}
+                >
+                    <span className="bp-accordion-toggle-title">{title}</span>
+                    <span className="bp-accordion-toggle-icon" aria-hidden="true">+</span>
+                </button>
+            </h3>
+            <div className="bp-accordion-panel" hidden>
+                <p>{panel}</p>
+            </div>
+        </div>
+    );
+}
+
+// ─── Main Component ───────────────────────────────────────────────────────────
+export default function BlogPostHero({ data }: BlogPostHeroProps) {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const bodyRef = useRef<HTMLDivElement>(null);
+    const sidebarStickyRef = useRef<HTMLDivElement>(null);
+
+    // ── Accordion toggle ──────────────────────────────────────────────────
+    const handleAccordionClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+        const btn = e.currentTarget;
+        const panel = btn
+            .closest('.bp-accordion-item')
+            ?.querySelector('.bp-accordion-panel') as HTMLElement | null;
+        if (!panel) return;
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        panel.hidden = isOpen;
+    }, []);
+
+    // ── GSAP sidebar pin ──────────────────────────────────────────────────
+    useEffect(() => {
+        if (typeof window === 'undefined' || window.innerWidth <= 1024) return;
+        if (!bodyRef.current || !sidebarStickyRef.current) return;
+
+        let cancelled = false;
+        let ctx: any;
+
+        Promise.all([
+            import('gsap'),
+            import('gsap/ScrollTrigger'),
+        ]).then(([{ gsap }, { ScrollTrigger }]) => {
+            if (cancelled) return;
+            gsap.registerPlugin(ScrollTrigger);
+            ctx = gsap.context(() => {
+                ScrollTrigger.create({
+                    trigger: bodyRef.current,
+                    start: 'top 100px',
+                    end: '+=4600',
+                    pin: sidebarStickyRef.current,
+                    pinSpacing: false,
+                });
+            }, sectionRef);
+        });
+
+        return () => {
+            cancelled = true;
+            if (ctx) ctx.revert();
+        };
+    }, []);
+
+    // ── Shorthand + fallbacks ─────────────────────────────────────────────
+    const d = data ?? {};
+
+    const featuredImageUrl =
+        d.bpFeaturedImage?.sourceUrl ??
+        'https://idc.yp-studio.com/media/2025/02/09183825/C_Rutherford__48A4948_YETI_optimized-1.jpg';
+
+    const accordions = [
+        { title: d.bpAccordionToggleTitle1, panel: d.bpAccordionPanel1 },
+        { title: d.bpAccordionToggleTitle2, panel: d.bpAccordionPanel2 },
+        { title: d.bpAccordionToggleTitle3, panel: d.bpAccordionPanel3 },
+        { title: d.bpAccordionToggleTitle4, panel: d.bpAccordionPanel4 },
+        { title: d.bpAccordionToggleTitle5, panel: d.bpAccordionPanel5 },
+    ];
+
+    return (
+        <div ref={sectionRef} className="bp-section">
+
+            {/* ════════════════════════════════════════════════════════════
+                HERO
+            ════════════════════════════════════════════════════════════ */}
+            <div className="bp-hero">
+                <h2 className="bp-date-badge">
+                    {d.bpDateBadge }
+                </h2>
+                <h1 className="bp-title">
+                    {d.bpTitle ?? 'THE ULTIMATE GUIDE TO PHOTOGRAPHY PRODUCTION IN NEW ZEALAND'}
+                </h1>
+            </div>
+
+            {/* ════════════════════════════════════════════════════════════
+                FEATURED IMAGE
+            ════════════════════════════════════════════════════════════ */}
+            <div
+                className="bp-featured-image"
+                style={{ backgroundImage: `url(${featuredImageUrl})` }}
+            />
+
+            {/* ════════════════════════════════════════════════════════════
+                BODY — sidebar + content
+            ════════════════════════════════════════════════════════════ */}
+            <div ref={bodyRef} className="bp-body">
+
+                {/* ── Sidebar ─────────────────────────────────────────── */}
+                <aside className="bp-sidebar">
+                    <div ref={sidebarStickyRef} className="bp-sidebar-sticky">
+
+                        <div className="bp-details-block">
+                            <h3 className="bp-details-title">Details</h3>
+                            <div className="bp-details-rows">
+                                <div className="bp-details-row">
+                                    <span className="bp-details-label">Date</span>
+                                    <span className="bp-details-value">
+                                        {d.bpDateBadge ?? 'May 11, 2025'}
+                                    </span>
+                                </div>
+                                <div className="bp-details-row">
+                                    <span className="bp-details-label">Reading</span>
+                                    <span className="bp-details-value">11 min</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bp-share-block">
+                            <h3 className="bp-share-title">Share</h3>
+                            <ul className="bp-share-links">
+                                <li>
+                                    <a href="https://www.instagram.com/_idc_photography/" target="_blank" rel="noopener noreferrer" className="bp-share-link">
+                                        <svg className="bp-share-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                                        </svg>
+                                        <span className="bp-share-text">instagram</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/company/idc-worldwide-ltd/" target="_blank" rel="noopener noreferrer" className="bp-share-link">
+                                        <svg className="bp-share-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                            <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+                                        </svg>
+                                        <span className="bp-share-text">linkedin</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </aside>
+
+                {/* ── Content column ──────────────────────────────────── */}
+                <div className="bp-content">
+
+                    {/* ── Section 1: Intro ──────────────────────────────── */}
+                    {d.wpBlockHeading1 && (
+                        <h1 className="wp-block-heading">{d.wpBlockHeading1}</h1>
+                    )}
+                    {/* wpBlockParagraph1 contains two <p> tags as raw HTML */}
+                    <WPHtml html={d.wpBlockParagraph1} />
+
+                    <div style={{ height: 40 }} aria-hidden="true" className="wp-block-spacer" />
+
+                    {/* ── Section 2: Planning timeline ──────────────────── */}
+                    {d.wpBlockHeading2 && (
+                        <h2 className="wp-block-heading">{d.wpBlockHeading2}</h2>
+                    )}
+                    <WPHtml html={d.wpBlockParagraph2} />
+                    {d.wpBlockList1ParaTop && <p>{d.wpBlockList1ParaTop}</p>}
+                    {/* wpBlockList1 is a raw HTML <ul> string */}
+                    <WPHtml html={d.wpBlockList1} />
+                    {d.wpBlockList1ParaBottom && <p>{d.wpBlockList1ParaBottom}</p>}
+
+                    <div style={{ height: 40 }} aria-hidden="true" className="wp-block-spacer" />
+
+                    {/* ── Section 3: Hidden locations ───────────────────── */}
+                    {d.wpBlockHeading3 && (
+                        <h2 className="wp-block-heading">{d.wpBlockHeading3}</h2>
+                    )}
+                    <WPHtml html={d.wpBlockParagraph3} />
+
+                    {d.wpBlockHeading4 && (
+                        <h3 className="wp-block-heading">{d.wpBlockHeading4}</h3>
+                    )}
+                    {d.wpBlockHeading4Para && <p>{d.wpBlockHeading4Para}</p>}
+
+                    {d.wpBlockHeading5 && (
+                        <h3 className="wp-block-heading">{d.wpBlockHeading5}</h3>
+                    )}
+                    {d.wpBlockHeading5Para && <p>{d.wpBlockHeading5Para}</p>}
+
+                    {d.wpBlockHeading6 && (
+                        <h3 className="wp-block-heading">{d.wpBlockHeading6}</h3>
+                    )}
+                    {d.wpBlockHeading6Para && <p>{d.wpBlockHeading6Para}</p>}
+
+                    <div style={{ height: 40 }} aria-hidden="true" className="wp-block-spacer" />
+
+                    {/* ── Section 4: Production challenges ──────────────── */}
+                    {d.wpBlockHeading7 && (
+                        <h2 className="wp-block-heading">{d.wpBlockHeading7}</h2>
+                    )}
+                    <WPHtml html={d.wpBlockParagraph4} />
+
+                    {/* Weather Variability */}
+                    <ChallengeBlock
+                        heading={d.wpBlockList2Para1}
+                        subPara={d.wpBlockList2Para2}
+                        listHtml={d.wpBlockList2}
+                    />
+
+                    {/* Remote Location Access */}
+                    <ChallengeBlock
+                        heading={d.wpBlockList3Para1}
+                        subPara={d.wpBlockList3Para2}
+                        listHtml={d.wpBlockList3}
+                    />
+
+                    {/* Permit Complexities */}
+                    <ChallengeBlock
+                        heading={d.wpBlockList4Para1}
+                        subPara={d.wpBlockList4Para2}
+                        listHtml={d.wpBlockList4}
+                    />
+
+                    <div style={{ height: 40 }} aria-hidden="true" className="wp-block-spacer" />
+
+                    {/* ── Section 5: Seasonal ───────────────────────────── */}
+                    {d.wpBlockHeading8 && (
+                        <h2 className="wp-block-heading">{d.wpBlockHeading8}</h2>
+                    )}
+                    <WPHtml html={d.wpBlockParagraph5} />
+
+                    <SeasonBlock heading={d.wpBlockList5Heading} listHtml={d.wpBlockList5} />
+                    <SeasonBlock heading={d.wpBlockList6Heading} listHtml={d.wpBlockList6} />
+                    <SeasonBlock heading={d.wpBlockList7Heading} listHtml={d.wpBlockList7} />
+                    <SeasonBlock heading={d.wpBlockList8Heading} listHtml={d.wpBlockList8} />
+
+                    <div style={{ height: 40 }} aria-hidden="true" className="wp-block-spacer" />
+
+                    {/* ── Section 6: Building the team ──────────────────── */}
+                    {d.wpBlockHeading9 && (
+                        <h2 className="wp-block-heading">{d.wpBlockHeading9}</h2>
+                    )}
+                    <WPHtml html={d.wpBlockParagraph6} />
+
+                    {d.wpBlockList9Heading && (
+                        <p><strong>{d.wpBlockList9Heading}</strong></p>
+                    )}
+                    {/* wpBlockList9 has inline <strong> tags — render as HTML */}
+                    <WPHtml html={d.wpBlockList9} />
+
+                    {d.wpBlockHeading10 && (
+                        <h3 className="wp-block-heading">{d.wpBlockHeading10}</h3>
+                    )}
+                    <WPHtml html={d.wpBlockParagraph7} />
+
+                    {d.wpBlockList10Heading && (
+                        <p><strong>{d.wpBlockList10Heading}</strong></p>
+                    )}
+                    {/* wpBlockList10 also has inline <strong> tags */}
+                    <WPHtml html={d.wpBlockList10} />
+
+                    <div style={{ height: 40 }} aria-hidden="true" className="wp-block-spacer" />
+
+                    {/* ── Section 7: Budgeting ───────────────────────────── */}
+                    {d.wpBlockHeading11 && (
+                        <h2 className="wp-block-heading">{d.wpBlockHeading11}</h2>
+                    )}
+                    <WPHtml html={d.wpBlockParagraph8} />
+
+                    {d.wpBlockList11Heading && (
+                        <p><strong>{d.wpBlockList11Heading}</strong></p>
+                    )}
+                    <WPHtml html={d.wpBlockList11} />
+
+                    <div style={{ height: 40 }} aria-hidden="true" className="wp-block-spacer" />
+
+                    {/* ── Section 8: CTA ────────────────────────────────── */}
+                    {d.wpBlockHeading12 && (
+                        <h2 className="wp-block-heading">{d.wpBlockHeading12}</h2>
+                    )}
+                    {/* wpBlockParagraph9 has two <p> tags — render as HTML */}
+                    <WPHtml html={d.wpBlockParagraph9} />
+
+                    <div className="wp-block-buttons">
+                        <div className="wp-block-button">
+                            <a className="wp-block-button__link" href="https://idc.co.nz/contact/">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <div style={{ height: 40 }} aria-hidden="true" className="wp-block-spacer" />
+
+                    {/* ── Section 9: FAQ accordion ──────────────────────── */}
+                    {d.wpBlockHeading13 && (
+                        <h2 className="wp-block-heading">{d.wpBlockHeading13}</h2>
+                    )}
+
+                    <div className="bp-accordion" role="group">
+                        {accordions.map((item, i) => (
+                            <AccordionItem
+                                key={i}
+                                title={item.title}
+                                panel={item.panel}
+                                onToggle={handleAccordionClick}
+                            />
+                        ))}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    );
+}

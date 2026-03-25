@@ -2043,3 +2043,95 @@ export const GET_TESTIMONIALS_PAGE_QUERY = `
   }
 `;
 
+
+
+export const GET_BLOG_PHOTOGRAPHY_PRODUCTION_QUERY = `        const seo = raw?.pageBy?.seo;
+
+  query GetBlogPhotographyProduction {
+    pageBy(uri: "/photography-production/") {
+      id
+      title
+      slug
+      date
+      seo {
+      title
+      metaDesc
+      opengraphTitle
+      opengraphDescription
+      opengraphImage {
+        sourceUrl
+        mediaDetails { width height }
+      }
+      twitterTitle
+      twitterDescription
+      twitterImage { sourceUrl }
+    }
+      blogPhotographyproduction {
+        bpDateBadge
+        bpTitle
+        bpFeaturedImage { sourceUrl }
+        wpBlockHeading1
+        wpBlockHeading2
+        wpBlockHeading3
+        wpBlockHeading4
+        wpBlockHeading4Para
+        wpBlockHeading5
+        wpBlockHeading5Para
+        wpBlockHeading6
+        wpBlockHeading6Para
+        wpBlockHeading7
+        wpBlockHeading8
+        wpBlockHeading9
+        wpBlockHeading10
+        wpBlockHeading11
+        wpBlockHeading12
+        wpBlockHeading13
+        wpBlockParagraph1
+        wpBlockParagraph2
+        wpBlockParagraph3
+        wpBlockParagraph4
+        wpBlockParagraph5
+        wpBlockParagraph6
+        wpBlockParagraph7
+        wpBlockParagraph8
+        wpBlockParagraph9
+        wpBlockList1
+        wpBlockList1ParaTop
+        wpBlockList1ParaBottom
+        wpBlockList2
+        wpBlockList2Para1
+        wpBlockList2Para2
+        wpBlockList3
+        wpBlockList3Para1
+        wpBlockList3Para2
+        wpBlockList4
+        wpBlockList4Para1
+        wpBlockList4Para2
+        wpBlockList5
+        wpBlockList5Heading
+        wpBlockList6
+        wpBlockList6Heading
+        wpBlockList7
+        wpBlockList7Heading
+        wpBlockList8
+        wpBlockList8Heading
+        wpBlockList9
+        wpBlockList9Heading
+        wpBlockList10
+        wpBlockList10Heading
+        wpBlockList11
+        wpBlockList11Heading
+        bpAccordionToggleTitle1
+        bpAccordionToggleTitle2
+        bpAccordionToggleTitle3
+        bpAccordionToggleTitle4
+        bpAccordionToggleTitle5
+        bpAccordionPanel1
+        bpAccordionPanel2
+        bpAccordionPanel3
+        bpAccordionPanel4
+        bpAccordionPanel5
+      }
+    }
+  }
+`;
