@@ -1,0 +1,435 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONTACT PAGE — contact-page.css
+   
+   Pixel-perfect recreation of the Elementor contact/footer section.
+   
+   LAYOUT (desktop):
+   ┌──────────────────────────────────────────────────────────────────────┐
+   │  padding: 4% 5%                                                      │
+   │  ┌─────────────────────────────────────────────────────────────────┐ │
+   │  │  "CONTACT" heading (bottomToUp animation)                       │ │
+   │  └─────────────────────────────────────────────────────────────────┘ │
+   │  ┌──────────────────────────┐  ┌──────────────────────────────────┐ │
+   │  │  Michele Richards-Berry   │  │  Production image (absolute)     │ │
+   │  │  mb. +64 (0)21 432583     │  │                                  │ │
+   │  │                           │  │                                  │ │
+   │  │  MICHELE@IDC.CO.NZ        │  │                                  │ │
+   │  │                           │  │                                  │ │
+   │  │  IDC WORLDWIDE LTD.       │  │                                  │ │
+   │  │  498 GREAT NORTH RD...    │  └──────────────────────────────────┘ │
+   │  └──────────────────────────┘                                        │
+   │  ┌─────────────────────────────────────────────────────────────────┐ │
+   │  │  © Copyright          Designed & Developed by Young Pandas      │ │
+   │  └─────────────────────────────────────────────────────────────────┘ │
+   └──────────────────────────────────────────────────────────────────────┘
+   
+   ISOLATION: All selectors scoped under .contact-page-* to avoid
+   collisions with existing site styles.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Wrapper: full-height page container ─────────────────────────────── */
+.contact-page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F8F8F8;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-page-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding-top: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 1%;
+
+    gap: 0;
+}
+
+/* ── "CONTACT" heading section ───────────────────────────────────────── */
+.contact-heading-section {
+    width: 100%;
+    padding-top: 5%;
+}
+
+.contact-main-heading {
+    font-family: 'RemixaTest-regular';
+    font-size: 7vmax;
+    font-weight: 900;
+    line-height: 1;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+/* ── Content row: details + image ────────────────────────────────────── */
+.contact-content-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    flex: 1;
+    position: relative;
+    /* background-color: lightgray; */
+}
+
+.contact-details-col {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    flex: 1;
+    padding: 0;
+    padding-top: 4vmax;
+}
+
+/* ── Person info ─────────────────────────────────────────────────────── */
+.contact-person-block {
+    margin-top: 5vw;
+    /* background-color: lightgoldenrodyellow; */
+}
+
+.contact-person-name {
+    font-family: 'me2';
+    font-size: 1.5vw;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 48px;
+    color: #000;
+    letter-spacing: -0.6px;
+    /* margin: 0 0 0.3vw 0; */
+}
+
+.contact-phone {
+    font-family: 'RemixaTest-regular', sans-serif;
+    font-size: 1.3vmax;
+    font-weight: 900;
+    line-height: 45px;
+    color: #2E2E2E;
+    margin: 0;
+    text-transform: none;
+}
+
+/* ── Email block ─────────────────────────────────────────────────────── */
+.contact-email-block {
+    margin-top: 0.5vmax;
+}
+
+.contact-email-row {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+    /* height: 12vh; */
+    height: 6vmax;
+    overflow: hidden;
+    cursor: pointer;
+    /* background-color: lightgray; */
+}
+
+.contact-email-text {
+    font-family: 'Polysans';
+    font-size: 4.2vmax;
+    font-weight: 400;
+    line-height: 1.3;
+    text-transform: uppercase;
+    color: #3b3b3b;
+    letter-spacing: -0.04em;
+
+    margin: 0;
+}
+
+.contact-email-text a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.contact-email-text a:hover {
+    opacity: 1;
+    
+}
+
+.contact-say-hello {
+    font-family: 'Polysans';
+    font-size: 4.2vmax;
+    font-weight: 400;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #3b3b3b;
+    letter-spacing: -0.04em;
+    margin: 0;
+        padding-top: 0.5vmax;
+
+}
+
+.contact-say-hello a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+
+/* ── Address block ───────────────────────────────────────────────────── */
+.contact-address-block {
+    /* margin-top: 1vmax; */
+}
+
+.contact-company-name {
+    font-family: 'RemixaTest-regular', sans-serif;
+    font-size: 1.3vmax;
+    font-weight: 900;
+    line-height: 40px;
+    color: #2e2e2e;
+    text-transform: uppercase;
+    margin: 0 0 0.3vw 0;
+}
+
+.contact-address-text {
+    font-family: 'mo4';
+    font-size: 1.5vmax;
+    font-weight: 500;
+    line-height: 1em;
+    color: #808080;
+    text-transform: uppercase;
+    margin: 0;
+    max-width: 50%;
+}
+
+/* ── Image column (desktop only) ─────────────────────────────────────── */
+.contact-image-col {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 7vmax;
+    width: 17vmax;
+    height: 38vh;
+    display: block;
+}
+
+.contact-image-col img {
+    width: 100%;
+    height: 38vh;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+/* ── Footer bar ──────────────────────────────────────────────────────── */
+.contact-footer-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2% 0 1% 0;
+    min-height: 5vh;
+    margin-top: auto;
+}
+
+.contact-copyright {
+    font-family: 'mo4';
+    font-size: 1.2vmax;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.1em;
+}
+
+.contact-credits {
+    display: flex;
+    align-items: center;
+}
+
+.contact-credits a {
+    display: inline-flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.contact-credits a:hover {
+    opacity: 0.7;
+}
+
+.contact-credits img {
+    height: 2.1vmax;
+    width: auto;
+    filter: brightness(41%) contrast(100%) saturate(100%) blur(0px) hue-rotate(0deg);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TABLET (≤ 1024px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 1024px) {
+    .contact-page-inner {
+        padding: 20vw 5vw 5vw;
+    }
+
+    .contact-main-heading {
+        font-size: 12vw;
+    }
+
+    .contact-person-name {
+        font-size: 3.5vw;
+    }
+
+    .contact-phone {
+        font-size: 2.8vw;
+    }
+
+    .contact-email-text {
+        font-size: 6vw;
+    }
+
+    .contact-say-hello {
+        /* Hidden on tablet/mobile like original */
+        display: none;
+    }
+
+    .contact-company-name {
+        font-size: 2.5vw;
+    }
+
+    .contact-address-text {
+        font-size: 2.2vw;
+        max-width: 80%;
+    }
+
+    /* Hide image on tablet/mobile */
+    .contact-image-col {
+        display: none;
+    }
+
+    .contact-copyright {
+        font-size: 2vw;
+    }
+
+    .contact-credits img {
+        height: 3vw;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE (≤ 740px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 740px) {
+    .contact-page-inner {
+        padding: 25vw 5vw 5vw;
+    }
+
+    .contact-main-heading {
+        font-size: 14vw;
+    }
+
+    .contact-person-block {
+        margin-top: 12vw;
+    }
+
+    .contact-person-name {
+        font-size: 5vw;
+    }
+
+    .contact-phone {
+        font-size: 3.8vw;
+    }
+
+    .contact-email-block {
+        margin-top: 6vw;
+    }
+
+    .contact-email-text {
+        font-size: 7.5vw;
+    }
+
+    .contact-address-block {
+        margin-top: 5vw;
+    }
+
+    .contact-company-name {
+        font-size: 3.5vw;
+    }
+
+    .contact-address-text {
+        font-size: 3vw;
+        max-width: 90%;
+    }
+
+    .contact-footer-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0vw;
+        padding: 5% 0 2% 0;
+    }
+
+    .contact-copyright {
+        font-size: 3vw;
+    }
+
+    .contact-credits img {
+        height: 4vw;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SMALL MOBILE (≤ 480px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 480px) {
+    .contact-page-inner {
+        padding: 28vw 5vw 5vw;
+    }
+
+    .contact-main-heading {
+        font-size: 40px;
+        padding-top: 15%;
+
+    }
+
+    .contact-details-col {
+        
+        padding-top: 11vmax;
+    }
+
+    .contact-person-name {
+        font-size: 18px;
+        line-height: 1.7em;
+    }
+
+    .contact-phone {
+        font-size: 15px;
+    }
+
+    .contact-email-text {
+        font-size: 30px;
+    }
+
+    .contact-company-name {
+        font-size: 15px;
+        line-height: 1.3em;
+
+    }
+
+    .contact-address-text {
+        font-size: 15px;
+        line-height: 1em;
+        mix-blend-mode: exclusion;
+        color: #808080;
+        margin-top: 1vmax;
+        max-width: 100%;
+    }
+
+    .contact-copyright {
+        font-size: 13px;
+        line-height: 1.1em;
+
+    }
+
+    .contact-credits img {
+        height: 7vw;
+    }
+}

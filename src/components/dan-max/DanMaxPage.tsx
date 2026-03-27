@@ -110,7 +110,7 @@ export default function DanMaxPage({ data, photographer }: { data: any; photogra
 
       </div>
 
-      <div className='w-full h-[131vh] xl:h-[177vh]'>
+      <div className='w-full h-[164vh] xl:h-[177vh]'>
         {/* Pass mapped CTA data instead of raw data */}
         <CTASection data={ctaSectionData} />
 

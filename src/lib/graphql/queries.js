@@ -2045,8 +2045,7 @@ export const GET_TESTIMONIALS_PAGE_QUERY = `
 
 
 
-export const GET_BLOG_PHOTOGRAPHY_PRODUCTION_QUERY = `        const seo = raw?.pageBy?.seo;
-
+export const GET_BLOG_PHOTOGRAPHY_PRODUCTION_QUERY = `
   query GetBlogPhotographyProduction {
     pageBy(uri: "/photography-production/") {
       id
@@ -2054,18 +2053,18 @@ export const GET_BLOG_PHOTOGRAPHY_PRODUCTION_QUERY = `        const seo = raw?.p
       slug
       date
       seo {
-      title
-      metaDesc
-      opengraphTitle
-      opengraphDescription
-      opengraphImage {
-        sourceUrl
-        mediaDetails { width height }
+        title
+        metaDesc
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          sourceUrl
+          mediaDetails { width height }
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage { sourceUrl }
       }
-      twitterTitle
-      twitterDescription
-      twitterImage { sourceUrl }
-    }
       blogPhotographyproduction {
         bpDateBadge
         bpTitle
@@ -2131,6 +2130,43 @@ export const GET_BLOG_PHOTOGRAPHY_PRODUCTION_QUERY = `        const seo = raw?.p
         bpAccordionPanel3
         bpAccordionPanel4
         bpAccordionPanel5
+      }
+    }
+  }
+`;
+
+
+export const GET_CONTACT_PAGE = `
+  query GetContact {
+    pageBy(uri: "/contact/") {
+      id
+      title
+      slug
+      date
+      seo {
+        title
+        metaDesc
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          sourceUrl
+          mediaDetails { width height }
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage { sourceUrl }
+      }
+      contact {
+        contactMainHeading
+        contactPersonName
+        contactPhone
+        contactEmailText
+        contactSayHello
+        contactCompanyName
+        contactAddressText
+        contactImageCol { sourceUrl }
+        contactCredits { sourceUrl }
+        contactCopyright
       }
     }
   }

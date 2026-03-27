@@ -3,7 +3,7 @@
 // ============================================
 
 import { fetchGraphQL } from '@/lib/graphql/client';
-import { GET_CAMILLA_PAGE_QUERY, GET_HOMEPAGE_QUERY } from '@/lib/graphql/queries';
+import { GET_CAMILLA_PAGE_QUERY, GET_HOMEPAGE_QUERY, GET_TESTIMONIALS_PAGE_QUERY } from '@/lib/graphql/queries';
 import HomePage from '@/components/home/HomePage';
 import HomeSection2 from '@/components/home/homeSection2/HomeSection2';
 import { Metadata } from 'next';
@@ -13,6 +13,8 @@ import HomeTestimonialSlider from '@/components/home/HomeTestimonialSlider';
 import CTASection from '@/components/dan-max/CTASection';
 import Footer from '@/components/dan-max/Footer';
 import MenuOverlay from '@/components/home/Menuoverlay'; // ← Import the new component
+import { mapTestimonialsData } from '@/lib/mapTestimonialsData';
+import SubscribeCTA from '@/components/TestimonialsPage/SubscribeCTA';
 
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -80,17 +82,23 @@ function transformHomepageData(homepageidc: any) {
 
 export default async function Home() {
   let photographers: any[] = [];
-  let testimonialData: any = null;
+  let subscribeCtaData: any = null;
+  let testimonialSliderData: any = null;
+
+
 
   try {
-    const [homepageRes, camillaRes] = await Promise.all([
+    const [homepageRes, testimonialsRes] = await Promise.all([
       fetchGraphQL(GET_HOMEPAGE_QUERY),
-      fetchGraphQL(GET_CAMILLA_PAGE_QUERY),
+      fetchGraphQL(GET_TESTIMONIALS_PAGE_QUERY),
     ]);
 
     const homepageidc = homepageRes?.pageBy?.homepageidc;
     photographers = transformHomepageData(homepageidc);
-    testimonialData = camillaRes?.pageBy?.camilla || null;
+
+    const testimonialsData = mapTestimonialsData(testimonialsRes?.pageBy?.testimonials ?? null);
+    subscribeCtaData = testimonialsData?.subscribeCta ?? null;
+    testimonialSliderData = testimonialsRes?.pageBy?.camilla ?? null;
   } catch (error) {
     console.error('Failed to fetch homepage data:', error);
   }
@@ -131,16 +139,18 @@ export default async function Home() {
             <HomesSection3 />
           </div>
 
-          {testimonialData && (
+          {testimonialSliderData && (
             <div>
-              <HomeTestimonialSlider data={testimonialData} />
+              <HomeTestimonialSlider data={testimonialSliderData} />
             </div>
           )}
         </div>
 
-        <div className='w-full mt-[-4vw]  h-[131vh] xl:h-[177vh]'>
-          <CTASection data={testimonialData} />
-          <div className='fixed w-full bottom-0 z-[-1]'>
+        {/* old height for small device is height=131vh */}
+        <div className='w-full mt-[-4vmax]  h-[164vh] xl:h-[177vh]'>
+          <SubscribeCTA data={subscribeCtaData} />
+
+          <div className='fixed w-full  bottom-0 z-[-1]'>
             <Footer />
           </div>
         </div>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface Photographer {
@@ -61,6 +62,11 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
   const menuItemsBRef = useRef<(HTMLDivElement | null)[]>([]);
   const noBlurRef = useRef<(HTMLDivElement | null)[]>([]);
   const imagesRef = useRef<(HTMLImageElement | null)[]>([]);
+
+
+  const blogH2Ref = useRef<HTMLDivElement>(null);
+  const blogARef = useRef<HTMLDivElement>(null);
+
 
   // Preloader refs
   const preloaderRef = useRef<HTMLDivElement>(null);
@@ -371,6 +377,8 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
     if (isMobile()) return;
     gsap.to(getElements(menuItemsARef), { opacity: 0.5, filter: 'blur(2px)', duration: 0.3 });
     gsap.to(getElements(menuItemsBRef), { opacity: 0.5, filter: 'blur(5px)', duration: 0.3 });
+    if (blogH2Ref.current) gsap.to(blogH2Ref.current, { opacity: 0.5, filter: 'blur(2px)', duration: 0.3 });
+    if (blogARef.current) gsap.to(blogARef.current, { opacity: 0.5, filter: 'blur(2px)', duration: 0.3 });
     if (el) gsap.to(el, { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
   }, [isMobile]);
 
@@ -378,6 +386,8 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
     if (isMobile()) return;
     gsap.to(getElements(menuItemsARef), { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
     gsap.to(getElements(menuItemsBRef), { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
+    if (blogH2Ref.current) gsap.to(blogH2Ref.current, { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
+    if (blogARef.current) gsap.to(blogARef.current, { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
   }, [isMobile]);
 
   // ─── Photographer hover blur (desktop) ────────────────────────────────
@@ -385,6 +395,8 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
     if (isMobile()) return;
     gsap.to(getElements(menuItemsBRef), { opacity: 0.5, filter: 'blur(5px)', duration: 0.3 });
     gsap.to(getElements(menuItemsARef), { opacity: 0, duration: 0.5 });
+    if (blogH2Ref.current) gsap.to(blogH2Ref.current, { opacity: 0, duration: 0.5 });
+    if (blogARef.current) gsap.to(blogARef.current, { opacity: 0, duration: 0.5 });
     if (el) gsap.to(el, { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
   }, [isMobile]);
 
@@ -392,7 +404,41 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
     if (isMobile()) return;
     gsap.to(getElements(menuItemsBRef), { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
     gsap.to(getElements(menuItemsARef), { opacity: 1, duration: 0.5 });
+    if (blogH2Ref.current) gsap.to(blogH2Ref.current, { opacity: 1, duration: 0.5 });
+    if (blogARef.current) gsap.to(blogARef.current, { opacity: 1, duration: 0.5 });
   }, [isMobile]);
+
+  const handleBlogH2Enter = useCallback(() => {
+    if (isMobile()) return;
+    gsap.to(getElements(menuItemsARef), { opacity: 0.5, filter: 'blur(2px)', duration: 0.3 });
+    gsap.to(getElements(menuItemsBRef), { opacity: 0.5, filter: 'blur(5px)', duration: 0.3 });
+    if (blogARef.current) gsap.to(blogARef.current, { opacity: 0.5, filter: 'blur(2px)', duration: 0.3 });
+    if (blogH2Ref.current) gsap.to(blogH2Ref.current, { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
+  }, [isMobile]);
+
+  const handleBlogH2Leave = useCallback(() => {
+    if (isMobile()) return;
+    gsap.to(getElements(menuItemsARef), { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
+    gsap.to(getElements(menuItemsBRef), { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
+    if (blogARef.current) gsap.to(blogARef.current, { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
+  }, [isMobile]);
+
+  const handleBlogAEnter = useCallback(() => {
+    if (isMobile()) return;
+    gsap.to(getElements(menuItemsARef), { opacity: 0.5, filter: 'blur(2px)', duration: 0.3 });
+    gsap.to(getElements(menuItemsBRef), { opacity: 0.5, filter: 'blur(5px)', duration: 0.3 });
+    if (blogH2Ref.current) gsap.to(blogH2Ref.current, { opacity: 0.5, filter: 'blur(2px)', duration: 0.3 });
+    if (blogARef.current) gsap.to(blogARef.current, { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
+  }, [isMobile]);
+
+  const handleBlogALeave = useCallback(() => {
+    if (isMobile()) return;
+    gsap.to(getElements(menuItemsARef), { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
+    gsap.to(getElements(menuItemsBRef), { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
+    if (blogH2Ref.current) gsap.to(blogH2Ref.current, { opacity: 1, filter: 'blur(0px)', duration: 0.3 });
+  }, [isMobile]);
+
+
 
   // ─── Navigate with exit animation ─────────────────────────────────────
   const handleNavigate = useCallback((e: React.MouseEvent, href: string) => {
@@ -550,6 +596,28 @@ export default function MenuOverlay({ photographers }: MenuOverlayProps) {
                     </div>
                   </div>
                 ))}
+              </div>
+
+
+              <div className='photography-pro-blog'
+              >
+                <div
+                  ref={blogH2Ref}
+                  onMouseEnter={handleBlogH2Enter}
+                  onMouseLeave={handleBlogH2Leave}
+                >
+                  <h2>Blogs</h2>
+                </div>
+
+                <div
+                  ref={blogARef}
+                  onMouseEnter={handleBlogAEnter}
+                  onMouseLeave={handleBlogALeave}
+                >
+                  <Link href="/blog/photography-production">Guide to photography production in nz</Link>
+
+                </div>
+
               </div>
 
               {/* Socials */}

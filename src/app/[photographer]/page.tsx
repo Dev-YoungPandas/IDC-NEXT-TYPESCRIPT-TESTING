@@ -10,6 +10,7 @@ import {
 import ClientPage from './ClientPage';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import MenuOverlay from '@/components/home/Menuoverlay';
 
 
 
@@ -129,6 +130,7 @@ export default async function PhotographerPage({
           fetchPriority="high"
         />
       )}
+      <MenuOverlay/>
       <ClientPage data={data} photographer={photographer} />
     </>
   );

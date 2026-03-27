@@ -19,7 +19,7 @@
 @font-face {
   font-family: 'RemixaTest-semibold';
   src: url('/fonts/RemixaTest-Semibold-BF649a5c1233077.otf');
-   font-display: swap;
+  font-display: swap;
 
 }
 
@@ -194,8 +194,8 @@
 }
 
 .smallFrame {
-  width: 20vw;
-  min-height: 10vw;
+  width: 20vmax;
+  min-height: 10vmax;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -243,7 +243,7 @@
 
 /* Preloader logo section */
 .heading {
-  width: 17vw;
+  width: 17vmax;
   height: 20vh;
   display: flex;
   justify-content: center;
@@ -264,7 +264,7 @@
 }
 
 .elem img {
-  height: 5vw;
+  height: 5vmax;
   object-fit: cover;
 }
 
@@ -320,7 +320,7 @@
 
 .menutext {
   font-family: 'RemixaTest-regular';
-  font-size: 2vw;
+  font-size: 2vmax;
   font-weight: 900;
   line-height: 1;
   color: #FFFFFF;
@@ -362,12 +362,12 @@
   height: 100vh;
   display: flex;
   justify-content: space-between;
-  padding: 3vw;
+  padding: 3vmax;
 }
 
 .menu-item svg {
-  font-size: 2vw;
-  height: 2vw;
+  font-size: 2vmax;
+  height: 2vmax;
 }
 
 .images {
@@ -398,6 +398,27 @@
   width: 100%;
 }
 
+.photography-pro-blog h2 {
+  font-family: 'me2';
+  font-style: italic;
+  font-size: 1.5vmax;
+  font-weight: 500;
+  line-height: 1.2em;
+  letter-spacing: -0.6px;
+  color: #FFFFFF;
+
+}
+
+.photography-pro-blog a {
+  font-size: 1.4vmax;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.2em;
+  font-family: 'mo4';
+
+
+}
+
 .menu-item {
   align-items: start;
   display: flex;
@@ -408,15 +429,15 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 2vw;
+  gap: 2vmax;
   overflow: hidden;
 }
 
 .social-media-icon svg {
   color: #FFFFFF;
-  height: 2vw;
+  height: 2vmax;
   width: 1em;
-  font-size: 2vw;
+  font-size: 2vmax;
   cursor: none;
 }
 
@@ -425,13 +446,13 @@
 }
 
 .Container p {
-  font-size: 1vw;
+  font-size: 1vmax;
   font-weight: 400;
   font-family: 'RemixaTest-regular';
 }
 
 .menu-item h2 {
-  font-size: 2vw;
+  font-size: 2vmax;
   font-weight: 400;
   text-transform: uppercase;
   line-height: 1.2em;
@@ -454,7 +475,7 @@
 .name-wrapper h2 {
   font-family: 'RemixaTest-regular';
   font-weight: 400;
-  font-size: 4vw;
+  font-size: 4vmax;
   overflow: hidden;
 }
 
@@ -492,29 +513,29 @@
 }
 
 .corners-bottom-right {
-  right: 1vw;
-  bottom: 1vw;
+  right: 1vmax;
+  bottom: 1vmax;
   border-bottom: 2px solid #FFFFFF;
   border-right: 2px solid #FFFFFF;
 }
 
 .corners-top-right {
-  right: 1vw;
-  top: 1vw;
+  right: 1vmax;
+  top: 1vmax;
   border-top: 2px solid #FFFFFF;
   border-right: 2px solid #FFFFFF;
 }
 
 .corners-bottom-left {
-  left: 1vw;
-  bottom: 1vw;
+  left: 1vmax;
+  bottom: 1vmax;
   border-bottom: 2px solid #FFFFFF;
   border-left: 2px solid #FFFFFF;
 }
 
 .corners-top-left {
-  left: 1vw;
-  top: 1vw;
+  left: 1vmax;
+  top: 1vmax;
   border-top: 2px solid #FFFFFF;
   border-left: 2px solid #FFFFFF;
 }
@@ -529,7 +550,7 @@
   display: flex;
   flex-direction: row;
   margin: 0;
-  padding: 2vw 3vw;
+  padding: 2vmax 3vmax;
   justify-content: space-between;
 }
 
@@ -540,7 +561,7 @@
 
 .homesection2-top-dash h5 {
   font-family: 'RemixaTest-regular';
-  font-size: 1.3vw;
+  font-size: 1.3vmax;
   font-weight: 600;
   text-transform: uppercase;
   color: #000000;
@@ -551,33 +572,6 @@
    MOBILE (≤ 740px)
    ═══════════════════════════════════════════════════════════════════════════ */
 
-@media screen and (max-width: 740px) {
-  .homesection2-top-dash h5 {
-    font-size: 11px;
-  }
-
-  .homesection2-top-dash h5:nth-child(2) {
-    display: none;
-  }
-
-  .homesection2-top-dash {
-    padding: 2% 5%;
-  }
-
-  .header-upper h3 {
-    font-size: 16px;
-    line-height: 1em;
-  }
-
-  /* Preloader: smaller on mobile */
-  .heading {
-    width: 40vw;
-  }
-
-  .elem img {
-    width: 60%;
-  }
-}
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -670,6 +664,36 @@
 }
 
 
+@media screen and (max-width: 740px) {
+  .homesection2-top-dash h5 {
+    font-size: 11px;
+  }
+
+  .homesection2-top-dash h5:nth-child(2) {
+    display: none;
+  }
+
+  .homesection2-top-dash {
+    padding: 2% 5%;
+  }
+
+  .header-upper h3 {
+    font-size: 16px;
+    line-height: 1em;
+  }
+
+  /* Preloader: smaller on mobile */
+  .heading {
+    width: 40vw;
+  }
+
+  .elem img {
+    width: 60%;
+  }
+}
+
+
+
 /* ═══════════════════════════════════════════════════════════════════════════
    SMALL MOBILE (≤ 480px)
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -678,6 +702,11 @@
   .name-wrapper h2 {
     font-size: 8.3vw;
   }
+
+  .elem img {
+  height: 6vmax;
+  object-fit: cover;
+}
 
   .page-option .menu-item h2 {
     font-size: 4.5vw;

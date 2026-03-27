@@ -209,7 +209,9 @@
 
 @media screen and (max-width: 740px) {
     .ctasection {
-        height: 50vh;
+        height: 60vh;
+        background-color: lightskyblue;
+        /* margin-top: -33vmax; */
     }
 
     .marquee {

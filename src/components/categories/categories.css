@@ -10,7 +10,7 @@
   background-color: #ffffff;
   color: #000000;
   position: relative;
-  padding-bottom:10vw;
+  padding-bottom:10vmax;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -19,19 +19,18 @@
 
 .categories-hero-section {
   width: 100%;
-  
-  padding: 6vw 3vw 0 3vw;
+  padding: 6vmax 3vmax 0 3vmax;
 }
 
 .categories-main-heading {
   font-family: 'Remixa', 'RemixaTest-regular', sans-serif;
-  font-size: 5.7vw;
+  font-size: 5.7vmax;
   font-weight: 900;
   line-height: 1.05;
   color: #000000;
   text-transform: uppercase;
   margin: 0;
-  margin-bottom: 2vw;
+  margin-bottom: 2vmax;
 }
 
 /* Line-by-line reveal */
@@ -76,7 +75,7 @@
   flex-direction: row;
   gap: 0;
   padding: 0;
-  padding-top: 7vw;
+  padding-top: 7vmax;
 }
 
 /* Mobile list hidden on desktop */
@@ -108,101 +107,106 @@
 /* 0: Beauty */
 .cat-left-0 {
   margin-top: 0;
-  margin-bottom: 4vw;
-  padding-left: 3vw;
-  padding-right: 7vw;
+  margin-bottom: 4vmax;
+  padding-left: 3vmax;
+  padding-right: 7vmax;
 }
 
 /* 1: Landscapes — WIDER */
 .cat-left-1 {
-  margin-top: 4vw;
-  margin-bottom: 4vw;
-  padding-left: 3vw;
+  margin-top: 4vmax;
+  margin-bottom: 4vmax;
+  padding-left: 3vmax;
   padding-right: 0;
-  width: 52vw;
+  width: 52vmax;
 }
 .cat-left-1 img {
-  height: 72vh;
+  /* height: 72vh; */
+  height:38vmax;
 }
 
 /* 2: Portraits */
 .cat-left-2 {
-  margin-top: 6vw;
-  margin-bottom: 4vw;
-  padding-left: 3vw;
-  padding-right: 6vw;
+  margin-top: 6vmax;
+  margin-bottom: 4vmax;
+  padding-left: 3vmax;
+  padding-right: 6vmax;
 }
 
 /* 3: Kids + Young People */
 .cat-left-3 {
-  margin-top: 4vw;
-  margin-bottom: 4vw;
-  padding-left: 3vw;
-  padding-right: 2.5vw;
+  margin-top: 4vmax;
+  margin-bottom: 4vmax;
+  padding-left: 3vmax;
+  padding-right: 2.5vmax;
 }
 .cat-left-3 img {
-  height: 58vh;
+  height:30vmax;
 }
 
 /* 4: Sports */
 .cat-left-4 {
-  margin-top: 13vw;
-  margin-bottom: 4vw;
-  padding-left: 3vw;
-  padding-right: 9vw;
+  margin-top: 13vmax;
+  margin-bottom: 4vmax;
+  padding-left: 3vmax;
+  padding-right: 9vmax;
 }
 .cat-left-4 img {
-  height: 88vh;
+  height:46vmax;
+  /* height: 88vh; */
 }
 
 /* 0: Still + Products */
 .cat-right-0 {
   margin-top: 0vw;
-  margin-bottom: 4vw;
-  padding-left: 2vw;
-  padding-right: 3vw;
+  margin-bottom: 4vmax;
+  padding-left: 2vmax;
+  padding-right: 3vmax;
 }
 
 /* 1: Lifestyle */
 .cat-right-1 {
-  margin-top: 18vw;
-  margin-bottom: 4vw;
-  padding-left: 13vw;
-  padding-right: 5vw;
+  margin-top: 18vmax;
+  margin-bottom: 4vmax;
+  padding-left: 13vmax;
+  padding-right: 5vmax;
 }
 .cat-right-1 img {
-  height: 88vh;
+  /* height: 88vh; */
+  height: 46vmax;
 }
 
 /* 2: People In Places */
 .cat-right-2 {
-  margin-top: 3vw;
-  margin-bottom: 4vw;
-  padding-left: 2vw;
-  padding-right: 3vw;
+  margin-top: 3vmax;
+  margin-bottom: 4vmax;
+  padding-left: 2vmax;
+  padding-right: 3vmax;
 }
 .cat-right-2 img {
-  height: 60vh;
+  /* height: 60vh; */
+  height:31vmax;
 }
 
 /* 3: Fashion */
 .cat-right-3 {
-  margin-top: 18vw;
-  margin-bottom: 4vw;
-  padding-left: 5vw;
-  padding-right: 4vw;
+  margin-top: 18vmax;
+  margin-bottom: 4vmax;
+  padding-left: 5vmax;
+  padding-right: 4vmax;
 }
 
 /* 4: Food + Beverage */
 .cat-right-4 {
-  margin-top: 4vw;
-  margin-bottom: 4vw;
-  padding-left: 0vw;
-  margin-left: -2vw;
-  padding-right: 2vw;
+  margin-top: 4vmax;
+  margin-bottom: 4vmax;
+  padding-left: 0vmax;
+  margin-left: -2vmax;
+  padding-right: 2vmax;
 }
 .cat-right-4 img {
-  width: 52vw;
+  /* width: 52vw; */
+  width: 52vmax;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -271,23 +275,23 @@
 
 @media screen and (max-width: 1024px) {
   .categories-hero-section {
-    padding: 10vw 3vw 0 3vw;
+    padding: 10vmax 3vmax 0 3vmax;
   }
 
   .categories-main-heading {
-    font-size: 5.3vw;
+    font-size: 5.3vmax;
   }
 
   .cat-title {
-    font-size: 2vw;
+    font-size: 2vmax;
   }
 
   .cat-count {
-    font-size: 1vw;
+    font-size: 1vmax;
   }
 
   .cat-right-0 {
-    margin-top: 10vw;
+    margin-top: 10vmax;
   }
 }
 
@@ -317,7 +321,7 @@
   }
 
   .categories-hero-section {
-    padding: 22vw 5vw 0 5vw;
+    padding: 22vmax 5vmax 0 5vmax;
   }
 
   .categories-main-heading {
@@ -352,8 +356,8 @@
 
   /* Mobile text styles */
   .cat-mob-text {
-    gap: 2vw;
-    padding-top: 2vw;
+    gap: 2vmax;
+    padding-top: 2vmax;
   }
 
   .cat-title {
@@ -374,7 +378,7 @@
 
 @media screen and (max-width: 480px) {
   .categories-hero-section {
-    padding: 25vw 5vw 0 5vw;
+    padding: 25vmax 5vmax 0 5vmax;
   }
 
   .categories-main-heading {
@@ -383,7 +387,7 @@
 
    .cat-mob-text {
     gap: 5vw;
-    padding-top: 5vw;
+    padding-top: 5vmax;
   }
 
 

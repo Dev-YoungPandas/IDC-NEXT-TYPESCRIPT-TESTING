@@ -9,7 +9,7 @@ import CTASection from "@/components/dan-max/CTASection";
 import Footer from "@/components/dan-max/Footer";
 import MenuOverlay from "@/components/home/Menuoverlay";
 import { fetchGraphQL } from "@/lib/graphql/client";
-import { GET_BLOG_PHOTOGRAPHY_PRODUCTION_QUERY, GET_PHOTOGRAPHY_SERVICE_QUERY } from "@/lib/graphql/queries";
+import { GET_BLOG_PHOTOGRAPHY_PRODUCTION_QUERY, GET_PHOTOGRAPHY_SERVICE_QUERY, GET_PRODUCTION_QUERY } from "@/lib/graphql/queries";
 import { mapCTAData } from "@/lib/mapCTAData";
 import { Metadata } from "next";
 
@@ -81,7 +81,8 @@ export default async function PhotographyProductionBlog() {
     try {
         const [blogRaw, ctaRaw] = await Promise.all([
             fetchGraphQL(GET_BLOG_PHOTOGRAPHY_PRODUCTION_QUERY),
-            fetchGraphQL(GET_PHOTOGRAPHY_SERVICE_QUERY),
+            fetchGraphQL(GET_PRODUCTION_QUERY),
+
         ]);
 
         blogData = blogRaw?.pageBy?.blogPhotographyproduction ?? null;

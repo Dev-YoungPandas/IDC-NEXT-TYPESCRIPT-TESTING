@@ -336,7 +336,8 @@
     .footer-content {
         flex-direction: column;
         align-items: flex-start;
-        margin-top: 40vw;
+        /* margin-top: 40vw; */
+        margin-top: 30vmax;
         gap: 10vw;
         /* background-color: lightgreen; */
         padding-bottom: 6vw;
