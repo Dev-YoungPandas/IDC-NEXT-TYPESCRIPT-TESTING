@@ -3,14 +3,13 @@
 // ============================================
 
 import { fetchGraphQL } from '@/lib/graphql/client';
-import { GET_CAMILLA_PAGE_QUERY, GET_HOMEPAGE_QUERY, GET_TESTIMONIALS_PAGE_QUERY } from '@/lib/graphql/queries';
+import { GET_HOMEPAGE_QUERY, GET_TESTIMONIALS_PAGE_QUERY } from '@/lib/graphql/queries';
 import HomePage from '@/components/home/HomePage';
 import HomeSection2 from '@/components/home/homeSection2/HomeSection2';
 import { Metadata } from 'next';
 import HomesSection3 from '@/components/home/homeSection3/HomesSection3';
 import HomeClientWrapper from './HomeClientWrapper';
 import HomeTestimonialSlider from '@/components/home/HomeTestimonialSlider';
-import CTASection from '@/components/dan-max/CTASection';
 import Footer from '@/components/dan-max/Footer';
 import MenuOverlay from '@/components/home/Menuoverlay'; // ← Import the new component
 import { mapTestimonialsData } from '@/lib/mapTestimonialsData';
